@@ -41,12 +41,11 @@ export default function PortfolioPage() {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-full px-8">
-              Invoice Processing App
+              <Link href="/invoice-processing-app">Invoice Processing App</Link>
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
             <Button variant="outline" size="lg" className="rounded-full px-8">
-              
-              Turn Video to Step by step doc
+              <Link href="/video-to-doc">Turn Video to Step by step doc</Link>
               
             </Button>
           </div>
