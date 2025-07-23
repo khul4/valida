@@ -41,7 +41,7 @@ export default function PortfolioPage() {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-full px-8">
-              <Link href="/invoice-processing-app">Invoice Processing App</Link>
+              <Link href="/ai-invoice">Invoice Processing App</Link>
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
             <Button variant="outline" size="lg" className="rounded-full px-8">
