@@ -21,6 +21,18 @@ import {
 
 const integrations = [
   {
+    value: "intercom",
+    label: "Intercom",
+  },
+  {
+    value: "zendesk",
+    label: "Zendesk",
+  },
+  {
+    value: "freshdesk",
+    label: "Freshdesk",
+  },
+  {
     value: "slack",
     label: "Slack",
   },

@@ -89,11 +89,14 @@ export default function VideoToDocPage() {
               <div>
                 <Badge variant="default" className="mb-5 py-2 px-3">Project Yopo</Badge>
                 <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                  Create step-by-step guide fast with AI
+                  Like <span className="text-blue-500">ScribeHow</span>  but built for Customer Support
                   <br />
                   <span className="text-black">
                   </span>
                 </h1>
+                <h2 className="text-xl md:text-xl text-gray-600 mb-4">
+                  Explain with your voice. Let AI turn it into step-by-step guides.
+                </h2>
               </div>
 
               <div className="space-y-6">
@@ -103,10 +106,10 @@ export default function VideoToDocPage() {
                   </div>
                   <div>
                     <h2 className="font-semibold text-gray-600 mb-2 text-xl">
-                      Capture
+                      Record
                     </h2>
                     <p className="text-gray-600 leading-relaxed">
-                      Perform your tasks step by step as usual. Our app will automatically generate a step-by-step document for you.
+                      Walk through your process as usual, but this time, talk through it. Our recorder captures both your screen and your voice
                     </p>
                   </div>
                 </div>
@@ -117,10 +120,10 @@ export default function VideoToDocPage() {
                   </div>
                   <div>
                     <h2 className="font-semibold text-gray-600 mb-2 text-xl">
-                      Customize
+                      Transcribe & Summarize
                     </h2>
                     <p className="text-gray-600 leading-relaxed">
-                      Edit your document by updating the steps, changing the logo, and adjusting the colors to match your brand seamlessly
+                     Our AI transcribes your voice into clear paragraphs, pulls out key steps, and generates a clean, structured guide with screenshots and explanations
                     </p>
                   </div>
                 </div>
@@ -131,11 +134,10 @@ export default function VideoToDocPage() {
                   </div>
                   <div>
                     <h2 className="font-semibold text-gray-600 mb-2 text-xl">
-                      Share
+                      Export
                     </h2>
                     <p className="text-gray-600 leading-relaxed">
-                      Export the document or share it directly with your teammates via a link
-
+                      Easily publish to your knowledge base or share a link with your team 
 
                     </p>
                   </div>
