@@ -64,7 +64,7 @@ export default function Steps() {
                 <p className="text-gray-600 mb-8 text-lg">
                   {step.description}
                 </p>
-                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden">
+                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden px-30 py-30 bg-red-100">
                   <Image
                     src={step.image}
                     alt={step.title}

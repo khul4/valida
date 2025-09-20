@@ -15,15 +15,15 @@ export default function Home() {
   return (
     <div className="font-sans text-foreground">
       <Hero />
-      <LogosStrip />
-      <AppShowcase />
+      {/* <LogosStrip />
+      <AppShowcase /> */}
       <UniqueFeatures />
       <Benefits />
       <Steps />      
       <Integrations />
-      <Testimonials />
+      {/* <Testimonials />
       <Pricing />
-      <FAQ />
+      <FAQ /> */}
       <CTASection />
       <Footer />
     </div>

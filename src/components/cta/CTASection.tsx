@@ -114,16 +114,11 @@ export default function CTASection() {
               <Button 
                 size="lg" 
                 className="bg-blue-600 hover:bg-blue-700 text-base px-8 py-6 rounded-xl shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 transition-all hover:translate-y-[-2px]"
+                onClick={() => window.open('https://tally.so/r/3x5eLo', '_blank')}
               >
-                Get started for free
+                Get Access
               </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="text-base border-gray-300 hover:bg-gray-50 px-8 py-6 rounded-xl hover:border-gray-400 transition-all hover:translate-y-[-2px]"
-              >
-                Book a demo
-              </Button>
+              
             </div>
             <p className="text-xs text-gray-500 mt-4">🔒 Secure checkout • No credit card required • Cancel anytime</p>
           </div>

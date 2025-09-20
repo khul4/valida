@@ -8,6 +8,7 @@ export default function Hero() {
       <Container>
         <div className="relative max-w-3xl mx-auto text-center">
           {/* Badge */}
+{/*           
           <div className="inline-flex items-center gap-3 px-4 py-1 rounded-full border border-primary/30 bg-white/60 shadow-sm mb-6 relative z-20">
             <div className="flex -space-x-2">
               <div className="w-6 h-6 rounded-full bg-[#FFDAB9] ring-2 ring-white" />
@@ -15,7 +16,7 @@ export default function Hero() {
               <div className="w-6 h-6 rounded-full bg-[#C7CEEA] ring-2 ring-white" />
             </div>
             <span className="text-sm font-medium text-primary">Trusted by 1M+ users</span>
-          </div>
+          </div> */}
 
           {/* Headline */}
           <h1 className="font-medium text-5xl sm:text-5xl leading-[1.02] tracking-[-0.02em] mb-3 relative z-20">
@@ -24,7 +25,7 @@ export default function Hero() {
 
           {/* Subheadline */}
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-5 relative z-20">
-            Arek AI helps digital marketing agencies create faster, smarter, and customizable reports with AI-powered insights
+            Arek helps digital marketing agencies create faster, smarter, and customizable reports with AI-powered insights
           </p>
 
           {/* CTA */}
