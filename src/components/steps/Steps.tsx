@@ -8,17 +8,17 @@ const steps = [
   {
     title: 'Connect Your Tools',
     description: 'Seamlessly integrate Arek with your marketing stack, Google Ads, Meta, TikTok, and more',
-    image: '/integration.png',
+    image: '/steps/integrations.svg',
   },
   {
     title: 'Design Your Report',
     description: 'Drag & drop metrics, apply your branding, and let AI highlight the insights that matter',
-    image: '/integration.png',
+    image: '/steps/design-report.svg',
   },
   {
     title: 'Deliver Instantly',
     description: 'Share polished, white-labeled reports with clients in one click, on schedule or on demand',
-    image: '/integration.png',
+    image: '/steps/deliver-instantly.svg',
   },
 ];
 

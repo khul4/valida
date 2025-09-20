@@ -11,7 +11,7 @@ const features = [
     preview: (
       <div className="rounded-lg overflow-hidden bg-gray-50">
         <Image
-          src="/feature-customize.svg"
+          src="/save-time.svg"
           alt="Unified Metrics Preview"
           width={600}
           height={400}
@@ -26,7 +26,7 @@ const features = [
     preview: (
       <div className="rounded-lg overflow-hidden bg-gray-50">
         <Image
-          src="/thumbnail-feature.png"
+          src="/ai-insight.svg"
           alt="AI Growth Insights Preview"
           width={600}
           height={400}
@@ -41,7 +41,7 @@ const features = [
     preview: (
       <div className="rounded-lg overflow-hidden bg-gray-50">
         <Image
-          src="/thumbnail-feature.png"
+          src="/weekly-report.svg"
           alt="Product Usage Tracking Preview"
           width={600}
           height={400}
@@ -56,7 +56,7 @@ const features = [
     preview: (
       <div className="rounded-lg overflow-hidden bg-gray-50">
         <Image
-          src="/thumbnail-feature.png"
+          src="/customize.svg"
           alt="Feature Impact Analysis Preview"
           width={600}
           height={400}

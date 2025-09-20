@@ -6,14 +6,14 @@ import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 
 const integrationLogos = [
-  { src: '/spotify_wordmark.svg', alt: 'Spotify' },
-  { src: '/dropbox_wordmark.svg', alt: 'Dropbox' },
-  { src: '/paypal-wordmark.svg', alt: 'PayPal' },
-  { src: '/adobe.svg', alt: 'Adobe' },
-  { src: '/canva.svg', alt: 'Canva' },
-  { src: '/godaddy.svg', alt: 'GoDaddy' },
-  { src: '/whop.svg', alt: 'Whop' },
-  { src: '/vercel.svg', alt: 'Vercel' },
+  { src: '/integrations/facebook.svg', alt: 'Facebook' },
+  { src: '/integrations/google.svg', alt: 'Google' },
+  { src: '/integrations/tiktok.svg', alt: 'TikTok' },
+  { src: '/integrations/meta.svg', alt: 'Meta' },
+  { src: '/integrations/youtube-wordmark.svg', alt: 'Youtube' },
+  { src: '/integrations/instagram.svg', alt: 'Instagram' },
+
+
 ];
 
 export default function Integrations() {
