@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export default function Navbar() {
-  const links = ["Features", "Pricing", "Integrations", "Resources"];
+  const links = ["Features","Integrations", "Blog"];
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -54,8 +54,10 @@ export default function Navbar() {
 
           <div className="flex items-center gap-3">
             <div className="hidden md:flex items-center gap-3">
-              <Button variant="default" size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
-                Get started
+              <Button variant="default" size="sm" className="bg-blue-600 hover:bg-blue-700 text-white"
+              onClick={() => window.open('https://tally.so/r/3x5eLo', '_blank')}
+                >
+                Get Access Now
               </Button>
             </div>
 

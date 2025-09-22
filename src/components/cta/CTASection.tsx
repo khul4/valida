@@ -91,8 +91,8 @@ export default function CTASection() {
               className="text-4xl md:text-5xl lg:text-5xl font-medium tracking-tight text-center mb-6 transition-all duration-500 ease-out"
               style={{ opacity: 0, transform: 'translateY(20px)' }}
             >
-              Start reporting smarter,
-              <span className="text-blue-600"> not harder</ span>
+              Stop losing hours 
+              <span className="text-blue-600"> to reporting</ span>
             </h2>
             
             <p
@@ -100,8 +100,7 @@ export default function CTASection() {
               className="text-lg md:text-xl text-gray-600 text-center max-w-2xl mx-auto mb-10 transition-all duration-500 ease-out"
               style={{ opacity: 0, transform: 'translateY(20px)' }}
             >
-              Join over 10,000+ agencies who have streamlined their client reporting process.
-              Free for 14 days, no credit card required.
+              Get early access and spend more time driving results and winning clients
             </p>
           </div>
           

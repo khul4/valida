@@ -1,3 +1,4 @@
+'use client';
 import { Button } from '@/components/ui/button'
 import Container from '@/components/ui/container'
 import FloatingLogos from './FloatingLogos'
@@ -30,8 +31,10 @@ export default function Hero() {
 
           {/* CTA */}
           <div className="flex flex-col items-center gap-3 relative z-20">
-            <Button variant="default" size="lg" className="rounded-full px-8 text-lg bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 transition-all hover:translate-y-[-2px]">
-              Get Started For Free
+            <Button variant="default" size="lg" className="rounded-full px-8 text-lg bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 transition-all hover:translate-y-[-2px]"
+            onClick={() => window.open('https://tally.so/r/3x5eLo', '_blank')}
+            >
+              Get Access
             </Button>
 
             <div className="text-sm text-muted-foreground flex items-center gap-2">
