@@ -26,7 +26,7 @@ export default function Hero() {
 
           {/* Subheadline */}
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-5 relative z-20">
-            Arek helps digital marketing agencies create faster, smarter, and customizable reports with AI-powered insights
+            Arek AI builds customizable, client-ready reports in minutes, so you can focus on results and relationships
           </p>
 
           {/* CTA */}
