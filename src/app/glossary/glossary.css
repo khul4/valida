@@ -1,0 +1,78 @@
+.glossary-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.alphabet-nav {
+  position: sticky;
+  top: 64px; /* Adjust this value based on your main navigation height */
+  background-color: white;
+  z-index: 9;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+
+/* Add some padding to the top to account for fixed navigation */
+.glossary-container {
+  padding-top: 1rem;
+}
+
+.alphabet-nav-list {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.alphabet-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.alphabet-link:hover {
+  background-color: #e5e7eb;
+}
+
+.alphabet-link.active {
+  background-color: #2563eb;
+  color: white;
+}
+
+.search-container {
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.letter-section {
+  margin: 3rem 0;
+  scroll-margin-top: 6rem;
+}
+
+.letter-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+}
