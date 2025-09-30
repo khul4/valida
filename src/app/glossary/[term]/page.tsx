@@ -1,14 +1,19 @@
 import { Suspense } from 'react';
 import { getTermBySlug, getTermsByCategory } from '@/content/glossary';
+import type { GlossaryTerm } from '@/types/glossary';
 import GlossaryTermPage from './client-page';
 import './term.css';
 
 export const dynamic = 'force-dynamic';
 
-export default async function TermPage({ params }: { params: { term: string } }) {
+export default async function TermPage({ params }: { params: Promise<{ term: string }> }) {
   try {
-    const term = await getTermBySlug(params.term);
-    let relatedTerms = [];
+    // Await the params first
+    const resolvedParams = await params;
+    const termSlug = resolvedParams.term;
+    
+    const term = await getTermBySlug(termSlug);
+    let relatedTerms: GlossaryTerm[] = [];
     
     if (term?.category) {
       const categoryTerms = await getTermsByCategory(term.category);
@@ -18,7 +23,7 @@ export default async function TermPage({ params }: { params: { term: string } })
     return (
       <Suspense fallback={<div>Loading term details...</div>}>
         <GlossaryTermPage 
-          params={params}
+          params={{term: termSlug}}
           initialTerm={term || null} 
           relatedTerms={relatedTerms}
         />
@@ -27,7 +32,7 @@ export default async function TermPage({ params }: { params: { term: string } })
   } catch (error) {
     console.error('Error loading term:', error);
     return (
-      <GlossaryTermPage params={params} initialTerm={null} relatedTerms={[]} />
+      <GlossaryTermPage params={{term: (await params).term}} initialTerm={null} relatedTerms={[]} />
     );
   }
 }
