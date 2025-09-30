@@ -49,7 +49,7 @@ export default function GlossaryTermPage({
     return (
       <div className="max-w-3xl mx-auto px-4 py-10">
         <h1 className="text-4xl font-bold mb-6 text-gray-900">Term Not Found</h1>
-        <p className="text-gray-700 mb-4">The term you're looking for doesn't exist in our glossary.</p>
+        <p className="text-gray-700 mb-4">The term you&apos;re looking for doesn&apos;t exist in our glossary.</p>
         <Link href="/glossary" className="text-blue-600 hover:underline">
           Return to Glossary
         </Link>

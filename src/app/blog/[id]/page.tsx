@@ -5,7 +5,7 @@ import Container from '@/components/ui/container';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import React from 'react';
 
 // Sample blog post data (you would typically fetch this from an API or database)
 const blogPost = {

@@ -53,9 +53,9 @@ export default function BlogIndex() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const categories = ['all', ...new Set(blogPosts.map(post => post.category))];
 
-  const filteredPosts = selectedCategory === 'all'
-    ? blogPosts
-    : blogPosts.filter(post => post.category === selectedCategory);
+  // Filter posts based on category
+  const displayedPosts = blogPosts
+    .filter((post) => selectedCategory === 'all' || post.category === selectedCategory);
 
   return (
     <div className="min-h-screen bg-gray-50 py-20">
