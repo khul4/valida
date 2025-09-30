@@ -1,35 +1,21 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { marketingGlossary } from '@/data/marketing-glossary';
 import Link from 'next/link';
+import { getAllTermsSorted, getTermsGroupedByLetter, glossaryCategories } from '@/content/glossary';
+import type { GlossaryTerm } from '@/types/glossary';
 import './glossary.css';
 
 type GroupedTerms = {
-  [key: string]: typeof marketingGlossary;
+  [key: string]: GlossaryTerm[];
 };
 
 export default function GlossaryPage() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [activeLetters, setActiveLetters] = useState<string[]>([]);
   const [currentLetter, setCurrentLetter] = useState('');
 
-  // Group terms by first letter
-  const groupedTerms = marketingGlossary.reduce((acc: GroupedTerms, term) => {
-    const firstLetter = term.term[0].toUpperCase();
-    if (!acc[firstLetter]) {
-      acc[firstLetter] = [];
-    }
-    acc[firstLetter].push(term);
-    return acc;
-  }, {});
-
-  // Sort terms within each letter group
-  Object.keys(groupedTerms).forEach(letter => {
-    groupedTerms[letter].sort((a, b) => a.term.localeCompare(b.term));
-  });
-
-  // Get available letters
+  // Get all terms and their grouping
+  const groupedTerms = getTermsGroupedByLetter();
   const availableLetters = Object.keys(groupedTerms).sort();
 
   // Filter terms based on search
@@ -69,11 +55,11 @@ export default function GlossaryPage() {
     return () => {
       observers.forEach(observer => observer.disconnect());
     };
-  }, [searchTerm]);
+  }, [searchTerm, groupedTerms]);
 
   return (
-    <div className="glossary-container py-20">
-      <h1 className="text-4xl font-bold mb-6 text-gray-900 mx-auto">Digital Marketing Glossary</h1>
+    <div className="glossary-container">
+      <h1 className="text-4xl font-bold mb-6 text-gray-900">Digital Marketing Glossary</h1>
       
       {/* Search Input */}
       <div className="search-container">
@@ -111,18 +97,18 @@ export default function GlossaryPage() {
           <section key={letter} id={`letter-${letter}`} className="letter-section">
             <h2 className="letter-heading">{letter}</h2>
             <div className="space-y-6">
-              {terms.map(({ term, definition, category }) => (
+              {terms.map((term) => (
                 <Link
-                  href={`/glossary/${encodeURIComponent(term.toLowerCase())}`}
-                  key={term}
+                  href={`/glossary/${term.slug}`}
+                  key={term.slug}
                   className="block bg-white py-8 px-4 border-b border-gray-100"
                 >
                   <article>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-3">{term}</h3>
-                    <p className="text-gray-800 mb-2 line-clamp-2">{definition}</p>
-                    {category && (
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{term.term}</h3>
+                    <p className="text-gray-800 mb-2 line-clamp-2">{term.definition}</p>
+                    {term.category && (
                       <span className="inline-block text-xs text-gray-500 bg-gray-100 rounded px-2 py-1">
-                        {category}
+                        {term.category}
                       </span>
                     )}
                   </article>

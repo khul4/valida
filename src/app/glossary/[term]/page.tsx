@@ -1,21 +1,18 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { marketingGlossary } from '@/data/marketing-glossary';
 import Link from 'next/link';
 import { use } from 'react';
+import { getTermBySlug, getTermsByCategory } from '@/content/glossary';
+import type { GlossaryTerm } from '@/types/glossary';
 import './term.css';
 
 export default function GlossaryTermPage({ params }: { params: Promise<{ term: string }> }) {
   const router = useRouter();
   const resolvedParams = use(params);
-  const decodedTerm = decodeURIComponent(resolvedParams.term);
+  const termSlug = resolvedParams.term;
   
-  const currentIndex = marketingGlossary.findIndex(
-    (t) => t.term.toLowerCase() === decodedTerm.toLowerCase()
-  );
-
-  const term = marketingGlossary[currentIndex];
+  const term = getTermBySlug(termSlug);
 
   if (!term) {
     return (
@@ -29,13 +26,9 @@ export default function GlossaryTermPage({ params }: { params: Promise<{ term: s
     );
   }
 
-  // Get prev and next terms
-  const prevTerm = currentIndex > 0 ? marketingGlossary[currentIndex - 1] : null;
-  const nextTerm = currentIndex < marketingGlossary.length - 1 ? marketingGlossary[currentIndex + 1] : null;
-
   // Find related terms (same category)
-  const relatedTerms = marketingGlossary
-    .filter((t) => t.category === term.category && t.term !== term.term)
+  const relatedTerms = getTermsByCategory(term.category)
+    .filter((t: GlossaryTerm) => t.slug !== term.slug)
     .slice(0, 3);
 
   return (
@@ -58,36 +51,37 @@ export default function GlossaryTermPage({ params }: { params: Promise<{ term: s
         </div>
       </div>
 
-      {/* Navigation */}
-      <nav className="glossary-nav">
-        {prevTerm && (
-          <Link
-            href={`/glossary/${encodeURIComponent(prevTerm.term.toLowerCase())}`}
-            className="glossary-nav-link prev"
-          >
-            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            <span>{prevTerm.term}</span>
-          </Link>
-        )}
-        {nextTerm && (
-          <Link
-            href={`/glossary/${encodeURIComponent(nextTerm.term.toLowerCase())}`}
-            className="glossary-nav-link next"
-          >
-            <span>{nextTerm.term}</span>
-            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </Link>
-        )}
-      </nav>
-
       {/* Main content */}
       <main className="glossary-content">
         <div className="prose prose-lg max-w-none">
-          <p className="text-gray-700 text-lg leading-relaxed">{term.definition}</p>
+          {term.content ? (
+            <div className="space-y-8">
+              {term.content.sections.map((section, index) => (
+                <div key={index} className="content-section">
+                  {section.title && (
+                    <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+                      {section.title}
+                    </h2>
+                  )}
+                  {section.type === 'list' ? (
+                    <ul className="list-disc pl-6 space-y-2">
+                      {section.items?.map((item, itemIndex) => (
+                        <li key={itemIndex} className="text-gray-700">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-gray-700 text-lg leading-relaxed">
+                      {section.content}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-gray-700 text-lg leading-relaxed">{term.definition}</p>
+          )}
         </div>
 
         {/* Promotional Banner */}
@@ -109,8 +103,8 @@ export default function GlossaryTermPage({ params }: { params: Promise<{ term: s
             </div>
             {relatedTerms.map((relatedTerm) => (
               <Link
-                key={relatedTerm.term}
-                href={`/glossary/${encodeURIComponent(relatedTerm.term.toLowerCase())}`}
+                key={relatedTerm.slug}
+                href={`/glossary/${relatedTerm.slug}`}
                 className="related-term-card"
               >
                 <h3 className="font-semibold text-lg text-gray-900 mb-2">{relatedTerm.term}</h3>
