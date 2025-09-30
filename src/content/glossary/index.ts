@@ -1,8 +1,11 @@
 import { GlossaryTerm, GlossaryCategory } from '@/types/glossary';
-import { term as abTesting } from './ab-testing';
-import { term as contentMarketing } from './content-marketing';
-// Import other terms here as they're added
+import { cache } from 'react';
+import matter from 'gray-matter';
 
+// Import markdown content
+import contentMarketing from './content-marketing.md';
+
+// Categories configuration
 export const glossaryCategories: GlossaryCategory[] = [
   {
     name: "Testing & Optimization",
@@ -36,38 +39,84 @@ export const glossaryCategories: GlossaryCategory[] = [
   }
 ];
 
-// All glossary terms
-export const glossaryTerms: GlossaryTerm[] = [
-  abTesting,
-  contentMarketing,
-  // Add other terms here as they're created
-];
-
-// Helper functions
-export function getTermBySlug(slug: string): GlossaryTerm | undefined {
-  return glossaryTerms.find(term => term.slug === slug);
-}
-
-export function getTermsByCategory(category: string): GlossaryTerm[] {
-  return glossaryTerms.filter(term => term.category === category);
-}
-
-export function getAllTermsSorted(): GlossaryTerm[] {
-  return [...glossaryTerms].sort((a, b) => a.term.localeCompare(b.term));
-}
-
 export function getCategoryBySlug(slug: string): GlossaryCategory | undefined {
-  return glossaryCategories.find(cat => cat.slug === slug);
+  return glossaryCategories.find((cat: GlossaryCategory) => cat.slug === slug);
 }
 
-// Group terms by first letter for alphabet navigation
-export function getTermsGroupedByLetter(): { [key: string]: GlossaryTerm[] } {
-  return getAllTermsSorted().reduce((acc, term) => {
+// This is a build-time function that will be executed during static generation
+export const getGlossaryData = cache(async () => {
+  // Using webpack's require.context to get all markdown files at build time
+  const glossaryData: { [key: string]: string } = {
+    'content-marketing': contentMarketing
+    // Add more terms here as they're created
+  };
+
+  const terms = Object.entries(glossaryData).map(([slug, content]) => {
+    // Parse frontmatter and content
+    const { data, content: markdownContent } = matter(content);
+    
+    // Get the sections by splitting on h2 headers
+    const sections = markdownContent
+      .split(/^## /m)
+      .map((section: string) => section.trim())
+      .filter(Boolean)
+      .map((section: string) => {
+        // Check if the section contains a list
+        const isList = section.includes('\n- ');
+        
+        if (isList) {
+          const [title, ...items] = section.split('\n');
+          return {
+            title,
+            type: 'list' as const,
+            items: items
+              .filter((item: string) => item.startsWith('- '))
+              .map((item: string) => item.slice(2).trim())
+          };
+        }
+        
+        return {
+          type: 'text' as const,
+          content: section
+        };
+      });
+
+    return {
+      term: data.term,
+      slug,
+      definition: data.definition,
+      category: data.category,
+      content: {
+        sections
+      }
+    } as GlossaryTerm;
+  });
+
+  return terms.sort((a: GlossaryTerm, b: GlossaryTerm) => a.term.localeCompare(b.term));
+});
+
+export const getTermBySlug = cache(async (slug: string): Promise<GlossaryTerm | undefined> => {
+  const terms = await getGlossaryData();
+  return terms.find((term: GlossaryTerm) => term.slug === slug);
+});
+
+export const getAllTerms = cache(async (): Promise<GlossaryTerm[]> => {
+  return getGlossaryData();
+});
+
+export const getTermsByCategory = cache(async (category: string): Promise<GlossaryTerm[]> => {
+  const terms = await getGlossaryData();
+  return terms.filter((term: GlossaryTerm) => term.category === category);
+});
+
+export const getTermsGroupedByLetter = cache(async (): Promise<{ [key: string]: GlossaryTerm[] }> => {
+  const terms = await getGlossaryData();
+  return terms.reduce((acc: { [key: string]: GlossaryTerm[] }, term: GlossaryTerm) => {
     const firstLetter = term.term[0].toUpperCase();
     if (!acc[firstLetter]) {
       acc[firstLetter] = [];
     }
     acc[firstLetter].push(term);
     return acc;
-  }, {} as { [key: string]: GlossaryTerm[] });
-}
+  }, {});
+});
