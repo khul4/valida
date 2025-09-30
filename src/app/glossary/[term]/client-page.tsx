@@ -60,7 +60,7 @@ export default function GlossaryTermPage({
   return (
     <div className="glossary-detail">
       {/* Hero section with blue background */}
-      <div className="glossary-hero">
+      <div className="glossary-hero mb-12">
         <div className="glossary-content">
           <Link href="/glossary" className="inline-flex items-center text-blue-100 mb-6 hover:text-white">
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

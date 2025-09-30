@@ -54,7 +54,7 @@ export default function BlogIndex() {
   const categories = ['all', ...new Set(blogPosts.map(post => post.category))];
 
   // Filter posts based on category
-  const displayedPosts = blogPosts
+  const filteredPosts = blogPosts
     .filter((post) => selectedCategory === 'all' || post.category === selectedCategory);
 
   return (
@@ -99,7 +99,7 @@ export default function BlogIndex() {
 
         {/* Blog Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, i) => (
+          {filteredPosts.map((post, i) => (
             <motion.article
               key={post.id}
               initial={{ opacity: 0, y: 20 }}

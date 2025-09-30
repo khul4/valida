@@ -41,8 +41,9 @@ const blogPost = {
 };
 
 export default function BlogPost() {
-  const params = useParams();
-
+  // We could use useParams() to get the id if we need to fetch a specific post
+  // const { id } = useParams();
+  
   return (
     <article className="min-h-screen bg-white">
       {/* Hero Section */}
