@@ -99,11 +99,11 @@ export default function GlossaryContent({ initialGroupedTerms }: GlossaryContent
                 <Link
                   href={`/glossary/${term.slug}`}
                   key={term.slug}
-                  className="block bg-white py-8 px-4 border-b border-gray-100"
+                  className="block bg-white py-6 sm:py-8 px-3 sm:px-4 border-b border-gray-100 hover:bg-gray-50 transition-colors"
                 >
                   <article>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{term.term}</h3>
-                    <p className="text-gray-800 mb-2 line-clamp-2">{term.definition}</p>
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{term.term}</h3>
+                    <p className="text-gray-800 mb-2 line-clamp-2 text-sm sm:text-base leading-relaxed">{term.definition}</p>
                     {term.category && (
                       <span className="inline-block text-xs text-gray-500 bg-gray-100 rounded px-2 py-1">
                         {term.category}

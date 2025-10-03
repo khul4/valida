@@ -10,9 +10,9 @@ export default async function GlossaryPage() {
   
   return (
     <div className="glossary-container">
-      <h1 className="text-4xl font-bold mb-6 text-gray-900">Digital Marketing Glossary</h1>
+      <h1 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 text-gray-900 px-2 sm:px-0">Digital Marketing Glossary</h1>
       
-      <Suspense fallback={<div>Loading glossary terms...</div>}>
+      <Suspense fallback={<div className="text-center py-8">Loading glossary terms...</div>}>
         <GlossaryContent initialGroupedTerms={groupedTerms} />
       </Suspense>
     </div>
