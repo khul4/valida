@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 
 // Import markdown content
 import contentMarketing from './content-marketing.md';
+import abTesting from './ab-testing.md';
 
 // Categories configuration
 export const glossaryCategories: GlossaryCategory[] = [
@@ -47,7 +48,8 @@ export function getCategoryBySlug(slug: string): GlossaryCategory | undefined {
 export const getGlossaryData = cache(async () => {
   // Using webpack's require.context to get all markdown files at build time
   const glossaryData: { [key: string]: string } = {
-    'content-marketing': contentMarketing
+    'content-marketing': contentMarketing,
+    'ab-testing': abTesting
     // Add more terms here as they're created
   };
 
