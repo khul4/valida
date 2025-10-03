@@ -79,8 +79,8 @@ export default function Integrations() {
 
   return (
     <section className="py-5 bg-[#FAFAFA]">
-      <Container className="px-20 py-10 bg-[#FAFAFA]] rounded-3xl">
-        <div className="flex flex-col items-center px-20 bg-white rounded-3xl p-8 shadow-sm py-30">
+      <Container className="px-5 py-10 bg-[#FAFAFA]] rounded-3xl">
+        <div id="integration" className="flex flex-col items-center px-10 bg-white rounded-3xl p-8 shadow-sm py-30">
           <span
             ref={subtitleRef}
             className="text-sm font-medium text-gray-600 mb-4 tracking-wide uppercase opacity-0"
