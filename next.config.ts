@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   transpilePackages: ['framer-motion'],
   experimental: {
-    optimizePackageImports: ['framer-motion']
+    optimizePackageImports: ['framer-motion', 'lucide-react']
   },
   webpack: (config) => {
     config.module.rules.push({
@@ -11,7 +11,19 @@ const nextConfig: NextConfig = {
       use: 'raw-loader'
     });
     return config;
-  }
+  },
+  // Performance optimizations
+  compress: true,
+  poweredByHeader: false,
+  // Image optimization
+  images: {
+    formats: ['image/webp', 'image/avif'],
+    minimumCacheTTL: 60,
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  },
+  // Asset optimization
+  assetPrefix: process.env.NODE_ENV === 'production' ? undefined : undefined,
 };
 
 export default nextConfig;

@@ -119,7 +119,7 @@ export default function Navbar() {
 
         <aside
           className={cn(
-            "fixed right-0 top-0 h-full w-[320px] bg-background shadow-2xl p-6 transition-transform duration-300",
+            "fixed right-0 top-0 h-full w-[320px] bg-white shadow-2xl p-6 transition-transform duration-300 border-l border-gray-200",
             open ? "translate-x-0" : "translate-x-full"
           )}
         >
@@ -145,12 +145,12 @@ export default function Navbar() {
                 />
                 <circle cx="192.058" cy="185.693" r="39.0658" fill="white" />
               </svg>
-              <span className="font-semibold">Reporto</span>
+              <span className="font-semibold text-gray-900">Reporto</span>
             </Link>
             <button
               aria-label="Close menu"
               onClick={() => setOpen(false)}
-              className="p-2 rounded-md hover:bg-accent/10"
+              className="p-2 rounded-md hover:bg-gray-100 text-gray-900"
             >
               <svg
                 width="18"
@@ -183,7 +183,7 @@ export default function Navbar() {
                 key={l}
                 href="#"
                 onClick={() => setOpen(false)}
-                className="text-base font-medium hover:text-primary"
+                className="text-base font-medium text-gray-900 hover:text-blue-600"
               >
                 {l}
               </Link>
@@ -191,8 +191,8 @@ export default function Navbar() {
           </div>
 
           <div className="mt-8 flex flex-col gap-3">
-            <Button variant="ghost">Book a demo</Button>
-            <Button variant="default">Get started</Button>
+            <Button variant="ghost" className="text-gray-900 hover:bg-gray-100">Book a demo</Button>
+            <Button variant="default" className="bg-blue-600 hover:bg-blue-700 text-white">Get started</Button>
           </div>
         </aside>
       </div>
