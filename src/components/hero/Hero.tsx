@@ -5,7 +5,7 @@ import FloatingLogos from './FloatingLogos'
 
 export default function Hero() {
   return (
-    <section className="relative pt-24 pb-28">
+    <section className="relative pt-16 sm:pt-24 pb-20 sm:pb-28 overflow-hidden">
       <Container>
         <div className="relative max-w-3xl mx-auto text-center">
           {/* Badge */}
@@ -20,17 +20,17 @@ export default function Hero() {
           </div> */}
 
           {/* Headline */}
-          <h1 className="font-medium text-5xl sm:text-5xl leading-[1.02] tracking-[-0.02em] mb-3 relative z-20">
+          <h1 className="font-medium text-4xl sm:text-5xl leading-[1.02] tracking-[-0.02em] mb-3 relative z-20 px-4 sm:px-0">
             Stop wasting hours creating reports. Let&apos;s Arek AI do it for you.
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-5 relative z-20">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-5 relative z-20 px-4 sm:px-0">
             Arek AI builds customizable, client-ready reports in minutes, so you can focus on results and relationships
           </p>
 
           {/* CTA */}
-          <div className="flex flex-col items-center gap-3 relative z-20">
+          <div className="flex flex-col items-center gap-3 relative z-20 px-4 sm:px-0">
             <Button variant="default" size="lg" className="rounded-full px-8 text-lg bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 transition-all hover:translate-y-[-2px]"
             onClick={() => window.open('https://tally.so/r/3x5eLo', '_blank')}
             >

@@ -47,7 +47,7 @@ export default function Steps() {
           </motion.p>
         </div>
 
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto bg-red-100">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {steps.map((step, i) => (
               <motion.div
@@ -64,7 +64,7 @@ export default function Steps() {
                 <p className="text-gray-600 mb-8 text-lg">
                   {step.description}
                 </p>
-                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden px-30 py-30 bg-red-100">
+                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden px-30 py-30">
                   <Image
                     src={step.image}
                     alt={step.title}
