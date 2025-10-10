@@ -10,8 +10,17 @@ export default function Navbar() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <header className="backdrop-blur-sm sticky top-0 z-40 bg-background/60 border-b border-border">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+        <header 
+      data-navbar
+      className="fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out bg-white navbar-white py-4"
+      style={{
+        backgroundColor: 'rgb(255, 255, 255)',
+        background: 'rgb(255, 255, 255)',
+        backdropFilter: 'none',
+        WebkitBackdropFilter: 'none'
+      }}
+    >
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 bg-white" style={{ backgroundColor: 'rgb(255, 255, 255)' }}>
         <nav className="h-16 flex items-center justify-between">
           <div className="flex items-center gap-0">
             <Link href="/" className="flex items-center gap-3">
@@ -35,8 +44,7 @@ export default function Navbar() {
                 />
                 <circle cx="192.058" cy="185.693" r="39.0658" fill="white" />
               </svg>
-
-              <span className="font-semibold text-2xl">arek</span>
+              <span className="font-semibold text-2xl text-gray-900">arek</span>
             </Link>
           </div>
 
@@ -45,7 +53,7 @@ export default function Navbar() {
               <Link
                 key={l}
                 href="#"
-                className="text-sm text-muted-foreground hover:text-foreground"
+                className="text-sm text-gray-600 hover:text-gray-900"
               >
                 {l}
               </Link>
@@ -61,10 +69,9 @@ export default function Navbar() {
               </Button>
             </div>
 
-            {/* Mobile menu button */}
             <button
               aria-label="Toggle menu"
-              className="md:hidden p-2 rounded-md hover:bg-accent/10"
+              className="md:hidden p-2 rounded-md hover:bg-gray-100 text-gray-900"
               onClick={() => setOpen(true)}
             >
               <svg
@@ -101,7 +108,6 @@ export default function Navbar() {
         </nav>
       </div>
 
-      {/* Mobile slide-over - Only rendered on mobile */}
       <div
         className={cn(
           "md:hidden fixed inset-0 z-50 transition-opacity",
@@ -119,9 +125,13 @@ export default function Navbar() {
 
         <aside
           className={cn(
-            "fixed right-0 top-0 h-full w-[320px] bg-white shadow-2xl p-6 transition-transform duration-300 border-l border-gray-200",
+            "fixed right-0 top-0 h-full w-[320px] bg-white shadow-2xl p-6 transition-transform duration-300 border-l border-gray-200 navbar-white",
             open ? "translate-x-0" : "translate-x-full"
           )}
+          style={{ 
+            backgroundColor: 'rgb(255, 255, 255)',
+            background: 'rgb(255, 255, 255)'
+          }}
         >
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3">
