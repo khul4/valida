@@ -50,42 +50,89 @@ export default function CPMCalculator() {
     const imps = parseFloat(impressions);
     const cpmValue = parseFloat(cpm);
 
-    // Calculate Total Cost if CPM and Impressions are provided and totalCost is empty
-    if (field !== 'totalCost' && !isNaN(cpmValue) && !isNaN(imps) && totalCost === '') {
-      const calculatedCost = (cpmValue * imps) / 1000;
-      newValues.totalCost = calculatedCost.toFixed(2);
-    }
-    // Calculate Impressions if Total Cost and CPM are provided and impressions is empty
-    else if (field !== 'impressions' && !isNaN(cost) && !isNaN(cpmValue) && impressions === '') {
-      const calculatedImpressions = (cost * 1000) / cpmValue;
-      newValues.impressions = Math.round(calculatedImpressions).toString();
-    }
-    // Calculate CPM if Total Cost and Impressions are provided and cpm is empty
-    else if (field !== 'cpm' && !isNaN(cost) && !isNaN(imps) && cpm === '') {
-      const calculatedCPM = (cost * 1000) / imps;
-      newValues.cpm = calculatedCPM.toFixed(2);
+    // Always recalculate the third value when two values are provided
+    if (field === 'totalCost' || field === 'impressions') {
+      // Calculate CPM when Total Cost or Impressions change
+      if (!isNaN(cost) && !isNaN(imps) && cost > 0 && imps > 0) {
+        const calculatedCPM = (cost * 1000) / imps;
+        newValues.cpm = calculatedCPM.toFixed(2);
+      } else if (cost === 0 || imps === 0) {
+        newValues.cpm = '0.00';
+      }
+    } else if (field === 'cpm') {
+      // Calculate Total Cost when CPM changes (if Impressions is available)
+      if (!isNaN(cpmValue) && !isNaN(imps) && cpmValue > 0 && imps > 0) {
+        if (totalCost === '' || totalCost === '0' || totalCost === '0.00') {
+          const calculatedCost = (cpmValue * imps) / 1000;
+          newValues.totalCost = calculatedCost.toFixed(2);
+        }
+      }
     }
 
     return newValues;
   };
 
+  const [focusedField, setFocusedField] = useState<string | null>(null);
+
   const handleInputChange = (field: keyof CalculatorValues, value: string) => {
-    // Only allow numbers and decimals
-    if (value === '' || /^\d*\.?\d*$/.test(value)) {
-      const newValues = calculateMissingValue(field, value);
+    // Remove commas for processing
+    const cleanValue = value.replace(/,/g, '');
+    
+    // Only allow numbers and one decimal point
+    if (cleanValue === '' || /^\d*\.?\d*$/.test(cleanValue)) {
+      const newValues = calculateMissingValue(field, cleanValue);
       setValues(newValues);
+    }
+  };
+
+  const handleFocus = (field: string) => {
+    setFocusedField(field);
+  };
+
+  const handleBlur = (field: string) => {
+    setFocusedField(null);
+    // Format the value when user finishes editing
+    const currentValue = values[field as keyof CalculatorValues];
+    if (currentValue) {
+      const formatted = formatDisplayValue(currentValue, field !== 'impressions');
+      // Trigger a re-calculation to ensure formatting is applied
+      const newValues = calculateMissingValue(field as keyof CalculatorValues, currentValue);
+      setValues(newValues);
+    }
+  };
+
+  const getDisplayValue = (field: keyof CalculatorValues, isDecimal = false) => {
+    const value = values[field];
+    if (focusedField === field) {
+      // Show raw value while editing
+      return value;
+    } else {
+      // Show formatted value when not editing
+      return formatDisplayValue(value, isDecimal);
     }
   };
 
   const clearAll = () => {
     setValues({ totalCost: '', impressions: '', cpm: '' });
+    setFocusedField(null);
   };
 
-  const formatNumber = (num: string) => {
-    if (!num) return '';
-    const number = parseFloat(num);
-    if (isNaN(number)) return num;
-    return number.toLocaleString();
+  const formatDisplayValue = (value: string, isDecimal = false) => {
+    if (!value || value === '') return '';
+    
+    const number = parseFloat(value);
+    if (isNaN(number)) return value;
+    
+    if (isDecimal) {
+      // For currency values, show with appropriate decimal places
+      return number.toLocaleString(undefined, {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2
+      });
+    } else {
+      // For impressions, show whole numbers with commas
+      return Math.round(number).toLocaleString();
+    }
   };
 
   return (
@@ -100,38 +147,39 @@ export default function CPMCalculator() {
         </p>
       </div>
 
-      {/* Currency Selector */}
-      <div className="flex justify-center mb-8">
-        <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Select Currency
-          </label>
-          <select
-            value={selectedCurrency.code}
-            onChange={(e) => {
-              const currency = currencies.find(c => c.code === e.target.value);
-              if (currency) setSelectedCurrency(currency);
-            }}
-            className="block w-48 px-3 py-2 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
-          >
-            {currencies.map((currency) => (
-              <option key={currency.code} value={currency.code}>
-                {currency.symbol} {currency.code} - {currency.name}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-
       {/* Calculator */}
       <div className="bg-white rounded-2xl shadow-xl p-8 mb-12">
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Currency Selector */}
+          <div className="space-y-3">
+            <label className="block text-sm font-semibold text-gray-900 h-12 flex flex-col justify-start">
+              Currency
+              <span className="block text-xs font-normal text-gray-500 mt-1">
+                Select your currency
+              </span>
+            </label>
+            <select
+              value={selectedCurrency.code}
+              onChange={(e) => {
+                const currency = currencies.find(c => c.code === e.target.value);
+                if (currency) setSelectedCurrency(currency);
+              }}
+              className="w-full px-4 py-3 border border-gray-200 rounded-lg text-lg font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
+            >
+              {currencies.map((currency) => (
+                <option key={currency.code} value={currency.code}>
+                  {currency.symbol} {currency.code}
+                </option>
+              ))}
+            </select>
+          </div>
+
           {/* Total Cost */}
           <div className="space-y-3">
-            <label className="block text-sm font-semibold text-gray-900">
+            <label className="block text-sm font-semibold text-gray-900 h-12 flex flex-col justify-start">
               Total Cost
               <span className="block text-xs font-normal text-gray-500 mt-1">
-                The total cost or budget for the campaign
+                Campaign budget or total cost
               </span>
             </label>
             <div className="relative">
@@ -140,8 +188,10 @@ export default function CPMCalculator() {
               </span>
               <input
                 type="text"
-                value={values.totalCost}
+                value={getDisplayValue('totalCost', true)}
                 onChange={(e) => handleInputChange('totalCost', e.target.value)}
+                onFocus={() => handleFocus('totalCost')}
+                onBlur={() => handleBlur('totalCost')}
                 placeholder="0.00"
                 className={`w-full pr-4 py-3 border border-gray-200 rounded-lg text-lg font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
                   selectedCurrency.symbol.length > 1 ? 'pl-12' : 'pl-8'
@@ -152,16 +202,18 @@ export default function CPMCalculator() {
 
           {/* Impressions */}
           <div className="space-y-3">
-            <label className="block text-sm font-semibold text-gray-900">
+            <label className="block text-sm font-semibold text-gray-900 h-12 flex flex-col justify-start">
               Impressions
               <span className="block text-xs font-normal text-gray-500 mt-1">
-                The total advertising impressions over the life of the campaign
+                Total ad impressions delivered
               </span>
             </label>
             <input
               type="text"
-              value={formatNumber(values.impressions)}
-              onChange={(e) => handleInputChange('impressions', e.target.value.replace(/,/g, ''))}
+              value={getDisplayValue('impressions', false)}
+              onChange={(e) => handleInputChange('impressions', e.target.value)}
+              onFocus={() => handleFocus('impressions')}
+              onBlur={() => handleBlur('impressions')}
               placeholder="0"
               className="w-full px-4 py-3 border border-gray-200 rounded-lg text-lg font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
             />
@@ -169,10 +221,10 @@ export default function CPMCalculator() {
 
           {/* CPM */}
           <div className="space-y-3">
-            <label className="block text-sm font-semibold text-gray-900">
+            <label className="block text-sm font-semibold text-gray-900 h-12 flex flex-col justify-start">
               CPM
               <span className="block text-xs font-normal text-gray-500 mt-1">
-                The cost of the campaign per 1,000 ad exposures
+                Cost per 1,000 ad exposures
               </span>
             </label>
             <div className="relative">
@@ -181,8 +233,10 @@ export default function CPMCalculator() {
               </span>
               <input
                 type="text"
-                value={values.cpm}
+                value={getDisplayValue('cpm', true)}
                 onChange={(e) => handleInputChange('cpm', e.target.value)}
+                onFocus={() => handleFocus('cpm')}
+                onBlur={() => handleBlur('cpm')}
                 placeholder="0.00"
                 className={`w-full pr-4 py-3 border border-gray-200 rounded-lg text-lg font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
                   selectedCurrency.symbol.length > 1 ? 'pl-12' : 'pl-8'
