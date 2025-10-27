@@ -6,7 +6,12 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export default function Navbar() {
-  const links = ["Features","Integrations", "Blog"];
+  const links = [
+    { name: "Features", href: "#features" },
+    { name: "Integrations", href: "#integrations" },
+    { name: "Tools", href: "/cpm-calculator" },
+    { name: "Blog", href: "/blog" }
+  ];
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -49,13 +54,13 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-8">
-            {links.map((l) => (
+            {links.map((link) => (
               <Link
-                key={l}
-                href="#"
+                key={link.name}
+                href={link.href}
                 className="text-sm text-gray-600 hover:text-gray-900"
               >
-                {l}
+                {link.name}
               </Link>
             ))}
           </div>
@@ -188,14 +193,14 @@ export default function Navbar() {
           </div>
 
           <div className="mt-8 flex flex-col gap-6">
-            {links.map((l) => (
+            {links.map((link) => (
               <Link
-                key={l}
-                href="#"
+                key={link.name}
+                href={link.href}
                 onClick={() => setOpen(false)}
                 className="text-base font-medium text-gray-900 hover:text-blue-600"
               >
-                {l}
+                {link.name}
               </Link>
             ))}
           </div>
