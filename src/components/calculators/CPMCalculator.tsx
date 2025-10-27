@@ -95,7 +95,6 @@ export default function CPMCalculator() {
     // Format the value when user finishes editing
     const currentValue = values[field as keyof CalculatorValues];
     if (currentValue) {
-      const formatted = formatDisplayValue(currentValue, field !== 'impressions');
       // Trigger a re-calculation to ensure formatting is applied
       const newValues = calculateMissingValue(field as keyof CalculatorValues, currentValue);
       setValues(newValues);

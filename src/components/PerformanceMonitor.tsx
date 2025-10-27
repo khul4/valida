@@ -21,7 +21,7 @@ export default function PerformanceMonitor() {
 
       try {
         observer.observe({ entryTypes: ['navigation', 'paint', 'largest-contentful-paint'] });
-      } catch (e) {
+      } catch (_) {
         console.log('Performance Observer not supported');
       }
 

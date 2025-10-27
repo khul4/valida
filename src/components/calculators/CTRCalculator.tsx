@@ -43,7 +43,6 @@ export default function CTRCalculator() {
     const value = e.target.value;
     if (value === '') {
       setter('');
-      // Calculate with new empty value
       if (field === 'clicks') {
         calculateCTR('', impressions);
       } else {
@@ -52,11 +51,9 @@ export default function CTRCalculator() {
       return;
     }
 
-    // Allow only numbers and commas
     const sanitizedValue = value.replace(/[^0-9.]/g, '');
     if (/^\d*\.?\d*$/.test(sanitizedValue)) {
       setter(sanitizedValue);
-      // Calculate with new value
       if (field === 'clicks') {
         calculateCTR(sanitizedValue, impressions);
       } else {
@@ -73,8 +70,7 @@ export default function CTRCalculator() {
 
   return (
     <div className="max-w-4xl mx-auto px-6 sm:px-8">
-      {/* Header */}
-      <div className="text-center mb-12">
+      <div className="text-center mb-12 pt-20">
         <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
           Free CTR Calculator
         </h1>
@@ -83,10 +79,8 @@ export default function CTRCalculator() {
         </p>
       </div>
 
-      {/* Calculator */}
       <div className="bg-white rounded-2xl shadow-xl p-8 mb-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {/* Clicks Input */}
           <div className="space-y-3">
             <label className="block text-sm font-semibold text-gray-900 h-12 flex flex-col justify-start">
               Number of Clicks
@@ -108,7 +102,6 @@ export default function CTRCalculator() {
             />
           </div>
 
-          {/* Impressions Input */}
           <div className="space-y-3">
             <label className="block text-sm font-semibold text-gray-900 h-12 flex flex-col justify-start">
               Number of Impressions
@@ -129,45 +122,53 @@ export default function CTRCalculator() {
               placeholder="0"
             />
           </div>
-        </div>
 
-        {/* Result Display */}
-        {ctr !== null && (
-          <div className="mt-8 bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-100">
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Your CTR Result</h3>
-            <p className="text-3xl font-bold text-blue-600">
-              {ctr.toFixed(2)}%
-            </p>
-            <p className="text-sm text-gray-600 mt-2">
-              This means {clicks} people clicked out of {impressions} impressions
-            </p>
-          </div>
-        )}
-
-        {/* Clear Button */}
-        <div className="mt-6 text-center">
-          <button
-            onClick={clearAll}
-            className="px-8 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
-          >
-            Clear & Start Over
-          </button>
+          {ctr !== null && (
+            <div className="col-span-1 sm:col-span-2">
+              <div className="bg-white shadow-lg rounded-xl border border-blue-100 overflow-hidden">
+                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2">Your CTR Result</h3>
+                      <p className="text-4xl font-bold text-blue-600">
+                        {ctr.toFixed(2)}%
+                      </p>
+                      <p className="text-sm text-gray-600 mt-2">
+                        {clicks} clicks from {impressions} impressions
+                      </p>
+                    </div>
+                    <button
+                      onClick={clearAll}
+                      className="px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors border border-gray-200"
+                    >
+                      Reset
+                    </button>
+                  </div>
+                </div>
+                <div className="px-6 py-4 bg-white border-t border-blue-50">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-600">Status:</span>
+                    <span className="font-medium">
+                      {ctr < 1 ? 'Below Average' : ctr < 2 ? 'Average' : ctr < 5 ? 'Good' : 'Excellent'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Information Grid */}
       <div className="grid md:grid-cols-2 gap-8 mb-12">
-        {/* What is CTR */}
         <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
           <h3 className="text-xl font-bold text-gray-900 mb-4">What is CTR?</h3>
           <p className="text-gray-600 leading-relaxed">
             Click-Through Rate (CTR) is a key performance metric that measures the percentage of people 
-            who click on your ad or link after seeing it. It's a crucial indicator of how effective 
+            who click on your ad or link after seeing it. It&apos;s a crucial indicator of how effective 
             your ad is at attracting interested users and driving engagement.
           </p>
         </div>
 
-        {/* How to Calculate */}
         <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
           <h3 className="text-xl font-bold text-gray-900 mb-4">How to Calculate CTR</h3>
           <div className="text-gray-600">
@@ -183,7 +184,6 @@ export default function CTRCalculator() {
         </div>
       </div>
 
-      {/* Related Tools Section */}
       <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 mb-8">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Related Marketing Calculators</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -192,7 +192,6 @@ export default function CTRCalculator() {
             <p className="text-gray-600 text-sm">Calculate Cost Per Thousand Impressions</p>
           </Link>
           
-          {/* Placeholder for future calculators */}
           <div className="block p-4 border rounded-lg bg-gray-50">
             <h3 className="font-semibold text-lg mb-2 text-gray-400">CPA Calculator</h3>
             <p className="text-gray-400 text-sm">Coming soon...</p>
@@ -205,8 +204,7 @@ export default function CTRCalculator() {
         </div>
       </div>
 
-      {/* FAQ Section */}
-      <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
+      <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 mb-24">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
         
         <div className="space-y-6">

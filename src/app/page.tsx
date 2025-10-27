@@ -1,13 +1,11 @@
-import { Suspense, lazy } from 'react';
+import { Suspense } from 'react';
 import Hero from '@/components/hero/Hero';
 import UniqueFeatures from '@/components/features/UniqueFeatures';
-
-// Lazy load components that are below the fold
-const Steps = lazy(() => import('@/components/steps/Steps'));
-const Integrations = lazy(() => import('@/components/integrations/Integrations'));
-const Benefits = lazy(() => import('@/components/benefits/Benefits'));
-const CTASection = lazy(() => import('@/components/cta/CTASection'));
-const Footer = lazy(() => import('@/components/layout/Footer'));
+import Steps from '@/components/steps/Steps';
+import Integrations from '@/components/integrations/Integrations';
+import Benefits from '@/components/benefits/Benefits';
+import CTASection from '@/components/cta/CTASection';
+import Footer from '@/components/layout/Footer';
 
 // Loading component for better UX
 const LoadingComponent = () => (

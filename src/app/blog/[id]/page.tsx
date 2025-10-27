@@ -1,6 +1,5 @@
 'use client';
 
-import { useParams } from 'next/navigation';
 import Container from '@/components/ui/container';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -41,9 +40,6 @@ const blogPost = {
 };
 
 export default function BlogPost() {
-  // We could use useParams() to get the id if we need to fetch a specific post
-  // const { id } = useParams();
-  
   return (
     <article className="min-h-screen bg-white">
       {/* Hero Section */}
