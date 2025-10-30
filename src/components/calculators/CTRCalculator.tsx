@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import RelatedTools from './RelatedTools';
 
 export default function CTRCalculator() {
   const [clicks, setClicks] = useState('');
@@ -184,25 +185,7 @@ export default function CTRCalculator() {
         </div>
       </div>
 
-      <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Related Marketing Calculators</h2>
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <Link href="/cpm-calculator" className="block p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-            <h3 className="font-semibold text-lg mb-2">CPM Calculator</h3>
-            <p className="text-gray-600 text-sm">Calculate Cost Per Thousand Impressions</p>
-          </Link>
-          
-          <div className="block p-4 border rounded-lg bg-gray-50">
-            <h3 className="font-semibold text-lg mb-2 text-gray-400">CPA Calculator</h3>
-            <p className="text-gray-400 text-sm">Coming soon...</p>
-          </div>
-          
-          <div className="block p-4 border rounded-lg bg-gray-50">
-            <h3 className="font-semibold text-lg mb-2 text-gray-400">ROAS Calculator</h3>
-            <p className="text-gray-400 text-sm">Coming soon...</p>
-          </div>
-        </div>
-      </div>
+      <RelatedTools currentTool="CTR Calculator" />
 
       <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 mb-24">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>

@@ -2,12 +2,15 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { CurrencySelector, getCurrencySymbol } from '../ui/currency-selector';
+import RelatedTools from './RelatedTools';
 
 export default function ROASCalculator() {
   const [revenue, setRevenue] = useState('');
   const [adSpend, setAdSpend] = useState('');
   const [roas, setRoas] = useState<number | null>(null);
   const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [currency, setCurrency] = useState('USD');
 
   const calculateROAS = (newRevenue: string, newAdSpend: string) => {
     if (newRevenue && newAdSpend) {
@@ -80,6 +83,11 @@ export default function ROASCalculator() {
       </div>
 
       <div className="bg-white rounded-2xl shadow-xl p-8 mb-12">
+        <CurrencySelector
+          selectedCurrency={currency}
+          onCurrencyChange={setCurrency}
+          className="mb-6"
+        />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="space-y-3">
             <label className="block text-sm font-semibold text-gray-900 h-12 flex flex-col justify-start">
@@ -90,7 +98,7 @@ export default function ROASCalculator() {
             </label>
             <div className="relative">
               <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-lg">
-                $
+                {getCurrencySymbol(currency)}
               </span>
               <input
                 type="text"
@@ -116,7 +124,7 @@ export default function ROASCalculator() {
             </label>
             <div className="relative">
               <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-lg">
-                $
+                {getCurrencySymbol(currency)}
               </span>
               <input
                 type="text"
@@ -144,7 +152,7 @@ export default function ROASCalculator() {
                         {roas.toFixed(2)}x
                       </p>
                       <p className="text-sm text-gray-600 mt-2">
-                        ${revenue} revenue from ${adSpend} ad spend
+                        {getCurrencySymbol(currency)}{revenue} revenue from {getCurrencySymbol(currency)}{adSpend} ad spend
                       </p>
                     </div>
                     <button
@@ -194,30 +202,7 @@ export default function ROASCalculator() {
         </div>
       </div>
 
-      <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Related Marketing Calculators</h2>
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <Link href="/cpm-calculator" className="block p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-            <h3 className="font-semibold text-lg mb-2">CPM Calculator</h3>
-            <p className="text-gray-600 text-sm">Calculate Cost Per Thousand Impressions</p>
-          </Link>
-          
-          <Link href="/ctr-calculator" className="block p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-            <h3 className="font-semibold text-lg mb-2">CTR Calculator</h3>
-            <p className="text-gray-600 text-sm">Calculate Click-Through Rate</p>
-          </Link>
-
-          <Link href="/cpa-calculator" className="block p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-            <h3 className="font-semibold text-lg mb-2">CPA Calculator</h3>
-            <p className="text-gray-600 text-sm">Calculate Cost Per Acquisition</p>
-          </Link>
-
-          <Link href="/bounce-rate-calculator" className="block p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-            <h3 className="font-semibold text-lg mb-2">Bounce Rate Calculator</h3>
-            <p className="text-gray-600 text-sm">Calculate Website Bounce Rate</p>
-          </Link>
-        </div>
-      </div>
+      <RelatedTools currentTool="ROAS Calculator" />
 
       <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 mb-24">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>

@@ -39,6 +39,9 @@ const navigation: {
       links: [
         { name: 'CPM Calculator', href: '/cpm-calculator' },
         { name: 'CTR Calculator', href: '/ctr-calculator' },
+        { name: 'CPA Calculator', href: '/cpa-calculator' },
+        { name: 'ROAS Calculator', href: '/roas-calculator' },
+        { name: 'Bounce Rate Calculator', href: '/bounce-rate-calculator' },
       ],
     },
   ],
