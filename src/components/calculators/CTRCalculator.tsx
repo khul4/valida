@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import RelatedTools from './RelatedTools';
 
 export default function CTRCalculator() {

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import { CurrencySelector, getCurrencySymbol } from '../ui/currency-selector';
 import RelatedTools from './RelatedTools';
 

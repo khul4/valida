@@ -9,7 +9,7 @@ export default function Navbar() {
   const links = [
     { name: "Features", href: "#features" },
     { name: "Integrations", href: "#integrations" },
-    { name: "Tools", href: "/cpm-calculator" },
+    { name: "Tools", href: "/tools" },
     { name: "Blog", href: "/blog" }
   ];
   const [open, setOpen] = React.useState(false);
