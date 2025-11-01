@@ -37,6 +37,11 @@ const allTools: Tool[] = [
     href: '/bounce-rate-calculator',
     description: 'Calculate Website Bounce Rate'
   },
+  {
+    name: 'Instagram Ad Mockup Generator',
+    href: '/instagram-ad-mockup-generator',
+    description: 'Create Instagram Ad Previews'
+  },
 ];
 
 export default function RelatedTools({ currentTool }: RelatedToolsProps) {

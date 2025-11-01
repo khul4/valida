@@ -44,6 +44,12 @@ const navigation: {
         { name: 'Bounce Rate Calculator', href: '/bounce-rate-calculator' },
       ],
     },
+    {
+      title: 'Creative Tools',
+      links: [
+        { name: 'Instagram Ad Mockup Generator', href: '/instagram-ad-mockup-generator' },
+      ],
+    },
   ],
 };
 

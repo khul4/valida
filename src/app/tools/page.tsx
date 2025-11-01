@@ -58,6 +58,13 @@ const marketingTools: Tool[] = [
     features: ['User engagement metrics', 'Page optimization', 'Conversion analysis', 'Performance benchmarks'],
     category: 'Website Analytics'
   },
+  {
+    name: 'Instagram Ad Mockup Generator',
+    href: '/instagram-ad-mockup-generator',
+    description: 'Generate pixel-perfect Instagram ad mockups for sponsored posts, carousels, reels & stories in every format.',
+    features: ['All Instagram formats', 'Real-time preview', 'Custom branding', 'High-quality downloads'],
+    category: 'Creative Tools'
+  },
 ];
 
 const categories = Array.from(new Set(marketingTools.map(tool => tool.category)));
@@ -259,10 +266,10 @@ export default function ToolsHub() {
                 </svg>
               </Link>
               <Link
-                href="/roas-calculator"
+                href="/instagram-ad-mockup-generator"
                 className="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-900 text-gray-900 rounded-xl font-semibold hover:bg-gray-900 hover:text-white transition-colors"
               >
-                Calculate ROAS
+                Create Ad Mockups
                 <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
