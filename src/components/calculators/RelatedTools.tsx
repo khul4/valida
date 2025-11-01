@@ -42,6 +42,11 @@ const allTools: Tool[] = [
     href: '/instagram-ad-mockup-generator',
     description: 'Create Instagram Ad Previews'
   },
+  {
+    name: 'TikTok Ad Mockup Generator',
+    href: '/tiktok-ad-mockup-generator',
+    description: 'Create TikTok Ad Previews'
+  },
 ];
 
 export default function RelatedTools({ currentTool }: RelatedToolsProps) {

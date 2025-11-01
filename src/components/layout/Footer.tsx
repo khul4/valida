@@ -48,6 +48,7 @@ const navigation: {
       title: 'Creative Tools',
       links: [
         { name: 'Instagram Ad Mockup Generator', href: '/instagram-ad-mockup-generator' },
+        { name: 'TikTok Ad Mockup Generator', href: '/tiktok-ad-mockup-generator' },
       ],
     },
   ],

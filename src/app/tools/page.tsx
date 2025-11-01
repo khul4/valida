@@ -65,6 +65,13 @@ const marketingTools: Tool[] = [
     features: ['All Instagram formats', 'Real-time preview', 'Custom branding', 'High-quality downloads'],
     category: 'Creative Tools'
   },
+  {
+    name: 'TikTok Ad Mockup Generator',
+    href: '/tiktok-ad-mockup-generator',
+    description: 'Design and preview TikTok ads before they go live. Create realistic TikTok ad mockups with Story and Story CTA formats.',
+    features: ['Story & Story CTA formats', 'Video upload support', 'Real-time preview', 'TikTok UI simulation'],
+    category: 'Creative Tools'
+  },
 ];
 
 const categories = Array.from(new Set(marketingTools.map(tool => tool.category)));
