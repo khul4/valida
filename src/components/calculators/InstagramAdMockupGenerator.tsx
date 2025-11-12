@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from 'react';
+import html2canvas from 'html2canvas';
 import RelatedTools from './RelatedTools';
 
 type AdFormat = '1:1' | '4:5' | '16:9' | '9:16' | 'carousel' | 'reel';
@@ -43,9 +44,11 @@ export default function InstagramAdMockupGenerator() {
   });
 
   const [isDragOver, setIsDragOver] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
   const profileInputRef = useRef<HTMLInputElement>(null);
   const adImageInputRef = useRef<HTMLInputElement>(null);
   const carouselInputRef = useRef<HTMLInputElement>(null);
+  const mockupRef = useRef<HTMLDivElement>(null);
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>, type: 'profile' | 'ad') => {
     const file = event.target.files?.[0];
@@ -152,9 +155,36 @@ export default function InstagramAdMockupGenerator() {
     }
   };
 
-  const downloadMockup = () => {
-    // This would generate and download the mockup
-    alert('Mockup download functionality would be implemented here');
+  const downloadMockup = async () => {
+    if (!mockupRef.current || isDownloading) return;
+    
+    setIsDownloading(true);
+    
+    try {
+      const canvas = await html2canvas(mockupRef.current, {
+        useCORS: true,
+        allowTaint: true
+      });
+      
+      // Convert canvas to blob
+      canvas.toBlob((blob) => {
+        if (blob) {
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = `instagram-ad-mockup-${adData.format}-${Date.now()}.png`;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+        }
+        setIsDownloading(false);
+      }, 'image/png', 1.0);
+    } catch (error) {
+      console.error('Error generating mockup:', error);
+      alert('There was an error generating the mockup. Please try again.');
+      setIsDownloading(false);
+    }
   };
 
   const CarouselPreview = ({ adData }: { adData: AdData }) => {
@@ -521,7 +551,7 @@ export default function InstagramAdMockupGenerator() {
             <h3 className="text-lg font-semibold text-gray-900 mb-6">Ad Preview</h3>
             
             {/* Instagram Mock */}
-            <div className="max-w-sm mx-auto bg-white border border-gray-200 rounded-lg overflow-hidden">
+            <div ref={mockupRef} className="max-w-sm mx-auto bg-white border border-gray-200 rounded-lg overflow-hidden">
               {/* Header */}
               <div className="flex items-center p-3 border-b border-gray-100">
                 <div className="w-8 h-8 rounded-full bg-gray-200 overflow-hidden mr-3 flex-shrink-0">
@@ -587,10 +617,27 @@ export default function InstagramAdMockupGenerator() {
             <div className="mt-6 text-center">
               <button
                 onClick={downloadMockup}
-                className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                disabled={isDownloading}
+                className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center mx-auto"
               >
-                Download Mockup
+                {isDownloading ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Generating...
+                  </>
+                ) : (
+                  <>
+                    <svg className="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    Download as PNG
+                  </>
+                )}
               </button>
+              <p className="text-sm text-gray-500 mt-2">High-quality PNG ready for presentations</p>
             </div>
           </div>
         </div>
@@ -642,8 +689,9 @@ export default function InstagramAdMockupGenerator() {
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Can I download the mockups?</h3>
             <p className="text-gray-600">
-              Yes, you can download high-quality PNG versions of your mockups for presentations, 
-              client approvals, or team reviews before launching your actual Instagram ad campaigns.
+              Yes! Simply click the "Download as PNG" button to save your mockup in high-quality PNG format. 
+              Perfect for presentations, client approvals, or team reviews before launching your actual 
+              Instagram ad campaigns.
             </p>
           </div>
         </div>

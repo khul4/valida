@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
+import html2canvas from 'html2canvas';
 import Container from '../ui/container';
 import RelatedTools from './RelatedTools';
 
@@ -27,8 +28,11 @@ export default function TikTokAdMockupGenerator() {
     format: 'story'
   });
 
+  const [isDownloading, setIsDownloading] = useState(false);
+
   const videoInputRef = useRef<HTMLInputElement>(null);
   const profileInputRef = useRef<HTMLInputElement>(null);
+  const mockupRef = useRef<HTMLDivElement>(null);
   const [dragActive, setDragActive] = useState<'video' | 'profile' | null>(null);
 
   const handleVideoUpload = (file: File) => {
@@ -79,14 +83,41 @@ export default function TikTokAdMockupGenerator() {
     }
   };
 
-  const downloadMockup = () => {
-    // This would generate and download the mockup
-    alert('TikTok mockup download functionality would be implemented here');
+  const downloadMockup = async () => {
+    if (!mockupRef.current || isDownloading) return;
+    
+    setIsDownloading(true);
+    
+    try {
+      const canvas = await html2canvas(mockupRef.current, {
+        useCORS: true,
+        allowTaint: true
+      });
+      
+      // Convert canvas to blob
+      canvas.toBlob((blob) => {
+        if (blob) {
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = `tiktok-ad-mockup-${adData.format}-${Date.now()}.png`;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+        }
+        setIsDownloading(false);
+      }, 'image/png', 1.0);
+    } catch (error) {
+      console.error('Error generating mockup:', error);
+      alert('There was an error generating the mockup. Please try again.');
+      setIsDownloading(false);
+    }
   };
 
   const TikTokPreview = ({ adData }: { adData: TikTokAdData }) => {
     return (
-      <div className="w-full max-w-[280px] mx-auto bg-black rounded-[24px] overflow-hidden relative" style={{ aspectRatio: '9/16', height: '500px' }}>
+      <div ref={mockupRef} className="w-full max-w-[280px] mx-auto bg-black rounded-[24px] overflow-hidden relative" style={{ aspectRatio: '9/16', height: '500px' }}>
         {/* Video Background */}
         <div className="absolute inset-0">
           {adData.adVideo ? (
@@ -444,10 +475,27 @@ export default function TikTokAdMockupGenerator() {
               <div className="mt-6 text-center">
                 <button
                   onClick={downloadMockup}
-                  className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                  disabled={isDownloading}
+                  className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center mx-auto"
                 >
-                  Download Mockup
+                  {isDownloading ? (
+                    <>
+                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Generating...
+                    </>
+                  ) : (
+                    <>
+                      <svg className="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Download as PNG
+                    </>
+                  )}
                 </button>
+                <p className="text-sm text-gray-500 mt-2">High-quality PNG ready for presentations</p>
               </div>
             </div>
           </div>
