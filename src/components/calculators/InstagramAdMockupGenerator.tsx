@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useRef } from 'react';
-import html2canvas from 'html2canvas';
 import RelatedTools from './RelatedTools';
+import { downloadElementAsImage } from '@/lib/download-utils';
 
 type AdFormat = '1:1' | '4:5' | '16:9' | '9:16' | 'carousel' | 'reel';
 
@@ -161,28 +161,14 @@ export default function InstagramAdMockupGenerator() {
     setIsDownloading(true);
     
     try {
-      const canvas = await html2canvas(mockupRef.current, {
-        useCORS: true,
-        allowTaint: true
-      });
-      
-      // Convert canvas to blob
-      canvas.toBlob((blob) => {
-        if (blob) {
-          const url = URL.createObjectURL(blob);
-          const link = document.createElement('a');
-          link.href = url;
-          link.download = `instagram-ad-mockup-${adData.format}-${Date.now()}.png`;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-          URL.revokeObjectURL(url);
-        }
-        setIsDownloading(false);
-      }, 'image/png', 1.0);
+      await downloadElementAsImage(
+        mockupRef.current,
+        `instagram-ad-mockup-${adData.format}-${Date.now()}.png`,
+        '#ffffff'
+      );
     } catch (error) {
-      console.error('Error generating mockup:', error);
-      alert('There was an error generating the mockup. Please try again.');
+      // Error handling is done in the utility
+    } finally {
       setIsDownloading(false);
     }
   };
@@ -551,10 +537,17 @@ export default function InstagramAdMockupGenerator() {
             <h3 className="text-lg font-semibold text-gray-900 mb-6">Ad Preview</h3>
             
             {/* Instagram Mock */}
-            <div ref={mockupRef} className="max-w-sm mx-auto bg-white border border-gray-200 rounded-lg overflow-hidden">
+            <div 
+              ref={mockupRef} 
+              className="max-w-sm mx-auto bg-white border border-gray-200 rounded-lg overflow-hidden"
+              style={{
+                fontSize: '14px',
+                fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif',
+              }}
+            >
               {/* Header */}
-              <div className="flex items-center p-3 border-b border-gray-100">
-                <div className="w-8 h-8 rounded-full bg-gray-200 overflow-hidden mr-3 flex-shrink-0">
+              <div className="flex items-center p-3 border-b border-gray-100" style={{ backgroundColor: '#fff', borderColor: '#efefef' }}>
+                <div className="w-8 h-8 rounded-full bg-gray-200 overflow-hidden mr-3 flex-shrink-0" style={{ width: '32px', height: '32px' }}>
                   {adData.profileImage ? (
                     <img src={adData.profileImage} alt="Profile" className="w-full h-full object-cover" />
                   ) : (
@@ -566,11 +559,11 @@ export default function InstagramAdMockupGenerator() {
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="font-semibold text-sm truncate">{adData.username}</div>
-                  <div className="text-xs text-gray-500">Sponsored</div>
+                  <div className="font-semibold text-sm truncate" style={{ fontSize: '13px', fontWeight: '500', lineHeight: '1.2' }}>{adData.username}</div>
+                  <div className="text-xs text-gray-500" style={{ fontSize: '12px', color: '#65676b', lineHeight: '1.2' }}>Sponsored</div>
                 </div>
-                <div className="text-gray-400 flex-shrink-0">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <div className="text-gray-400 flex-shrink-0" style={{ color: '#8a8d91', width: '24px', height: '24px' }}>
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" style={{ width: '20px', height: '20px' }}>
                     <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
                   </svg>
                 </div>
@@ -580,34 +573,34 @@ export default function InstagramAdMockupGenerator() {
               <CarouselPreview adData={adData} />
 
               {/* Engagement Bar */}
-              <div className="p-3">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center space-x-4">
-                    <svg className="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+              <div className="p-3" style={{ padding: '12px' }}>
+                <div className="flex items-center justify-between mb-2" style={{ marginBottom: '8px' }}>
+                  <div className="flex items-center space-x-4" style={{ gap: '16px' }}>
+                    <svg className="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 24 24" style={{ width: '24px', height: '24px', color: '#ed4956' }}>
                       <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                     </svg>
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '24px', height: '24px', color: '#262626', strokeWidth: '1.5' }}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                     </svg>
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '24px', height: '24px', color: '#262626', strokeWidth: '1.5' }}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                     </svg>
                   </div>
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '24px', height: '24px', color: '#262626', strokeWidth: '1.5' }}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
                   </svg>
                 </div>
                 
-                <div className="text-sm font-semibold mb-1">{adData.likes} likes</div>
+                <div className="text-sm font-semibold mb-1" style={{ fontSize: '13px', fontWeight: '600', marginBottom: '4px', color: '#262626' }}>{adData.likes} likes</div>
                 
-                <div className="text-sm">
-                  <span className="font-semibold">{adData.username}</span> {adData.caption}
+                <div className="text-sm" style={{ fontSize: '13px', color: '#262626', lineHeight: '1.4' }}>
+                  <span className="font-semibold" style={{ fontWeight: '600' }}>{adData.username}</span> {adData.caption}
                 </div>
                 
-                <div className="text-xs text-gray-500 mt-2">View all comments</div>
+                <div className="text-xs text-gray-500 mt-2" style={{ fontSize: '12px', color: '#65676b', marginTop: '8px' }}>View all comments</div>
                 
                 {/* CTA Button */}
-                <button className="w-full mt-3 py-2 bg-blue-500 text-white rounded-md text-sm font-medium">
+                <button className="w-full mt-3 py-2 bg-blue-500 text-white rounded-md text-sm font-medium" style={{ marginTop: '12px', padding: '8px', backgroundColor: '#0a66c2', color: '#fff', borderRadius: '4px', fontSize: '13px', fontWeight: '600', border: 'none', cursor: 'pointer' }}>
                   {adData.cta}
                 </button>
               </div>

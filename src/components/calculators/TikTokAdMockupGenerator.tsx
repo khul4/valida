@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import html2canvas from 'html2canvas';
 import Container from '../ui/container';
 import RelatedTools from './RelatedTools';
+import { downloadElementAsImage } from '@/lib/download-utils';
 
 interface TikTokAdData {
   adVideo: string;
@@ -89,35 +89,30 @@ export default function TikTokAdMockupGenerator() {
     setIsDownloading(true);
     
     try {
-      const canvas = await html2canvas(mockupRef.current, {
-        useCORS: true,
-        allowTaint: true
-      });
-      
-      // Convert canvas to blob
-      canvas.toBlob((blob) => {
-        if (blob) {
-          const url = URL.createObjectURL(blob);
-          const link = document.createElement('a');
-          link.href = url;
-          link.download = `tiktok-ad-mockup-${adData.format}-${Date.now()}.png`;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-          URL.revokeObjectURL(url);
-        }
-        setIsDownloading(false);
-      }, 'image/png', 1.0);
+      await downloadElementAsImage(
+        mockupRef.current,
+        `tiktok-ad-mockup-${adData.format}-${Date.now()}.png`,
+        '#000000'
+      );
     } catch (error) {
-      console.error('Error generating mockup:', error);
-      alert('There was an error generating the mockup. Please try again.');
+      // Error handling is done in the utility
+    } finally {
       setIsDownloading(false);
     }
   };
 
   const TikTokPreview = ({ adData }: { adData: TikTokAdData }) => {
     return (
-      <div ref={mockupRef} className="w-full max-w-[280px] mx-auto bg-black rounded-[24px] overflow-hidden relative" style={{ aspectRatio: '9/16', height: '500px' }}>
+      <div 
+        ref={mockupRef} 
+        className="w-full max-w-[280px] mx-auto bg-black rounded-[24px] overflow-hidden relative" 
+        style={{ 
+          aspectRatio: '9/16', 
+          height: '500px',
+          fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif',
+          fontSize: '14px'
+        }}
+      >
         {/* Video Background */}
         <div className="absolute inset-0">
           {adData.adVideo ? (
