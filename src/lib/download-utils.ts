@@ -17,20 +17,11 @@ export const downloadElementAsImage = async (
       allowTaint: true,
       backgroundColor,
       logging: false,
-      // Let html2canvas handle dimensions automatically
       windowWidth: element.offsetWidth,
       windowHeight: element.offsetHeight,
-      // Capture everything
-      ignoreElements: (el: Element) => {
-        // Don't ignore any elements
-        return false;
-      },
-      timeout: 30000,
-      // Better rendering
+      ignoreElements: () => false,
       foreignObjectRendering: false,
-      // Handle images properly
-      imageTimeout: 15000,
-    } as any);
+    } as Record<string, unknown>);
     
     // Convert canvas to PNG blob and download
     return new Promise((resolve, reject) => {

@@ -74,8 +74,6 @@ const marketingTools: Tool[] = [
   },
 ];
 
-const categories = Array.from(new Set(marketingTools.map(tool => tool.category)));
-
 export default function ToolsHub() {
   return (
     <div className="min-h-screen bg-white">

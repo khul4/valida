@@ -11,7 +11,7 @@ export function initPostHog() {
         person_profiles: 'identified_only',
         capture_pageview: false, // We'll capture pageviews manually with Next.js router
         capture_pageleave: true,
-        loaded: (posthog) => {
+        loaded: () => {
           if (process.env.NODE_ENV === 'development') {
             console.log('PostHog loaded successfully')
           }
