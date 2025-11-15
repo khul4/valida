@@ -78,46 +78,20 @@ const categories = Array.from(new Set(marketingTools.map(tool => tool.category))
 
 export default function ToolsHub() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+      <div className="bg-white">
         <Container>
           <div className="py-24 text-center">
             <div className="max-w-4xl mx-auto">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 tracking-tight">
-                Marketing Tools
-                <span className="block text-blue-400">That Drive Results</span>
+              <h1 className="font-medium text-4xl sm:text-5xl leading-[1.02] tracking-[-0.02em] mb-3 relative z-20 px-4 sm:px-0">
+                Free Marketing Toolkit
+                
               </h1>
-              <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
-                Professional-grade calculators designed to optimize your marketing campaigns, 
-                improve ROI, and make data-driven decisions with confidence.
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-5 relative z-20 px-4 sm:px-0">
+                A series of free tools for creator marketing, paid social, organic social, created by Arek
               </p>
-              <div className="flex flex-wrap justify-center gap-6 text-sm">
-                <div className="flex items-center bg-white/10 rounded-full px-4 py-2 backdrop-blur-sm">
-                  <svg className="w-4 h-4 mr-2 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  Always Free
-                </div>
-                <div className="flex items-center bg-white/10 rounded-full px-4 py-2 backdrop-blur-sm">
-                  <svg className="w-4 h-4 mr-2 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  No Registration
-                </div>
-                <div className="flex items-center bg-white/10 rounded-full px-4 py-2 backdrop-blur-sm">
-                  <svg className="w-4 h-4 mr-2 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  Real-time Results
-                </div>
-                <div className="flex items-center bg-white/10 rounded-full px-4 py-2 backdrop-blur-sm">
-                  <svg className="w-4 h-4 mr-2 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  15+ Currencies
-                </div>
-              </div>
+              
             </div>
           </div>
         </Container>
@@ -125,26 +99,8 @@ export default function ToolsHub() {
 
       {/* Tools Grid */}
       <Container>
-        <div className="py-20">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-              Choose Your Calculator
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
-              Select the marketing metric you want to calculate and optimize your campaigns with precision.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {categories.map((category) => (
-                <span
-                  key={category}
-                  className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-blue-50 hover:text-blue-700 transition-colors"
-                >
-                  {category}
-                </span>
-              ))}
-            </div>
-          </div>
+        <div className="py-10 mb-20">
+          
 
           {/* Tools Grid */}
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
@@ -182,7 +138,7 @@ export default function ToolsHub() {
                   </div>
                   
                   <div className="flex items-center text-blue-600 font-semibold group-hover:text-blue-700 transition-colors">
-                    Start Calculating
+                    Try it Free
                     <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
@@ -194,97 +150,8 @@ export default function ToolsHub() {
         </div>
       </Container>
 
-      {/* Why Use Our Tools Section */}
-      <div className="bg-gray-50 py-20">
-        <Container>
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-              Built for Marketing Professionals
-            </h2>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-              Our calculators combine industry-standard formulas with intuitive design, 
-              helping you make confident decisions that drive measurable results.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center group">
-              <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-700 transition-colors">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Instant Calculations</h3>
-              <p className="text-gray-600 leading-relaxed">Get immediate results as you type. No waiting, no delays, just instant insights for faster decision-making.</p>
-            </div>
-
-            <div className="text-center group">
-              <div className="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-green-700 transition-colors">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Industry Standard</h3>
-              <p className="text-gray-600 leading-relaxed">Proven formulas used by marketing professionals worldwide, ensuring accuracy and reliability in every calculation.</p>
-            </div>
-
-            <div className="text-center group">
-              <div className="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-purple-700 transition-colors">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Global Support</h3>
-              <p className="text-gray-600 leading-relaxed">Support for 15+ major currencies, making it perfect for international marketing campaigns and global teams.</p>
-            </div>
-
-            <div className="text-center group">
-              <div className="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-orange-700 transition-colors">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Completely Free</h3>
-              <p className="text-gray-600 leading-relaxed">No hidden costs, no subscriptions, no registration required. Professional tools that remain free forever.</p>
-            </div>
-          </div>
-        </Container>
-      </div>
-
-      {/* CTA Section */}
-      <div className="bg-white py-20">
-        <Container>
-          <div className="text-center">
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-              Start Optimizing Today
-            </h2>
-            <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
-              Join thousands of marketers who use our calculators to make smarter decisions, 
-              optimize campaigns, and drive better results.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link
-                href="/cpm-calculator"
-                className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
-              >
-                Calculate CPM
-                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-              <Link
-                href="/instagram-ad-mockup-generator"
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-900 text-gray-900 rounded-xl font-semibold hover:bg-gray-900 hover:text-white transition-colors"
-              >
-                Create Ad Mockups
-                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </div>
+   
+     
     </div>
   );
 }

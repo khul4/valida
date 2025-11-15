@@ -287,10 +287,10 @@ export default function InstagramAdMockupGenerator() {
   return (
     <div className="max-w-7xl mx-auto px-6 sm:px-8">
       <div className="text-center mb-12 pt-20">
-        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+        <h1 className="font-medium text-4xl sm:text-5xl leading-[1.02] tracking-[-0.02em] mb-3 relative z-20 px-4 sm:px-0">
           Instagram Ad Mockup Generator
         </h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-5 relative z-20 px-4 sm:px-0">
           Generate pixel-perfect Instagram ads, sponsored carousels, reels & stories in every format.
           Preview your ads before they go live.
         </p>
