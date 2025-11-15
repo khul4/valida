@@ -539,7 +539,7 @@ export default function InstagramAdMockupGenerator() {
             </select>
           </div>
 
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+          {/* <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Engagement</h3>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -554,7 +554,7 @@ export default function InstagramAdMockupGenerator() {
               />
               <p className="text-xs text-gray-500 mt-1">Set the number of likes for your post</p>
             </div>
-          </div>
+          </div> */}
 
           <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Caption</h3>
@@ -644,38 +644,38 @@ export default function InstagramAdMockupGenerator() {
 
                 {/* Engagement Icons */}
                 <div style={{ padding: '8px 16px 12px 16px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '4px', paddingBottom: '10px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '4px', paddingBottom: '10px', height: '30px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px', height: '30px' }}>
                       {/* Heart icon with count */}
-                      <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', height: '26px' }}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#262626" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: '26px', height: '26px', minWidth: '26px', minHeight: '26px', display: 'block', flexShrink: 0, verticalAlign: 'middle' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', height: '30px' }}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#262626" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: '26px', height: '26px', display: 'block' }}>
                           <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                         </svg>
-                        <span style={{ fontSize: '15px', color: '#000000', fontWeight: '400', lineHeight: '26px', height: '26px', display: 'inline-flex', alignItems: 'center' }}>{adData.likes}</span>
+                        <span style={{ fontSize: '15px', color: '#000000', fontWeight: '400', marginTop: '3px' }}></span>
                       </div>
                       
                       {/* Comment icon with count */}
-                      <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', height: '26px' }}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#262626" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: '26px', height: '26px', minWidth: '26px', minHeight: '26px', display: 'block', flexShrink: 0, verticalAlign: 'middle' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyItems: 'center', gap: '8px', height: '30px' }}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#262626" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: '26px', height: '26px', display: 'block' }}>
                           <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
                         </svg>
-                        <span style={{ fontSize: '15px', color: '#000000', fontWeight: '400', lineHeight: '26px', height: '26px', display: 'inline-flex', alignItems: 'center' }}>56</span>
+                        
                       </div>
                       
                       {/* Share icon */}
-                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#262626" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: '26px', height: '26px', minWidth: '26px', minHeight: '26px', display: 'block', flexShrink: 0, verticalAlign: 'middle' }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#262626" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: '26px', height: '26px', display: 'block' }}>
                         <line x1="22" y1="2" x2="11" y2="13" />
                         <polygon points="22 2 15 22 11 13 2 9 22 2" />
                       </svg>
                     </div>
                     
                     {/* Bookmark icon */}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#262626" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: '26px', height: '26px', minWidth: '26px', minHeight: '26px', display: 'block', flexShrink: 0, verticalAlign: 'middle' }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#262626" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: '26px', height: '26px', display: 'block' }}>
                       <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
                     </svg>
                   </div>
                   
-                  <div style={{ fontSize: '15px', color: '#000000', lineHeight: '20px', marginBottom: '6px' }}>
+                  <div style={{ fontSize: '15px', color: '#000000', lineHeight: '20px', marginBottom: '6px', marginTop: '10px' }}>
                     <span style={{ fontWeight: '600' }}>{adData.username}</span> {adData.caption}
                   </div>
                   
