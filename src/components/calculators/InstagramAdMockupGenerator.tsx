@@ -617,14 +617,14 @@ export default function InstagramAdMockupGenerator() {
               {/* Content Section - CTA, Engagement, Caption */}
               <div style={{ padding: '0' }}>
                 {/* CTA Button - Directly below image */}
-                <div style={{ padding: '12px 16px', backgroundColor: '#fff' }}>
+                <div style={{ padding: '5px 3px', backgroundColor: '#fff', borderBottom: '1px solid #efefef' }}>
                   <button style={{ 
                     width: '100%', 
                     padding: '9px 16px', 
-                    backgroundColor: '#fff', 
+                    backgroundColor: '#FFFFFF', 
                     color: '#262626', 
-                    border: '1px solid #dbdbdb',
-                    borderRadius: '8px', 
+                    border: 'none',
+                    borderRadius: '6px', 
                     fontSize: '14px', 
                     fontWeight: '600',
                     cursor: 'pointer',
