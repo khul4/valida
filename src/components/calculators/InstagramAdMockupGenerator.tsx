@@ -142,16 +142,16 @@ export default function InstagramAdMockupGenerator() {
     switch (adData.format) {
       case '1:1':
       case 'carousel':
-        return 'aspect-square';
+        return { width: '100%', paddingBottom: '100%' }; // 1:1
       case '4:5':
-        return 'aspect-[4/5]';
+        return { width: '100%', paddingBottom: '125%' }; // 4:5
       case '16:9':
-        return 'aspect-video';
+        return { width: '100%', paddingBottom: '56.25%' }; // 16:9
       case '9:16':
       case 'reel':
-        return 'aspect-[9/16]';
+        return { width: '100%', paddingBottom: '177.78%' }; // 9:16
       default:
-        return 'aspect-square';
+        return { width: '100%', paddingBottom: '100%' }; // default 1:1
     }
   };
 
@@ -166,8 +166,6 @@ export default function InstagramAdMockupGenerator() {
         `instagram-ad-mockup-${adData.format}-${Date.now()}.png`,
         '#ffffff'
       );
-    } catch (error) {
-      // Error handling is done in the utility
     } finally {
       setIsDownloading(false);
     }
@@ -180,15 +178,18 @@ export default function InstagramAdMockupGenerator() {
       ? adData.adImages 
       : adData.adImage ? [adData.adImage] : [];
 
+    const dimensions = getAdImageDimensions();
+
     if (images.length === 0) {
       return (
-        <div className={`${getAdImageDimensions()} bg-gray-100 overflow-hidden relative`}>
-          <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-            <div className="text-center">
-              <svg className="w-12 h-12 text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div style={{ position: 'relative', width: dimensions.width, backgroundColor: '#f3f4f6', overflow: 'hidden' }}>
+          <div style={{ paddingBottom: dimensions.paddingBottom }}></div>
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(to bottom right, #e5e7eb, #d1d5db)' }}>
+            <div style={{ textAlign: 'center' }}>
+              <svg style={{ width: '48px', height: '48px', color: '#9ca3af', margin: '0 auto 8px auto' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
-              <span className="text-gray-500 text-sm">
+              <span style={{ color: '#6b7280', fontSize: '14px' }}>
                 {adData.format === 'carousel' ? 'Upload carousel images' : 'Upload your ad image'}
               </span>
             </div>
@@ -198,27 +199,34 @@ export default function InstagramAdMockupGenerator() {
     }
 
     return (
-      <div className={`${getAdImageDimensions()} bg-gray-100 overflow-hidden relative`}>
+      <div style={{ position: 'relative', width: dimensions.width, backgroundColor: '#f3f4f6', overflow: 'hidden' }}>
+        <div style={{ paddingBottom: dimensions.paddingBottom }}></div>
         <img 
           src={images[currentImageIndex]} 
           alt={`Ad ${currentImageIndex + 1}`} 
-          className="w-full h-full object-cover" 
+          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
         />
         
         {/* Carousel indicators */}
         {images.length > 1 && (
           <>
-            <div className="absolute top-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded">
+            <div style={{ position: 'absolute', top: '8px', right: '8px', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', fontSize: '12px', padding: '4px 8px', borderRadius: '4px' }}>
               {currentImageIndex + 1}/{images.length}
             </div>
-            <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-1">
+            <div style={{ position: 'absolute', bottom: '12px', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '4px' }}>
               {images.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
-                  className={`w-2 h-2 rounded-full ${
-                    index === currentImageIndex ? 'bg-white' : 'bg-white bg-opacity-50'
-                  }`}
+                  style={{
+                    width: '8px',
+                    height: '8px',
+                    borderRadius: '50%',
+                    backgroundColor: index === currentImageIndex ? 'white' : 'rgba(255,255,255,0.5)',
+                    border: 'none',
+                    cursor: 'pointer',
+                    padding: 0
+                  }}
                 />
               ))}
             </div>
@@ -227,7 +235,22 @@ export default function InstagramAdMockupGenerator() {
             {currentImageIndex > 0 && (
               <button
                 onClick={() => setCurrentImageIndex(currentImageIndex - 1)}
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-opacity-70"
+                style={{
+                  position: 'absolute',
+                  left: '8px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  backgroundColor: 'rgba(0,0,0,0.5)',
+                  color: 'white',
+                  borderRadius: '50%',
+                  width: '32px',
+                  height: '32px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  border: 'none',
+                  cursor: 'pointer'
+                }}
               >
                 ←
               </button>
@@ -235,7 +258,22 @@ export default function InstagramAdMockupGenerator() {
             {currentImageIndex < images.length - 1 && (
               <button
                 onClick={() => setCurrentImageIndex(currentImageIndex + 1)}
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-opacity-70"
+                style={{
+                  position: 'absolute',
+                  right: '8px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  backgroundColor: 'rgba(0,0,0,0.5)',
+                  color: 'white',
+                  borderRadius: '50%',
+                  width: '32px',
+                  height: '32px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  border: 'none',
+                  cursor: 'pointer'
+                }}
               >
                 →
               </button>
@@ -539,32 +577,36 @@ export default function InstagramAdMockupGenerator() {
             {/* Instagram Mock */}
             <div 
               ref={mockupRef} 
-              className="max-w-sm mx-auto bg-white border border-gray-200 rounded-lg overflow-hidden"
+              className="max-w-sm mx-auto bg-white overflow-hidden"
               style={{
                 fontSize: '14px',
                 fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif',
+                border: '1px solid #dbdbdb',
+                borderRadius: '3px',
               }}
             >
               {/* Header */}
-              <div className="flex items-center p-3 border-b border-gray-100" style={{ backgroundColor: '#fff', borderColor: '#efefef' }}>
-                <div className="w-8 h-8 rounded-full bg-gray-200 overflow-hidden mr-3 flex-shrink-0" style={{ width: '32px', height: '32px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', padding: '14px 16px', backgroundColor: '#fff', borderBottom: '1px solid #efefef' }}>
+                <div style={{ width: '32px', height: '32px', borderRadius: '50%', overflow: 'hidden', marginRight: '12px', flexShrink: 0 }}>
                   {adData.profileImage ? (
-                    <img src={adData.profileImage} alt="Profile" className="w-full h-full object-cover" />
+                    <img src={adData.profileImage} alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
-                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    <div style={{ width: '100%', height: '100%', background: 'linear-gradient(135deg, #d1d5db 0%, #9ca3af 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" style={{ width: '16px', height: '16px', display: 'inline-block' }}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
                     </div>
                   )}
                 </div>
-                <div className="flex-1 min-w-0">
-                  <div className="font-semibold text-sm truncate" style={{ fontSize: '13px', fontWeight: '500', lineHeight: '1.2' }}>{adData.username}</div>
-                  <div className="text-xs text-gray-500" style={{ fontSize: '12px', color: '#65676b', lineHeight: '1.2' }}>Sponsored</div>
+                <div style={{ flex: 1, minWidth: 0, overflow: 'visible' }}>
+                  <div style={{ fontSize: '14px', fontWeight: '600', lineHeight: '18px', color: '#262626', overflow: 'visible', whiteSpace: 'nowrap' }}>{adData.username}</div>
+                  <div style={{ fontSize: '12px', color: '#8e8e8e', lineHeight: '16px' }}>Sponsored</div>
                 </div>
-                <div className="text-gray-400 flex-shrink-0" style={{ color: '#8a8d91', width: '24px', height: '24px' }}>
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" style={{ width: '20px', height: '20px' }}>
-                    <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                <div style={{ color: '#262626', width: '24px', height: '24px', flexShrink: 0 }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style={{ width: '24px', height: '24px', display: 'block' }}>
+                    <circle cx="12" cy="7" r="1.5" />
+                    <circle cx="12" cy="12" r="1.5" />
+                    <circle cx="12" cy="17" r="1.5" />
                   </svg>
                 </div>
               </div>
@@ -572,37 +614,70 @@ export default function InstagramAdMockupGenerator() {
               {/* Ad Image/Carousel */}
               <CarouselPreview adData={adData} />
 
-              {/* Engagement Bar */}
-              <div className="p-3" style={{ padding: '12px' }}>
-                <div className="flex items-center justify-between mb-2" style={{ marginBottom: '8px' }}>
-                  <div className="flex items-center space-x-4" style={{ gap: '16px' }}>
-                    <svg className="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 24 24" style={{ width: '24px', height: '24px', color: '#ed4956' }}>
-                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              {/* Content Section - CTA, Engagement, Caption */}
+              <div style={{ padding: '0' }}>
+                {/* CTA Button - Directly below image */}
+                <div style={{ padding: '12px 16px', backgroundColor: '#fff' }}>
+                  <button style={{ 
+                    width: '100%', 
+                    padding: '9px 16px', 
+                    backgroundColor: '#fff', 
+                    color: '#262626', 
+                    border: '1px solid #dbdbdb',
+                    borderRadius: '8px', 
+                    fontSize: '14px', 
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between'
+                  }}>
+                    <span>{adData.cta}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: '16px', height: '16px', flexShrink: 0 }}>
+                      <polyline points="9 18 15 12 9 6" />
                     </svg>
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '24px', height: '24px', color: '#262626', strokeWidth: '1.5' }}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                    </svg>
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '24px', height: '24px', color: '#262626', strokeWidth: '1.5' }}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                  </button>
+                </div>
+
+                {/* Engagement Icons */}
+                <div style={{ padding: '4px 16px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '4px', paddingBottom: '8px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      {/* Heart icon with count */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#262626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: '24px', height: '24px', minWidth: '24px', minHeight: '24px', display: 'block', flexShrink: 0 }}>
+                          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                        </svg>
+                        <span style={{ fontSize: '14px', color: '#262626', fontWeight: '400' }}>{adData.likes}</span>
+                      </div>
+                      
+                      {/* Comment icon with count */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#262626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: '24px', height: '24px', minWidth: '24px', minHeight: '24px', display: 'block', flexShrink: 0 }}>
+                          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                        </svg>
+                        <span style={{ fontSize: '14px', color: '#262626', fontWeight: '400' }}>56</span>
+                      </div>
+                      
+                      {/* Share icon */}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#262626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: '24px', height: '24px', minWidth: '24px', minHeight: '24px', display: 'block', flexShrink: 0 }}>
+                        <line x1="22" y1="2" x2="11" y2="13" />
+                        <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                      </svg>
+                    </div>
+                    
+                    {/* Bookmark icon */}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#262626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: '24px', height: '24px', minWidth: '24px', minHeight: '24px', display: 'block', flexShrink: 0 }}>
+                      <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
                     </svg>
                   </div>
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '24px', height: '24px', color: '#262626', strokeWidth: '1.5' }}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-                  </svg>
+                  
+                  <div style={{ fontSize: '14px', color: '#262626', lineHeight: '18px', marginBottom: '4px', marginTop: '4px' }}>
+                    <span style={{ fontWeight: '600' }}>{adData.username}</span> {adData.caption}
+                  </div>
+                  
+                  <div style={{ fontSize: '14px', color: '#8e8e8e', marginTop: '4px', marginBottom: '12px', cursor: 'pointer' }}>View all 56 comments</div>
                 </div>
-                
-                <div className="text-sm font-semibold mb-1" style={{ fontSize: '13px', fontWeight: '600', marginBottom: '4px', color: '#262626' }}>{adData.likes} likes</div>
-                
-                <div className="text-sm" style={{ fontSize: '13px', color: '#262626', lineHeight: '1.4' }}>
-                  <span className="font-semibold" style={{ fontWeight: '600' }}>{adData.username}</span> {adData.caption}
-                </div>
-                
-                <div className="text-xs text-gray-500 mt-2" style={{ fontSize: '12px', color: '#65676b', marginTop: '8px' }}>View all comments</div>
-                
-                {/* CTA Button */}
-                <button className="w-full mt-3 py-2 bg-blue-500 text-white rounded-md text-sm font-medium" style={{ marginTop: '12px', padding: '8px', backgroundColor: '#0a66c2', color: '#fff', borderRadius: '4px', fontSize: '13px', fontWeight: '600', border: 'none', cursor: 'pointer' }}>
-                  {adData.cta}
-                </button>
               </div>
             </div>
 
@@ -682,7 +757,7 @@ export default function InstagramAdMockupGenerator() {
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Can I download the mockups?</h3>
             <p className="text-gray-600">
-              Yes! Simply click the "Download as PNG" button to save your mockup in high-quality PNG format. 
+              Yes! Simply click the &quot;Download as PNG&quot; button to save your mockup in high-quality PNG format. 
               Perfect for presentations, client approvals, or team reviews before launching your actual 
               Instagram ad campaigns.
             </p>

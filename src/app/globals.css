@@ -61,10 +61,21 @@
   }
   
   /* Performance optimizations */
-  img, picture, video, canvas, svg {
+  img, picture, video, canvas {
     display: block;
     max-width: 100%;
     height: auto;
+  }
+  
+  /* Allow inline SVGs to maintain their dimensions */
+  svg {
+    display: inline-block !important;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+  
+  svg path {
+    pointer-events: none;
   }
   
   /* Force navbar background to be white */

@@ -6,30 +6,33 @@ export const downloadElementAsImage = async (
   backgroundColor = '#ffffff'
 ): Promise<void> => {
   try {
-    // Wait for any pending images and styles to load
-    await new Promise(resolve => setTimeout(resolve, 300));
+    // Wait for images to fully load
+    await new Promise(resolve => setTimeout(resolve, 1000));
     
-    // Get the actual dimensions of the element
-    const rect = element.getBoundingClientRect();
-    const width = Math.ceil(rect.width);
-    const height = Math.ceil(rect.height);
-    
-    // Use html2canvas with minimal options for better accuracy
+    // Use html2canvas directly without modifying the element
+    // html2canvas will handle overflow and rendering internally
     const canvas = await html2canvas(element, {
       scale: 2,
       useCORS: true,
       allowTaint: true,
       backgroundColor,
       logging: false,
-      // Don't transform or resize - use actual dimensions
-      width: element.offsetWidth,
-      height: element.offsetHeight,
-      // Ensure we capture the full element
-      windowHeight: document.documentElement.scrollHeight,
-      windowWidth: document.documentElement.scrollWidth,
+      // Let html2canvas handle dimensions automatically
+      windowWidth: element.offsetWidth,
+      windowHeight: element.offsetHeight,
+      // Capture everything
+      ignoreElements: (el: Element) => {
+        // Don't ignore any elements
+        return false;
+      },
+      timeout: 30000,
+      // Better rendering
+      foreignObjectRendering: false,
+      // Handle images properly
+      imageTimeout: 15000,
     } as any);
     
-    // Create image from canvas
+    // Convert canvas to PNG blob and download
     return new Promise((resolve, reject) => {
       try {
         canvas.toBlob(
@@ -38,19 +41,19 @@ export const downloadElementAsImage = async (
               throw new Error('Failed to create image blob');
             }
             
-            // Create download link and trigger download
+            // Create download link
             const url = URL.createObjectURL(blob);
             const link = document.createElement('a');
             link.href = url;
             link.download = filename;
             
-            // Append to body, click, and remove
+            // Trigger download
             document.body.appendChild(link);
             link.click();
+            document.body.removeChild(link);
             
-            // Cleanup after a short delay
+            // Cleanup
             setTimeout(() => {
-              document.body.removeChild(link);
               URL.revokeObjectURL(url);
               showSuccessNotification('Downloaded successfully!');
               resolve();

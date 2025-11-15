@@ -94,8 +94,6 @@ export default function TikTokAdMockupGenerator() {
         `tiktok-ad-mockup-${adData.format}-${Date.now()}.png`,
         '#000000'
       );
-    } catch (error) {
-      // Error handling is done in the utility
     } finally {
       setIsDownloading(false);
     }
