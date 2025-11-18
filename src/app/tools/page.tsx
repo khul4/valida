@@ -87,7 +87,7 @@ export default function ToolsHub() {
                 
               </h1>
               <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-5 relative z-20 px-4 sm:px-0">
-                A series of free tools for creator marketing, paid social, organic social, created by Arek
+                A series of free tools for digital marketers created by Arek
               </p>
               
             </div>
