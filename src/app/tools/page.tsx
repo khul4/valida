@@ -4,12 +4,12 @@ import Container from '@/components/ui/container';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free Marketing Calculators & Tools | Valida Analytics',
-  description: 'Access our comprehensive suite of free marketing calculators. Calculate CPM, CTR, CPA, ROAS, and bounce rate to optimize your marketing campaigns and improve ROI.',
-  keywords: 'marketing calculators, CPM calculator, CTR calculator, CPA calculator, ROAS calculator, bounce rate calculator, marketing tools, digital marketing, advertising metrics',
+  title: 'Free Digital Marketing Toolkit | Arek',
+  description: 'Access our comprehensive suite of free digital marketing tools to optimize your marketing campaigns.',
+  keywords: 'instagram ads mockup generator, facebook ads mockup, tiktok ads mockup generator, linkedin ads mockup generator, youtube ads mockup generator, marketing calculators, CPM calculator, CTR calculator, CPA calculator, ROAS calculator, bounce rate calculator, marketing tools, digital marketing, advertising metrics',
   openGraph: {
-    title: 'Free Marketing Calculators & Tools | Valida Analytics',
-    description: 'Access our comprehensive suite of free marketing calculators. Calculate CPM, CTR, CPA, ROAS, and bounce rate to optimize your marketing campaigns.',
+    title: 'Free Digital Marketing Toolkit | Arek',
+    description: 'Access our comprehensive suite of free digital marketing tools to optimize your marketing campaigns.',
     type: 'website',
   },
 };
