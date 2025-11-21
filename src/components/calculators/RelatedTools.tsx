@@ -47,6 +47,11 @@ const allTools: Tool[] = [
     href: '/tiktok-ad-mockup-generator',
     description: 'Create TikTok Ad Previews'
   },
+  {
+    name: 'UTM Builder',
+    href: '/utm-builder',
+    description: 'Create Campaign Tracking URLs'
+  },
 ];
 
 export default function RelatedTools({ currentTool }: RelatedToolsProps) {

@@ -72,6 +72,13 @@ const marketingTools: Tool[] = [
     features: ['Story & Story CTA formats', 'Video upload support', 'Real-time preview', 'TikTok UI simulation'],
     category: 'Creative Tools'
   },
+  {
+    name: 'UTM Builder',
+    href: '/utm-builder',
+    description: 'Create custom campaign URLs with UTM parameters to track your marketing campaigns in Google Analytics.',
+    features: ['Campaign tracking', 'URL generation', 'Parameter presets', 'Best practices guide'],
+    category: 'Analytics Tools'
+  },
 ];
 
 export default function ToolsHub() {
