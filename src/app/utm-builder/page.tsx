@@ -106,14 +106,14 @@ export default function UTMBuilderPage() {
                   <h4 className="text-lg font-bold text-gray-900 mb-2">1. Use Consistent Naming Conventions</h4>
                   <p className="text-gray-600">
                     Always use lowercase and be consistent with your naming. UTM parameters are case-sensitive, 
-                    so "Facebook" and "facebook" will be tracked as different sources.
+                    so &quot;Facebook&quot; and &quot;facebook&quot; will be tracked as different sources.
                   </p>
                 </div>
 
                 <div>
                   <h4 className="text-lg font-bold text-gray-900 mb-2">2. Avoid Spaces</h4>
                   <p className="text-gray-600">
-                    Use hyphens (-) or underscores (_) instead of spaces. For example, use "spring-sale" instead of "spring sale".
+                    Use hyphens (-) or underscores (_) instead of spaces. For example, use &quot;spring-sale&quot; instead of &quot;spring sale&quot;.
                   </p>
                 </div>
 
@@ -132,7 +132,7 @@ export default function UTMBuilderPage() {
                 </div>
 
                 <div>
-                  <h4 className="text-lg font-bold text-gray-900 mb-2">5. Don't Use UTMs for Internal Links</h4>
+                  <h4 className="text-lg font-bold text-gray-900 mb-2">5. Don&apos;t Use UTMs for Internal Links</h4>
                   <p className="text-gray-600">
                     Only use UTM parameters for external campaigns. Using them on internal links can mess up your analytics data.
                   </p>
