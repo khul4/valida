@@ -351,9 +351,9 @@ export default function YouTubeAdMockupGenerator() {
   );
 
   const renderMobileMockup = () => (
-    <div className="bg-black shadow-2xl rounded-2xl overflow-hidden" style={{ width: '375px' }}>
+    <div className="bg-black shadow-2xl rounded-2xl overflow-hidden" style={{ width: '300px' }}>
       {/* Mobile Video Player */}
-      <div className="relative bg-black group/mobile cursor-pointer" style={{ height: '667px' }} onClick={() => thumbnailInputRef.current?.click()}>
+      <div className="relative bg-black group/mobile cursor-pointer" style={{ height: '533px' }} onClick={() => thumbnailInputRef.current?.click()}>
         {/* Thumbnail/Video */}
         {adData.thumbnail ? (
           <img src={adData.thumbnail} alt="Ad thumbnail" className="w-full h-full object-cover" />
@@ -501,18 +501,13 @@ export default function YouTubeAdMockupGenerator() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-pink-50 py-12 px-4">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent mb-4">
-            🎬 YouTube Ad Mockup Generator
+        {/* Header & Controls */}
+        <div className="flex items-center justify-between mb-8 px-4">
+          {/* Title */}
+          <h1 className="text-2xl font-bold text-gray-900">
+            YouTube Ad Mockup
           </h1>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Create realistic YouTube ad previews. Click on any text to edit it directly.
-          </p>
-        </div>
 
-        {/* Controls */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-gray-200 mb-8 max-w-4xl mx-auto">
           {/* Hidden File Inputs */}
           <input
             ref={thumbnailInputRef}
@@ -529,29 +524,30 @@ export default function YouTubeAdMockupGenerator() {
             className="hidden"
           />
 
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          {/* Controls */}
+          <div className="flex items-center gap-3">
             {/* View Mode Toggle */}
-            <div className="flex gap-2 bg-gray-100 p-1 rounded-xl">
+            <div className="flex gap-1 bg-gray-100 p-1 rounded-lg">
               <button
                 onClick={() => setViewMode('desktop')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-sm font-medium transition-all ${
                   viewMode === 'desktop'
-                    ? 'bg-white shadow-md text-red-600'
+                    ? 'bg-white shadow text-gray-900'
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
-                <Monitor className="w-4 h-4" />
+                <Monitor className="w-3.5 h-3.5" />
                 Desktop
               </button>
               <button
                 onClick={() => setViewMode('mobile')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-sm font-medium transition-all ${
                   viewMode === 'mobile'
-                    ? 'bg-white shadow-md text-red-600'
+                    ? 'bg-white shadow text-gray-900'
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
-                <Smartphone className="w-4 h-4" />
+                <Smartphone className="w-3.5 h-3.5" />
                 Mobile
               </button>
             </div>
@@ -560,13 +556,12 @@ export default function YouTubeAdMockupGenerator() {
             <button
               onClick={handleDownload}
               disabled={isDownloading}
-              className="flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-xl font-medium hover:from-red-600 hover:to-pink-600 transition-all shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center gap-1.5 px-4 py-1.5 bg-gray-900 text-white rounded-lg text-sm font-medium hover:bg-gray-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <Download className="w-4 h-4" />
-              {isDownloading ? 'Downloading...' : 'Download Mockup'}
+              <Download className="w-3.5 h-3.5" />
+              {isDownloading ? 'Downloading...' : 'Download'}
             </button>
           </div>
-
         </div>
 
         {/* Preview */}
