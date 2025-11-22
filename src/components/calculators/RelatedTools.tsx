@@ -52,6 +52,11 @@ const allTools: Tool[] = [
     href: '/utm-builder',
     description: 'Create Campaign Tracking URLs'
   },
+  {
+    name: 'YouTube Ad Mockup Generator',
+    href: '/youtube-ad-mockup-generator',
+    description: 'Create YouTube Ad Previews'
+  },
 ];
 
 export default function RelatedTools({ currentTool }: RelatedToolsProps) {

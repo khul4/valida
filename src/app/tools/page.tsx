@@ -79,6 +79,13 @@ const marketingTools: Tool[] = [
     features: ['Campaign tracking', 'URL generation', 'Parameter presets', 'Best practices guide'],
     category: 'Analytics Tools'
   },
+  {
+    name: 'YouTube Ad Mockup Generator',
+    href: '/youtube-ad-mockup-generator',
+    description: 'Create realistic YouTube ad mockups for skippable, non-skippable, bumper, and display ads.',
+    features: ['All ad formats', 'Video preview', 'Custom branding', 'High-quality downloads'],
+    category: 'Creative Tools'
+  },
 ];
 
 export default function ToolsHub() {
