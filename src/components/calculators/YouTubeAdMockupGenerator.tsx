@@ -461,27 +461,6 @@ export default function YouTubeAdMockupGenerator() {
           </div>
         </div>
 
-        {/* Middle Content - Ad URL/Domain */}
-        {adData.adUrl && adData.adUrl !== 'yourbrand.com' && (
-          <div className="absolute top-1/2 left-4 right-20 -translate-y-1/2 z-20" onClick={(e) => e.stopPropagation()}>
-            <div 
-              contentEditable
-              suppressContentEditableWarning
-              onBlur={(e) => {
-                const text = e.currentTarget.textContent;
-                if (text !== null) setAdData(prev => ({ ...prev, adUrl: text }));
-              }}
-              className="text-white text-xl font-black outline-none cursor-text hover:bg-white/10 px-2 -mx-2 rounded line-clamp-3 leading-tight"
-              style={{ 
-                textShadow: '2px 2px 8px rgba(0,0,0,0.9), -1px -1px 0 rgba(0,0,0,0.5)',
-                WebkitTextStroke: '0.5px rgba(0,0,0,0.3)'
-              }}
-            >
-              {adData.adUrl}
-            </div>
-          </div>
-        )}
-
         {/* Bottom Content Overlay */}
         <div className="absolute bottom-16 left-0 right-0 pr-16 z-20" onClick={(e) => e.stopPropagation()}>
           <div className="px-3 pb-3 space-y-3">
