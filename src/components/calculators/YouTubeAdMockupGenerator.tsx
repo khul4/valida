@@ -66,7 +66,7 @@ export default function YouTubeAdMockupGenerator() {
       await downloadElementAsImage(
         mockupRef.current,
         `youtube-ad-mockup-${viewMode}.png`,
-        viewMode === 'desktop' ? '#ffffff' : '#0f0f0f'
+        viewMode === 'desktop' ? '#f5f5f5' : '#1a1a1a'
       );
     } catch (error) {
       console.error('Download failed:', error);
@@ -76,7 +76,8 @@ export default function YouTubeAdMockupGenerator() {
   };
 
   const renderDesktopMockup = () => (
-    <div className="bg-white shadow-2xl flex gap-6" style={{ width: '1280px' }}>
+    <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-6 rounded-2xl shadow-2xl">
+      <div className="bg-white shadow-xl flex gap-6 rounded-lg overflow-hidden" style={{ width: '1280px' }}>
       {/* Left: Main Video Section */}
       <div className="flex-1" style={{ maxWidth: '854px' }}>
         {/* Video Player */}
@@ -347,11 +348,13 @@ export default function YouTubeAdMockupGenerator() {
           </div>
         </div>
       </div>
+      </div>
     </div>
   );
 
   const renderMobileMockup = () => (
-    <div className="bg-black shadow-2xl rounded-2xl overflow-hidden relative" style={{ width: '300px', height: '650px' }}>
+    <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black p-4 rounded-[2.5rem] shadow-2xl" style={{ width: '360px' }}>
+      <div className="bg-black rounded-[2rem] overflow-hidden relative" style={{ width: '328px', height: '710px' }}>
       {/* Status Bar */}
       <div className="absolute top-0 left-0 right-0 h-10 z-50 flex items-center justify-between px-4 text-white text-xs">
         <div className="flex items-center gap-1">
@@ -462,8 +465,8 @@ export default function YouTubeAdMockupGenerator() {
         </div>
 
         {/* Bottom Content Overlay */}
-        <div className="absolute bottom-16 left-0 right-0 pr-16 z-20" onClick={(e) => e.stopPropagation()}>
-          <div className="px-3 pb-3 space-y-3">
+        <div className="absolute bottom-14 left-0 right-0 pr-14 z-20" onClick={(e) => e.stopPropagation()}>
+          <div className="px-3 pb-2 space-y-2.5">
             {/* Sponsor Info */}
             <div className="flex items-center gap-2.5">
               <div 
@@ -520,7 +523,7 @@ export default function YouTubeAdMockupGenerator() {
             </div>
 
             {/* CTA Button */}
-            <button className="w-full bg-white hover:bg-gray-100 text-black font-bold py-2.5 rounded-lg text-sm transition-colors shadow-lg">
+            <button className="w-full bg-white hover:bg-gray-100 text-black font-bold py-2 rounded-lg text-sm transition-colors shadow-lg">
               <span 
                 contentEditable
                 suppressContentEditableWarning
@@ -537,41 +540,42 @@ export default function YouTubeAdMockupGenerator() {
         </div>
 
         {/* Bottom Navigation Bar */}
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black via-black/95 to-transparent z-30 flex items-end justify-around pb-2 px-2">
-          <div className="flex flex-col items-center gap-1">
-            <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+        <div className="absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-black via-black/95 to-transparent z-30 flex items-end justify-around pb-1.5 px-2">
+          <div className="flex flex-col items-center gap-0.5">
+            <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
               <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
             </svg>
-            <span className="text-white text-[10px]">Home</span>
+            <span className="text-white text-[9px]">Home</span>
           </div>
-          <div className="flex flex-col items-center gap-1">
-            <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+          <div className="flex flex-col items-center gap-0.5">
+            <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
               <path d="M10 8v8l6-4-6-4zm11-5H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
             </svg>
-            <span className="text-white text-[10px]">Shorts</span>
+            <span className="text-white text-[9px]">Shorts</span>
           </div>
-          <div className="w-8 h-8 flex items-center justify-center -mt-2">
-            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
-              <svg className="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
+          <div className="w-7 h-7 flex items-center justify-center -mt-1">
+            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
+              <svg className="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
               </svg>
             </div>
           </div>
-          <div className="flex flex-col items-center gap-1">
-            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <div className="flex flex-col items-center gap-0.5">
+            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <rect x="3" y="3" width="7" height="7"/>
               <rect x="14" y="3" width="7" height="7"/>
               <rect x="14" y="14" width="7" height="7"/>
               <rect x="3" y="14" width="7" height="7"/>
             </svg>
-            <span className="text-white text-[10px]">Subscriptions</span>
+            <span className="text-white text-[9px]">Subs</span>
           </div>
-          <div className="flex flex-col items-center gap-1">
-            <div className="w-6 h-6 rounded-full bg-blue-500 border-2 border-white"></div>
-            <span className="text-white text-[10px]">You</span>
+          <div className="flex flex-col items-center gap-0.5">
+            <div className="w-5 h-5 rounded-full bg-blue-500 border-2 border-white"></div>
+            <span className="text-white text-[9px]">You</span>
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 
@@ -644,8 +648,10 @@ export default function YouTubeAdMockupGenerator() {
 
         {/* Preview */}
         <div className="flex justify-center mb-12 overflow-x-auto px-2">
-          <div ref={mockupRef} className="inline-block" style={{ transform: viewMode === 'desktop' ? 'scale(0.8)' : 'scale(1)', transformOrigin: 'top center' }}>
-            {viewMode === 'desktop' ? renderDesktopMockup() : renderMobileMockup()}
+          <div className={viewMode === 'desktop' ? 'scale-75 origin-top' : ''}>
+            <div ref={mockupRef} className="inline-block">
+              {viewMode === 'desktop' ? renderDesktopMockup() : renderMobileMockup()}
+            </div>
           </div>
         </div>
 
