@@ -24,7 +24,7 @@ const initialAdData: AdData = {
   adUrl: 'yourbrand.com',
   ctaText: 'Shop Now',
   adIcon: '',
-  advertiserText: 'Visit advertiser',
+  advertiserText: 'yourbrand.com',
 };
 
 export default function YouTubeAdMockupGenerator() {
@@ -178,7 +178,7 @@ export default function YouTubeAdMockupGenerator() {
               
               {/* Sponsored Label */}
               <div className="px-3 pb-2 flex items-center gap-2 text-xs">
-                <span className="text-gray-500">Sponsored</span>
+                <span className="text-white">Sponsored</span>
                 <span className="text-gray-600">•</span>
                 <div className="flex items-center gap-1">
                   <svg className="w-3 h-3 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
@@ -192,7 +192,7 @@ export default function YouTubeAdMockupGenerator() {
                       const text = e.currentTarget.textContent;
                       if (text !== null) setAdData(prev => ({ ...prev, advertiserText: text }));
                     }}
-                    className="text-gray-400 underline outline-none cursor-text hover:bg-white/10 px-1 -mx-1 rounded"
+                    className="text-white outline-none cursor-text hover:bg-white/10 px-1 -mx-1 rounded"
                   >
                     {adData.advertiserText}
                   </span>
@@ -351,9 +351,37 @@ export default function YouTubeAdMockupGenerator() {
   );
 
   const renderMobileMockup = () => (
-    <div className="bg-black shadow-2xl rounded-2xl overflow-hidden" style={{ width: '300px' }}>
+    <div className="bg-black shadow-2xl rounded-2xl overflow-hidden relative" style={{ width: '300px', height: '650px' }}>
+      {/* Status Bar */}
+      <div className="absolute top-0 left-0 right-0 h-10 z-50 flex items-center justify-between px-4 text-white text-xs">
+        <div className="flex items-center gap-1">
+          <span className="font-medium">8:20</span>
+          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9z"/>
+            <path d="M9 17l3 3 3-3c-1.65-1.66-4.34-1.66-6 0z"/>
+            <path d="M5 13l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/>
+          </svg>
+        </div>
+        <div className="flex items-center gap-1">
+          <span className="text-[10px]">4G+</span>
+          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/>
+          </svg>
+          <span className="text-[10px] border border-white px-1 rounded">86</span>
+        </div>
+      </div>
+
       {/* Mobile Video Player */}
-      <div className="relative bg-black group/mobile cursor-pointer" style={{ height: '533px' }} onClick={() => thumbnailInputRef.current?.click()}>
+      <div className="relative bg-black group/mobile cursor-pointer h-full" onClick={() => thumbnailInputRef.current?.click()}>
+        {/* Back Button */}
+        <div className="absolute top-12 left-4 z-50">
+          <div className="w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center">
+            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </div>
+        </div>
+
         {/* Thumbnail/Video */}
         {adData.thumbnail ? (
           <img src={adData.thumbnail} alt="Ad thumbnail" className="w-full h-full object-cover" />
@@ -363,41 +391,111 @@ export default function YouTubeAdMockupGenerator() {
               <svg className="w-16 h-16 text-gray-700 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z"/>
               </svg>
-              <p className="text-gray-600 text-xs">Click to upload thumbnail</p>
+              <p className="text-gray-600 text-xs">Click to upload</p>
             </div>
           </div>
         )}
         {/* Hover Overlay */}
         {adData.thumbnail && (
-          <div className="absolute inset-0 bg-black/0 group-hover/mobile:bg-black/50 transition-colors flex items-center justify-center opacity-0 group-hover/mobile:opacity-100">
+          <div className="absolute inset-0 bg-black/0 group-hover/mobile:bg-black/50 transition-colors flex items-center justify-center opacity-0 group-hover/mobile:opacity-100 z-10">
             <div className="text-center">
               <Upload className="w-10 h-10 text-white mx-auto mb-2" />
-              <p className="text-white font-medium text-sm">Click to change thumbnail</p>
+              <p className="text-white font-medium text-sm">Click to change</p>
             </div>
           </div>
         )}
 
-        {/* Skip Ad Button */}
-        <div className="absolute top-3 right-3 z-10">
-          <div className="bg-black/80 backdrop-blur-sm px-2.5 py-1 rounded text-xs text-white font-medium">
-            Skip Ad
+        {/* Right Side Interaction Buttons */}
+        <div className="absolute right-2 bottom-32 z-20 flex flex-col gap-5" onClick={(e) => e.stopPropagation()}>
+          {/* Like Button */}
+          <div className="flex flex-col items-center gap-1">
+            <div className="w-10 h-10 flex items-center justify-center">
+              <svg className="w-7 h-7 text-white drop-shadow-lg" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
+              </svg>
+            </div>
+            <span className="text-white text-xs font-medium drop-shadow-lg">1.4K</span>
+          </div>
+
+          {/* Dislike Button */}
+          <div className="flex flex-col items-center gap-1">
+            <div className="w-10 h-10 flex items-center justify-center">
+              <svg className="w-7 h-7 text-white drop-shadow-lg" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                <path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/>
+              </svg>
+            </div>
+            <span className="text-white text-xs font-medium drop-shadow-lg">Dislike</span>
+          </div>
+
+          {/* Comment Button */}
+          <div className="flex flex-col items-center gap-1">
+            <div className="w-10 h-10 flex items-center justify-center relative">
+              <svg className="w-7 h-7 text-white drop-shadow-lg" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <span className="text-white text-xs font-medium drop-shadow-lg">0</span>
+          </div>
+
+          {/* Share Button */}
+          <div className="flex flex-col items-center gap-1">
+            <div className="w-10 h-10 flex items-center justify-center">
+              <svg className="w-7 h-7 text-white drop-shadow-lg" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                <polyline points="16 6 12 2 8 6"/>
+                <line x1="12" y1="2" x2="12" y2="15"/>
+              </svg>
+            </div>
+            <span className="text-white text-xs font-medium drop-shadow-lg">Share</span>
+          </div>
+
+          {/* Three Dots Menu */}
+          <div className="flex flex-col items-center">
+            <div className="w-10 h-10 flex items-center justify-center">
+              <svg className="w-6 h-6 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
+                <circle cx="12" cy="5" r="2"/>
+                <circle cx="12" cy="12" r="2"/>
+                <circle cx="12" cy="19" r="2"/>
+              </svg>
+            </div>
           </div>
         </div>
 
-        {/* Ad Info Overlay - Bottom */}
-        <div className="absolute bottom-0 left-0 right-0 bg-[#181818]/95 backdrop-blur-sm" onClick={(e) => e.stopPropagation()}>
-          <div className="p-3 space-y-2.5">
-            {/* Ad Icon Section */}
+        {/* Middle Content - Ad URL/Domain */}
+        {adData.adUrl && adData.adUrl !== 'yourbrand.com' && (
+          <div className="absolute top-1/2 left-4 right-20 -translate-y-1/2 z-20" onClick={(e) => e.stopPropagation()}>
+            <div 
+              contentEditable
+              suppressContentEditableWarning
+              onBlur={(e) => {
+                const text = e.currentTarget.textContent;
+                if (text !== null) setAdData(prev => ({ ...prev, adUrl: text }));
+              }}
+              className="text-white text-xl font-black outline-none cursor-text hover:bg-white/10 px-2 -mx-2 rounded line-clamp-3 leading-tight"
+              style={{ 
+                textShadow: '2px 2px 8px rgba(0,0,0,0.9), -1px -1px 0 rgba(0,0,0,0.5)',
+                WebkitTextStroke: '0.5px rgba(0,0,0,0.3)'
+              }}
+            >
+              {adData.adUrl}
+            </div>
+          </div>
+        )}
+
+        {/* Bottom Content Overlay */}
+        <div className="absolute bottom-16 left-0 right-0 pr-16 z-20" onClick={(e) => e.stopPropagation()}>
+          <div className="px-3 pb-3 space-y-3">
+            {/* Sponsor Info */}
             <div className="flex items-center gap-2.5">
               <div 
-                className="w-10 h-10 rounded flex-shrink-0 flex items-center justify-center cursor-pointer group/icon-mobile relative overflow-hidden"
-                style={{ backgroundColor: adData.adIcon ? 'transparent' : '#f97316' }}
+                className="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center cursor-pointer group/icon-mobile relative overflow-hidden ring-2 ring-white/20"
+                style={{ backgroundColor: adData.adIcon ? 'transparent' : 'rgb(220, 38, 38)' }}
                 onClick={() => adIconInputRef.current?.click()}
               >
                 {adData.adIcon ? (
                   <>
-                    <img src={adData.adIcon} alt="Ad icon" className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-black/0 group-hover/icon-mobile:bg-black/50 transition-colors flex items-center justify-center opacity-0 group-hover/icon-mobile:opacity-100">
+                    <img src={adData.adIcon} alt="Ad icon" className="w-full h-full object-cover rounded-full" />
+                    <div className="absolute inset-0 bg-black/0 group-hover/icon-mobile:bg-black/50 transition-colors flex items-center justify-center opacity-0 group-hover/icon-mobile:opacity-100 rounded-full">
                       <Upload className="w-4 h-4 text-white" />
                     </div>
                   </>
@@ -407,30 +505,29 @@ export default function YouTubeAdMockupGenerator() {
                       <rect x="2" y="2" width="20" height="20" rx="2" />
                       <text x="12" y="16" fontSize="12" textAnchor="middle" fill="currentColor" fontWeight="bold">Ad</text>
                     </svg>
-                    <div className="absolute inset-0 bg-black/0 group-hover/icon-mobile:bg-black/30 transition-colors flex items-center justify-center opacity-0 group-hover/icon-mobile:opacity-100">
+                    <div className="absolute inset-0 bg-black/0 group-hover/icon-mobile:bg-black/30 transition-colors flex items-center justify-center opacity-0 group-hover/icon-mobile:opacity-100 rounded-full">
                       <Upload className="w-3 h-3 text-white" />
                     </div>
                   </>
                 )}
               </div>
-              <div className="flex-1 flex items-center gap-1.5 text-xs">
-                <span className="text-gray-400">Sponsored</span>
-                <span className="text-gray-500">•</span>
-                <span 
+              <div className="flex-1 min-w-0">
+                <div 
                   contentEditable
                   suppressContentEditableWarning
                   onBlur={(e) => {
                     const text = e.currentTarget.textContent;
-                    if (text !== null) setAdData(prev => ({ ...prev, advertiserText: text }));
+                    if (text !== null) setAdData(prev => ({ ...prev, channelName: text }));
                   }}
-                  className="text-gray-400 underline outline-none cursor-text hover:bg-white/10 px-1 -mx-1 rounded"
+                  className="text-white text-sm font-bold outline-none cursor-text hover:bg-white/10 px-1 -mx-1 rounded drop-shadow-lg"
                 >
-                  {adData.advertiserText}
-                </span>
+                  {adData.channelName}
+                </div>
+                <div className="text-white/90 text-xs drop-shadow-lg">Sponsored</div>
               </div>
             </div>
 
-            {/* Ad Title */}
+            {/* Ad Title/Description */}
             <div 
               contentEditable
               suppressContentEditableWarning
@@ -438,48 +535,13 @@ export default function YouTubeAdMockupGenerator() {
                 const text = e.currentTarget.textContent;
                 if (text !== null) setAdData(prev => ({ ...prev, adTitle: text }));
               }}
-              className="text-white text-sm font-medium outline-none cursor-text hover:bg-white/10 px-1 -mx-1 rounded line-clamp-2"
+              className="text-white text-xs outline-none cursor-text hover:bg-white/10 px-1 -mx-1 rounded line-clamp-2 drop-shadow-lg"
             >
               {adData.adTitle}
             </div>
 
-            {/* Channel Info */}
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-red-500 to-pink-500 flex-shrink-0 flex items-center justify-center text-white font-bold text-xs">
-                {adData.channelName.charAt(0).toUpperCase()}
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-1.5 text-xs">
-                  <span 
-                    contentEditable
-                    suppressContentEditableWarning
-                    onBlur={(e) => {
-                      const text = e.currentTarget.textContent;
-                      if (text !== null) setAdData(prev => ({ ...prev, channelName: text }));
-                    }}
-                    className="text-[#aaa] outline-none cursor-text hover:bg-white/10 px-1 -mx-1 rounded"
-                  >
-                    {adData.channelName}
-                  </span>
-                  <span className="text-[#aaa]">•</span>
-                  <span className="text-[#aaa]">Ad</span>
-                </div>
-                <div 
-                  contentEditable
-                  suppressContentEditableWarning
-                  onBlur={(e) => {
-                    const text = e.currentTarget.textContent;
-                    if (text !== null) setAdData(prev => ({ ...prev, adUrl: text }));
-                  }}
-                  className="text-[#3ea6ff] text-xs outline-none cursor-text hover:bg-white/10 px-1 -mx-1 rounded"
-                >
-                  {adData.adUrl}
-                </div>
-              </div>
-            </div>
-
             {/* CTA Button */}
-            <button className="w-full bg-[#065fd4] hover:bg-[#0c69de] text-white font-medium py-2.5 rounded text-sm transition-colors">
+            <button className="w-full bg-white hover:bg-gray-100 text-black font-bold py-2.5 rounded-lg text-sm transition-colors shadow-lg">
               <span 
                 contentEditable
                 suppressContentEditableWarning
@@ -494,6 +556,42 @@ export default function YouTubeAdMockupGenerator() {
             </button>
           </div>
         </div>
+
+        {/* Bottom Navigation Bar */}
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black via-black/95 to-transparent z-30 flex items-end justify-around pb-2 px-2">
+          <div className="flex flex-col items-center gap-1">
+            <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </svg>
+            <span className="text-white text-[10px]">Home</span>
+          </div>
+          <div className="flex flex-col items-center gap-1">
+            <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M10 8v8l6-4-6-4zm11-5H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+            </svg>
+            <span className="text-white text-[10px]">Shorts</span>
+          </div>
+          <div className="w-8 h-8 flex items-center justify-center -mt-2">
+            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+              <svg className="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+              </svg>
+            </div>
+          </div>
+          <div className="flex flex-col items-center gap-1">
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+            </svg>
+            <span className="text-white text-[10px]">Subscriptions</span>
+          </div>
+          <div className="flex flex-col items-center gap-1">
+            <div className="w-6 h-6 rounded-full bg-blue-500 border-2 border-white"></div>
+            <span className="text-white text-[10px]">You</span>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -502,9 +600,9 @@ export default function YouTubeAdMockupGenerator() {
     <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-pink-50 py-12 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header & Controls */}
-        <div className="flex items-center justify-between mb-8 px-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 px-2 sm:px-4">
           {/* Title */}
-          <h1 className="text-2xl font-bold text-gray-900">
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
             YouTube Ad Mockup
           </h1>
 
@@ -525,12 +623,12 @@ export default function YouTubeAdMockupGenerator() {
           />
 
           {/* Controls */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             {/* View Mode Toggle */}
-            <div className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+            <div className="flex gap-0.5 sm:gap-1 bg-gray-100 p-0.5 sm:p-1 rounded-lg">
               <button
                 onClick={() => setViewMode('desktop')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-sm font-medium transition-all ${
+                className={`flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded text-xs sm:text-sm font-medium transition-all ${
                   viewMode === 'desktop'
                     ? 'bg-white shadow text-gray-900'
                     : 'text-gray-600 hover:text-gray-900'
@@ -556,17 +654,18 @@ export default function YouTubeAdMockupGenerator() {
             <button
               onClick={handleDownload}
               disabled={isDownloading}
-              className="flex items-center gap-1.5 px-4 py-1.5 bg-gray-900 text-white rounded-lg text-sm font-medium hover:bg-gray-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center gap-1 sm:gap-1.5 px-3 sm:px-4 py-1 sm:py-1.5 bg-gray-900 text-white rounded-lg text-xs sm:text-sm font-medium hover:bg-gray-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <Download className="w-3.5 h-3.5" />
-              {isDownloading ? 'Downloading...' : 'Download'}
+              <Download className="w-3 sm:w-3.5 h-3 sm:h-3.5" />
+              <span className="hidden sm:inline">{isDownloading ? 'Downloading...' : 'Download'}</span>
+              <span className="sm:hidden">{isDownloading ? '...' : 'Save'}</span>
             </button>
           </div>
         </div>
 
         {/* Preview */}
-        <div className="flex justify-center mb-12">
-          <div ref={mockupRef} className="inline-block">
+        <div className="flex justify-center mb-12 overflow-x-auto px-2">
+          <div ref={mockupRef} className="inline-block" style={{ transform: viewMode === 'desktop' ? 'scale(0.8)' : 'scale(1)', transformOrigin: 'top center' }}>
             {viewMode === 'desktop' ? renderDesktopMockup() : renderMobileMockup()}
           </div>
         </div>
