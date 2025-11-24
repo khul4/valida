@@ -388,15 +388,24 @@ export default function YouTubeAdMockupGenerator() {
           </div>
 
           {/* Thumbnail/Video */}
-          <div className="absolute inset-0 flex items-center justify-center bg-black">
+          <div className="absolute inset-0 bg-black">
             {adData.thumbnail ? (
-              <img src={adData.thumbnail} alt="Ad thumbnail" className="max-w-full max-h-full object-contain" />
+              <>
+                <img src={adData.thumbnail} alt="Ad thumbnail" className="w-full h-full object-cover" />
+                {/* Black blur gradient at bottom */}
+                <div className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none" style={{ 
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0) 100%)',
+                  backdropFilter: 'blur(2px)'
+                }}></div>
+              </>
             ) : (
-              <div className="text-center px-4">
-                <svg className="w-16 h-16 text-gray-700 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-                <p className="text-gray-600 text-xs">Click to upload</p>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center px-4">
+                  <svg className="w-16 h-16 text-gray-700 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                  <p className="text-gray-600 text-xs">Click to upload</p>
+                </div>
               </div>
             )}
           </div>
@@ -468,7 +477,7 @@ export default function YouTubeAdMockupGenerator() {
         </div>
 
         {/* Bottom Content Overlay */}
-        <div className="absolute left-0 right-0 z-40" data-bottom-content="true" style={{ bottom: '56px', background: 'linear-gradient(to top, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.95) 60%, rgba(0,0,0,0.7) 100%)', paddingTop: '32px', paddingBottom: '16px', paddingLeft: '12px', paddingRight: '56px' }} onClick={(e) => e.stopPropagation()}>
+        <div className="absolute left-0 right-0 z-40" data-bottom-content="true" style={{ bottom: '56px', paddingTop: '32px', paddingBottom: '16px', paddingLeft: '12px', paddingRight: '56px' }} onClick={(e) => e.stopPropagation()}>
             {/* Sponsor Info */}
             <div className="flex items-center" style={{ marginBottom: '12px', gap: '12px' }}>
               <div 
