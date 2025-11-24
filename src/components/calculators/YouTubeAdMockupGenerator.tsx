@@ -84,7 +84,7 @@ export default function YouTubeAdMockupGenerator() {
         <div className="relative bg-black group cursor-pointer" style={{ height: '480px' }} onClick={() => thumbnailInputRef.current?.click()}>
           {/* Thumbnail/Video */}
           {adData.thumbnail ? (
-            <img src={adData.thumbnail} alt="Ad thumbnail" className="w-full h-full object-cover" />
+            <img src={adData.thumbnail} alt="Ad thumbnail" className="w-full h-full object-contain bg-black" />
           ) : (
             <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-900 to-black">
               <div className="text-center">
@@ -117,7 +117,7 @@ export default function YouTubeAdMockupGenerator() {
                 >
                   {adData.adIcon ? (
                     <>
-                      <img src={adData.adIcon} alt="Ad icon" className="w-full h-full object-cover" />
+                      <img src={adData.adIcon} alt="Ad icon" className="w-full h-full object-contain" />
                       <div className="absolute inset-0 bg-black/0 group-hover/icon:bg-black/50 transition-colors flex items-center justify-center opacity-0 group-hover/icon:opacity-100">
                         <Upload className="w-5 h-5 text-white" />
                       </div>
@@ -354,7 +354,7 @@ export default function YouTubeAdMockupGenerator() {
 
   const renderMobileMockup = () => (
     <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black p-4 rounded-[2.5rem] shadow-2xl" style={{ width: '360px' }}>
-      <div className="bg-black rounded-[2rem] overflow-hidden relative" style={{ width: '328px', height: '710px' }}>
+      <div className="bg-black rounded-[2rem] relative" style={{ width: '328px', height: '740px', overflow: 'hidden' }}>
       {/* Status Bar */}
       <div className="absolute top-0 left-0 right-0 h-10 z-50 flex items-center justify-between px-4 text-white text-xs">
         <div className="flex items-center gap-1">
@@ -375,41 +375,43 @@ export default function YouTubeAdMockupGenerator() {
       </div>
 
       {/* Mobile Video Player */}
-      <div className="relative bg-black group/mobile cursor-pointer h-full" onClick={() => thumbnailInputRef.current?.click()}>
-        {/* Back Button */}
-        <div className="absolute top-12 left-4 z-50">
-          <div className="w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center">
-            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-              <path d="M15 18l-6-6 6-6"/>
-            </svg>
-          </div>
-        </div>
-
-        {/* Thumbnail/Video */}
-        {adData.thumbnail ? (
-          <img src={adData.thumbnail} alt="Ad thumbnail" className="w-full h-full object-cover" />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-900 to-black">
-            <div className="text-center px-4">
-              <svg className="w-16 h-16 text-gray-700 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
+      <div className="relative bg-black h-full flex flex-col">
+        {/* Video Area with Click Handler */}
+        <div className="flex-1 relative group/mobile cursor-pointer" onClick={() => thumbnailInputRef.current?.click()}>
+          {/* Back Button */}
+          <div className="absolute top-12 left-4 z-50">
+            <div className="w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center">
+              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <path d="M15 18l-6-6 6-6"/>
               </svg>
-              <p className="text-gray-600 text-xs">Click to upload</p>
             </div>
           </div>
-        )}
-        {/* Hover Overlay */}
-        {adData.thumbnail && (
-          <div className="absolute inset-0 bg-black/0 group-hover/mobile:bg-black/50 transition-colors flex items-center justify-center opacity-0 group-hover/mobile:opacity-100 z-10">
-            <div className="text-center">
-              <Upload className="w-10 h-10 text-white mx-auto mb-2" />
-              <p className="text-white font-medium text-sm">Click to change</p>
-            </div>
-          </div>
-        )}
 
-        {/* Right Side Interaction Buttons */}
-        <div className="absolute right-2 bottom-32 z-20 flex flex-col gap-5" onClick={(e) => e.stopPropagation()}>
+          {/* Thumbnail/Video */}
+          <div className="absolute inset-0 flex items-center justify-center bg-black">
+            {adData.thumbnail ? (
+              <img src={adData.thumbnail} alt="Ad thumbnail" className="max-w-full max-h-full object-contain" />
+            ) : (
+              <div className="text-center px-4">
+                <svg className="w-16 h-16 text-gray-700 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+                <p className="text-gray-600 text-xs">Click to upload</p>
+              </div>
+            )}
+          </div>
+          {/* Hover Overlay */}
+          {adData.thumbnail && (
+            <div className="absolute inset-0 bg-black/0 group-hover/mobile:bg-black/50 transition-colors flex items-center justify-center opacity-0 group-hover/mobile:opacity-100 z-10">
+              <div className="text-center">
+                <Upload className="w-10 h-10 text-white mx-auto mb-2" />
+                <p className="text-white font-medium text-sm">Click to change</p>
+              </div>
+            </div>
+          )}
+
+          {/* Right Side Interaction Buttons */}
+          <div className="absolute right-2 bottom-8 z-20 flex flex-col gap-5" onClick={(e) => e.stopPropagation()}>
           {/* Like Button */}
           <div className="flex flex-col items-center gap-1">
             <div className="w-10 h-10 flex items-center justify-center">
@@ -463,20 +465,20 @@ export default function YouTubeAdMockupGenerator() {
             </div>
           </div>
         </div>
+        </div>
 
         {/* Bottom Content Overlay */}
-        <div className="absolute bottom-14 left-0 right-0 pr-14 z-20" onClick={(e) => e.stopPropagation()}>
-          <div className="px-3 pb-2 space-y-2.5">
+        <div className="absolute left-0 right-0 z-40" data-bottom-content="true" style={{ bottom: '56px', background: 'linear-gradient(to top, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.95) 60%, rgba(0,0,0,0.7) 100%)', paddingTop: '32px', paddingBottom: '16px', paddingLeft: '12px', paddingRight: '56px' }} onClick={(e) => e.stopPropagation()}>
             {/* Sponsor Info */}
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center" style={{ marginBottom: '12px', gap: '12px' }}>
               <div 
-                className="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center cursor-pointer group/icon-mobile relative overflow-hidden ring-2 ring-white/20"
-                style={{ backgroundColor: adData.adIcon ? 'transparent' : 'rgb(220, 38, 38)' }}
+                className="w-11 h-11 rounded-full flex-shrink-0 flex items-center justify-center cursor-pointer group/icon-mobile relative overflow-hidden"
+                style={{ backgroundColor: adData.adIcon ? '#ffffff' : 'rgb(220, 38, 38)', border: '2px solid rgba(255,255,255,0.4)', padding: '2px' }}
                 onClick={() => adIconInputRef.current?.click()}
               >
                 {adData.adIcon ? (
                   <>
-                    <img src={adData.adIcon} alt="Ad icon" className="w-full h-full object-cover rounded-full" />
+                    <img src={adData.adIcon} alt="Ad icon" data-ad-icon="true" className="w-full h-full object-contain rounded-full" />
                     <div className="absolute inset-0 bg-black/0 group-hover/icon-mobile:bg-black/50 transition-colors flex items-center justify-center opacity-0 group-hover/icon-mobile:opacity-100 rounded-full">
                       <Upload className="w-4 h-4 text-white" />
                     </div>
@@ -501,11 +503,13 @@ export default function YouTubeAdMockupGenerator() {
                     const text = e.currentTarget.textContent;
                     if (text !== null) setAdData(prev => ({ ...prev, channelName: text }));
                   }}
-                  className="text-white text-sm font-bold outline-none cursor-text hover:bg-white/10 px-1 -mx-1 rounded drop-shadow-lg"
+                  data-channel-name="true"
+                  className="font-bold outline-none cursor-text hover:bg-white/10 px-1 -mx-1 rounded"
+                  style={{ color: '#ffffff', fontSize: '14px', lineHeight: '1.3', textShadow: '0 2px 6px rgba(0,0,0,0.9)' }}
                 >
                   {adData.channelName}
                 </div>
-                <div className="text-white/90 text-xs drop-shadow-lg">Sponsored</div>
+                <div className="font-medium" style={{ color: '#ffffff', fontSize: '11px', marginTop: '2px', textShadow: '0 2px 6px rgba(0,0,0,0.9)', opacity: 0.9 }}>Sponsored</div>
               </div>
             </div>
 
@@ -517,13 +521,15 @@ export default function YouTubeAdMockupGenerator() {
                 const text = e.currentTarget.textContent;
                 if (text !== null) setAdData(prev => ({ ...prev, adTitle: text }));
               }}
-              className="text-white text-xs outline-none cursor-text hover:bg-white/10 px-1 -mx-1 rounded line-clamp-2 drop-shadow-lg"
+              data-ad-title="true"
+              className="outline-none cursor-text hover:bg-white/10 px-1 -mx-1 rounded line-clamp-2"
+              style={{ color: '#ffffff', fontSize: '13px', lineHeight: '1.4', marginBottom: '12px', textShadow: '0 2px 6px rgba(0,0,0,0.9)' }}
             >
               {adData.adTitle}
             </div>
 
             {/* CTA Button */}
-            <button className="w-full bg-white hover:bg-gray-100 text-black font-bold py-2 rounded-lg text-sm transition-colors shadow-lg">
+            <button className="w-full font-bold rounded-lg transition-colors" style={{ backgroundColor: '#ffffff', color: '#000000', padding: '11px 16px', fontSize: '14px', boxShadow: '0 4px 8px rgba(0,0,0,0.4)', marginTop: '2px' }}>
               <span 
                 contentEditable
                 suppressContentEditableWarning
@@ -531,7 +537,9 @@ export default function YouTubeAdMockupGenerator() {
                   const text = e.currentTarget.textContent;
                   if (text !== null) setAdData(prev => ({ ...prev, ctaText: text }));
                 }}
+                data-cta-text="true"
                 className="outline-none cursor-text"
+                style={{ color: '#000000' }}
               >
                 {adData.ctaText}
               </span>
@@ -575,7 +583,6 @@ export default function YouTubeAdMockupGenerator() {
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 
