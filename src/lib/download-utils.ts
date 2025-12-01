@@ -36,14 +36,6 @@ export const downloadElementAsImage = async (
         const w = rect.width * scale;
         const h = rect.height * scale;
         
-        // Draw gradient background
-        const gradient = ctx.createLinearGradient(x, y + h, x, y);
-        gradient.addColorStop(0, 'rgba(0, 0, 0, 0.98)');
-        gradient.addColorStop(0.6, 'rgba(0, 0, 0, 0.95)');
-        gradient.addColorStop(1, 'rgba(0, 0, 0, 0.7)');
-        ctx.fillStyle = gradient;
-        ctx.fillRect(x, y, w, h);
-        
         // Get text content
         const channelName = bottomContent.querySelector('[data-channel-name]')?.textContent || '';
         const adTitle = bottomContent.querySelector('[data-ad-title]')?.textContent || '';
@@ -58,18 +50,29 @@ export const downloadElementAsImage = async (
           await new Promise((resolve) => {
             icon.onload = () => {
               ctx.save();
-              // Draw white circle background for icon
+              // Draw white circle background for icon with shadow
+              ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+              ctx.shadowBlur = 12;
+              ctx.shadowOffsetX = 0;
+              ctx.shadowOffsetY = 3;
               ctx.fillStyle = '#ffffff';
               ctx.beginPath();
-              ctx.arc(x + 51, y + 123, 51, 0, Math.PI * 2);
+              const iconSize = 108; // w-12 = 48px * 3 scale minus padding
+              const iconRadius = iconSize / 2;
+              const iconX = x + 42; // paddingLeft 14px * 3
+              const iconY = y + 144; // paddingTop 48px * 3
+              const iconCenterX = iconX + iconRadius;
+              const iconCenterY = iconY + iconRadius;
+              ctx.arc(iconCenterX, iconCenterY, iconRadius, 0, Math.PI * 2);
               ctx.fill();
               
               // Draw icon with circular clip
+              ctx.shadowBlur = 0;
               ctx.beginPath();
-              ctx.arc(x + 51, y + 123, 48, 0, Math.PI * 2);
+              ctx.arc(iconCenterX, iconCenterY, iconRadius - 9, 0, Math.PI * 2);
               ctx.closePath();
               ctx.clip();
-              ctx.drawImage(icon, x + 3, y + 75, 96, 96);
+              ctx.drawImage(icon, iconX + 6, iconY + 6, iconSize - 12, iconSize - 12);
               ctx.restore();
               resolve(null);
             };
@@ -81,28 +84,44 @@ export const downloadElementAsImage = async (
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
         
-        // Draw channel name
+        // Draw channel name with enhanced shadow
         ctx.fillStyle = '#ffffff';
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.9)';
-        ctx.shadowBlur = 18;
+        ctx.shadowColor = 'rgba(0, 0, 0, 1)';
+        ctx.shadowBlur = 42;
         ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 12;
+        ctx.font = '700 48px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+        const textX = x + 42 + 108 + 48; // paddingLeft + iconSize + gap(16px * 3)
+        const textStartY = y + 144 + 12; // align with icon center-ish
+        ctx.fillText(channelName, textX, textStartY);
+        // Double shadow for extra depth
+        ctx.shadowBlur = 24;
         ctx.shadowOffsetY = 6;
-        ctx.font = 'bold 42px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-        ctx.fillText(channelName, x + 120, y + 102);
+        ctx.fillText(channelName, textX, textStartY);
         
-        // Draw "Sponsored" text
-        ctx.font = '500 33px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+        // Draw "Sponsored" text with enhanced shadow
+        ctx.shadowBlur = 36;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 9;
+        ctx.font = '600 36px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
         ctx.globalAlpha = 0.9;
-        ctx.fillText('Sponsored', x + 120, y + 150);
+        ctx.fillText('Sponsored', textX, textStartY + 54); // marginTop 2px * 3 + font height
+        // Double shadow
+        ctx.shadowBlur = 21;
+        ctx.shadowOffsetY = 6;
+        ctx.fillText('Sponsored', textX, textStartY + 54);
         ctx.globalAlpha = 1;
         
-        // Draw ad title
-        ctx.font = '400 39px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-        const maxWidth = w - 168;
+        // Draw ad title with better spacing and shadow
+        ctx.shadowBlur = 48;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 12;
+        ctx.font = '400 45px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+        const maxWidth = w - 108;
         const words = adTitle.split(' ');
         let line = '';
-        let lineY = y + 210;
-        const lineHeight = 50;
+        let lineY = y + 144 + 108 + 54; // paddingTop + icon + marginBottom(18px * 3)
+        const lineHeight = 63; // 15px * 1.4 * 3
         let lineCount = 0;
         
         for (let i = 0; i < words.length && lineCount < 2; i++) {
@@ -110,6 +129,11 @@ export const downloadElementAsImage = async (
           const metrics = ctx.measureText(testLine);
           if (metrics.width > maxWidth && i > 0) {
             ctx.fillText(line.trim(), x + 36, lineY);
+            ctx.shadowBlur = 24;
+            ctx.shadowOffsetY = 6;
+            ctx.fillText(line.trim(), x + 36, lineY);
+            ctx.shadowBlur = 42;
+            ctx.shadowOffsetY = 12;
             line = words[i] + ' ';
             lineY += lineHeight;
             lineCount++;
@@ -119,30 +143,35 @@ export const downloadElementAsImage = async (
         }
         if (lineCount < 2) {
           ctx.fillText(line.trim(), x + 36, lineY);
+          ctx.shadowBlur = 24;
+          ctx.shadowOffsetY = 6;
+          ctx.fillText(line.trim(), x + 36, lineY);
         }
         
-        // Draw CTA button
-        const buttonY = y + h - 102;
-        const buttonHeight = 96;
-        const buttonWidth = w - 168;
-        const buttonX = x + 36;
+        // Draw CTA button with proper centering and enhanced styling
+        const buttonY = y + h - 222; // h is total height, minus paddingBottom(22px*3) and button height
+        const buttonHeight = 156; // height 52px * 3
+        const buttonWidth = w - 84; // full width minus padding
+        const buttonX = x + 42; // paddingLeft 14px * 3
         
-        // Button shadow
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
-        ctx.shadowBlur = 24;
-        ctx.shadowOffsetY = 12;
+        // Button shadow - enhanced
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.85)';
+        ctx.shadowBlur = 84;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 24;
         ctx.fillStyle = '#ffffff';
         ctx.beginPath();
-        ctx.roundRect(buttonX, buttonY, buttonWidth, buttonHeight, 24);
+        ctx.roundRect(buttonX, buttonY, buttonWidth, buttonHeight, 36);
         ctx.fill();
         
-        // Button text
+        // Button text - perfectly centered
         ctx.shadowBlur = 0;
         ctx.shadowOffsetY = 0;
         ctx.fillStyle = '#000000';
-        ctx.font = 'bold 42px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+        ctx.font = '700 48px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillText(ctaText, buttonX + buttonWidth / 2, buttonY + 30);
+        ctx.textBaseline = 'middle';
+        ctx.fillText(ctaText, buttonX + buttonWidth / 2, buttonY + buttonHeight / 2);
       }
     }
     

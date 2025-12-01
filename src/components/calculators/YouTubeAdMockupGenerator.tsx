@@ -356,21 +356,21 @@ export default function YouTubeAdMockupGenerator() {
     <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black p-4 rounded-[2.5rem] shadow-2xl" style={{ width: '360px' }}>
       <div className="bg-black rounded-[2rem] relative" style={{ width: '328px', height: '740px', overflow: 'hidden' }}>
       {/* Status Bar */}
-      <div className="absolute top-0 left-0 right-0 h-10 z-50 flex items-center justify-between px-4 text-white text-xs">
-        <div className="flex items-center gap-1">
-          <span className="font-medium">8:20</span>
+      <div className="absolute top-0 left-0 right-0 h-11 z-50 flex items-center justify-between px-6 text-white" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%)' }}>
+        <div className="flex items-center gap-1.5">
+          <span className="font-semibold text-sm">8:20</span>
           <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
             <path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9z"/>
             <path d="M9 17l3 3 3-3c-1.65-1.66-4.34-1.66-6 0z"/>
             <path d="M5 13l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/>
           </svg>
         </div>
-        <div className="flex items-center gap-1">
-          <span className="text-[10px]">4G+</span>
-          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+        <div className="flex items-center gap-1.5">
+          <span className="text-[11px] font-medium">4G+</span>
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
             <path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/>
           </svg>
-          <span className="text-[10px] border border-white px-1 rounded">86</span>
+          <span className="text-[11px] border border-white px-1.5 py-0.5 rounded font-medium">86</span>
         </div>
       </div>
 
@@ -391,11 +391,11 @@ export default function YouTubeAdMockupGenerator() {
           <div className="absolute inset-0 bg-black">
             {adData.thumbnail ? (
               <>
-                <img src={adData.thumbnail} alt="Ad thumbnail" className="w-full h-full object-cover" />
+                <img src={adData.thumbnail} alt="Ad thumbnail" className="w-full h-full object-cover object-center" />
                 {/* Black blur gradient at bottom */}
-                <div className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none" style={{ 
-                  background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0) 100%)',
-                  backdropFilter: 'blur(2px)'
+                <div className="absolute bottom-0 left-0 right-0 pointer-events-none" style={{ 
+                  height: '380px',
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.92) 25%, rgba(0,0,0,0.75) 45%, rgba(0,0,0,0.5) 65%, rgba(0,0,0,0) 100%)'
                 }}></div>
               </>
             ) : (
@@ -477,11 +477,11 @@ export default function YouTubeAdMockupGenerator() {
         </div>
 
         {/* Bottom Content Overlay */}
-        <div className="absolute left-0 right-0 z-40" data-bottom-content="true" style={{ bottom: '56px', paddingTop: '32px', paddingBottom: '16px', paddingLeft: '12px', paddingRight: '56px' }} onClick={(e) => e.stopPropagation()}>
+        <div className="absolute left-0 right-0 z-40" data-bottom-content="true" style={{ bottom: '56px', paddingTop: '48px', paddingBottom: '22px', paddingLeft: '14px', paddingRight: '56px' }} onClick={(e) => e.stopPropagation()}>
             {/* Sponsor Info */}
-            <div className="flex items-center" style={{ marginBottom: '12px', gap: '12px' }}>
+            <div className="flex items-center" style={{ marginBottom: '18px', gap: '16px' }}>
               <div 
-                className="w-11 h-11 rounded-full flex-shrink-0 flex items-center justify-center cursor-pointer group/icon-mobile relative overflow-hidden"
+                className="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center cursor-pointer group/icon-mobile relative overflow-hidden"
                 style={{ backgroundColor: adData.adIcon ? '#ffffff' : 'rgb(220, 38, 38)', border: '2px solid rgba(255,255,255,0.4)', padding: '2px' }}
                 onClick={() => adIconInputRef.current?.click()}
               >
@@ -514,11 +514,11 @@ export default function YouTubeAdMockupGenerator() {
                   }}
                   data-channel-name="true"
                   className="font-bold outline-none cursor-text hover:bg-white/10 px-1 -mx-1 rounded"
-                  style={{ color: '#ffffff', fontSize: '14px', lineHeight: '1.3', textShadow: '0 2px 6px rgba(0,0,0,0.9)' }}
+                  style={{ color: '#ffffff', fontSize: '16px', lineHeight: '1.25', textShadow: '0 4px 14px rgba(0,0,0,1), 0 2px 8px rgba(0,0,0,1), 0 1px 4px rgba(0,0,0,1)', fontWeight: '700' }}
                 >
                   {adData.channelName}
                 </div>
-                <div className="font-medium" style={{ color: '#ffffff', fontSize: '11px', marginTop: '2px', textShadow: '0 2px 6px rgba(0,0,0,0.9)', opacity: 0.9 }}>Sponsored</div>
+                <div className="font-semibold" style={{ color: '#ffffff', fontSize: '12px', marginTop: '2px', textShadow: '0 3px 10px rgba(0,0,0,1), 0 2px 6px rgba(0,0,0,1), 0 1px 3px rgba(0,0,0,0.9)', opacity: 0.9, letterSpacing: '0.01em' }}>Sponsored</div>
               </div>
             </div>
 
@@ -531,14 +531,14 @@ export default function YouTubeAdMockupGenerator() {
                 if (text !== null) setAdData(prev => ({ ...prev, adTitle: text }));
               }}
               data-ad-title="true"
-              className="outline-none cursor-text hover:bg-white/10 px-1 -mx-1 rounded line-clamp-2"
-              style={{ color: '#ffffff', fontSize: '13px', lineHeight: '1.4', marginBottom: '12px', textShadow: '0 2px 6px rgba(0,0,0,0.9)' }}
+              className="outline-none cursor-text hover:bg-white/10 px-1 -mx-1 rounded"
+              style={{ color: '#ffffff', fontSize: '13px', lineHeight: '1.4', marginBottom: '14px', textShadow: '0 4px 16px rgba(0,0,0,1), 0 2px 10px rgba(0,0,0,1), 0 1px 5px rgba(0,0,0,1)', fontWeight: '400' }}
             >
               {adData.adTitle}
             </div>
 
             {/* CTA Button */}
-            <button className="w-full font-bold rounded-lg transition-colors" style={{ backgroundColor: '#ffffff', color: '#000000', padding: '11px 16px', fontSize: '14px', boxShadow: '0 4px 8px rgba(0,0,0,0.4)', marginTop: '2px' }}>
+            <button className="w-full font-bold rounded-xl transition-colors" style={{ backgroundColor: '#ffffff', color: '#000000', padding: '0', fontSize: '16px', boxShadow: '0 8px 28px rgba(0,0,0,0.85), 0 4px 14px rgba(0,0,0,0.7)', marginTop: '0px', fontWeight: '700', height: '52px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <span 
                 contentEditable
                 suppressContentEditableWarning
@@ -596,12 +596,12 @@ export default function YouTubeAdMockupGenerator() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-pink-50 py-12 px-4">
+    <div className="min-h-screen bg-white py-12 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header & Controls */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 px-2 sm:px-4">
           {/* Title */}
-          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
+          <h1 className="font-medium text-2xl sm:text-2xl leading-[1.02] tracking-[-0.02em] mb-3 relative z-20 px-4 sm:px-0">
             YouTube Ad Mockup
           </h1>
 
@@ -638,7 +638,7 @@ export default function YouTubeAdMockupGenerator() {
               </button>
               <button
                 onClick={() => setViewMode('mobile')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-sm font-medium transition-all ${
+                className={`flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded text-xs sm:text-sm font-medium transition-all ${
                   viewMode === 'mobile'
                     ? 'bg-white shadow text-gray-900'
                     : 'text-gray-600 hover:text-gray-900'
