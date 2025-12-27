@@ -6,7 +6,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Free Digital Marketing Toolkit | Arek',
   description: 'Access our comprehensive suite of free digital marketing tools to optimize your marketing campaigns.',
-  keywords: 'instagram ads mockup generator, facebook ads mockup, tiktok ads mockup generator, linkedin ads mockup generator, youtube ads mockup generator, marketing calculators, CPM calculator, CTR calculator, CPA calculator, ROAS calculator, bounce rate calculator, marketing tools, digital marketing, advertising metrics',
+  keywords: 'instagram ads mockup generator, facebook ads mockup, tiktok ads mockup generator, linkedin ads mockup generator, youtube ads mockup generator, youtube video downloader, download youtube videos, marketing calculators, CPM calculator, CTR calculator, CPA calculator, ROAS calculator, bounce rate calculator, marketing tools, digital marketing, advertising metrics',
   openGraph: {
     title: 'Free Digital Marketing Toolkit | Arek',
     description: 'Access our comprehensive suite of free digital marketing tools to optimize your marketing campaigns.',
@@ -85,6 +85,13 @@ const marketingTools: Tool[] = [
     description: 'Create realistic YouTube ad mockups for skippable, non-skippable, bumper, and display ads.',
     features: ['All ad formats', 'Video preview', 'Custom branding', 'High-quality downloads'],
     category: 'Creative Tools'
+  },
+  {
+    name: 'YouTube Video Downloader',
+    href: '/youtube-video-downloader',
+    description: 'Download YouTube videos in HD, Full HD, 4K quality or extract audio as MP3. No registration required.',
+    features: ['Multiple quality options', 'MP3 audio extraction', 'Mobile-friendly', 'Fast & secure'],
+    category: 'Content Tools'
   },
 ];
 

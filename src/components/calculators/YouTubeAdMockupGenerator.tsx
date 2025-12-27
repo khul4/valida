@@ -538,7 +538,19 @@ export default function YouTubeAdMockupGenerator() {
             </div>
 
             {/* CTA Button */}
-            <button className="w-full font-bold rounded-xl transition-colors" style={{ backgroundColor: '#ffffff', color: '#000000', padding: '0', fontSize: '16px', boxShadow: '0 8px 28px rgba(0,0,0,0.85), 0 4px 14px rgba(0,0,0,0.7)', marginTop: '0px', fontWeight: '700', height: '52px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div 
+              data-cta-button="true"
+              className="w-full font-bold rounded-xl transition-colors" 
+              style={{ 
+                backgroundColor: '#ffffff', 
+                color: '#000000', 
+                fontSize: '16px', 
+                boxShadow: '0 8px 28px rgba(0,0,0,0.85), 0 4px 14px rgba(0,0,0,0.7)', 
+                fontWeight: '700', 
+                height: '52px', 
+                display: 'table'
+              }}
+            >
               <span 
                 contentEditable
                 suppressContentEditableWarning
@@ -548,11 +560,17 @@ export default function YouTubeAdMockupGenerator() {
                 }}
                 data-cta-text="true"
                 className="outline-none cursor-text"
-                style={{ color: '#000000' }}
+                style={{ 
+                  color: '#000000', 
+                  display: 'table-cell', 
+                  verticalAlign: 'middle', 
+                  textAlign: 'center',
+                  width: '100%'
+                }}
               >
                 {adData.ctaText}
               </span>
-            </button>
+            </div>
           </div>
         </div>
 
