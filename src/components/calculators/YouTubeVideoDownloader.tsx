@@ -106,61 +106,55 @@ export default function YouTubeVideoDownloader() {
 
     try {
       const format = formatOptions.find(f => f.id === selectedFormat);
-      const videoId = extractVideoId(youtubeUrl);
       
-      // NOTE: Real implementation requires a backend API
-      // This demo creates a placeholder file with the correct extension
-      
-      if (format?.extension === 'mp4') {
-        // Create a minimal valid MP4 file (demo)
-        // In production, this would be the actual video data from your backend
-        const mp4Header = new Uint8Array([
-          0x00, 0x00, 0x00, 0x20, 0x66, 0x74, 0x79, 0x70,
-          0x69, 0x73, 0x6F, 0x6D, 0x00, 0x00, 0x02, 0x00,
-          0x69, 0x73, 0x6F, 0x6D, 0x69, 0x73, 0x6F, 0x32,
-          0x6D, 0x70, 0x34, 0x31, 0x00, 0x00, 0x00, 0x08,
-          0x66, 0x72, 0x65, 0x65
-        ]);
-        
-        const blob = new Blob([mp4Header], { type: 'video/mp4' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `youtube_video_${videoId}_${format.id}.mp4`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
-        
-        setSuccess(`✓ Demo MP4 file downloaded! (In production, this would be the actual ${format.label} video)`);
-      } else if (format?.extension === 'mp3') {
-        // Create a minimal valid MP3 file (demo)
-        // In production, this would be the actual audio data from your backend
-        const mp3Header = new Uint8Array([
-          0xFF, 0xFB, 0x90, 0x00, 0x00, 0x00, 0x00, 0x00,
-          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-        ]);
-        
-        const blob = new Blob([mp3Header], { type: 'audio/mpeg' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `youtube_audio_${videoId}.mp3`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
-        
-        setSuccess(`✓ Demo MP3 file downloaded! (In production, this would be the actual audio from the video)`);
+      // Call the backend API to download the video
+      const response = await fetch('/api/youtube-download', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          url: youtubeUrl,
+          format: selectedFormat,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Download failed');
       }
-      
+
+      // Get the filename from Content-Disposition header
+      const contentDisposition = response.headers.get('Content-Disposition');
+      let filename = `youtube_video_${selectedFormat}.${format?.extension}`;
+      if (contentDisposition) {
+        const matches = contentDisposition.match(/filename="(.+?)"/);
+        if (matches && matches[1]) {
+          filename = matches[1];
+        }
+      }
+
+      // Download the file
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+      setSuccess(`✓ Successfully downloaded ${format?.label}!`);
+
       // Reset after 5 seconds
       setTimeout(() => {
         setSuccess('');
       }, 5000);
     } catch (err) {
       console.error('Download error:', err);
-      setError('Download failed. Please try again.');
+      const errorMessage = err instanceof Error ? err.message : 'Download failed. Please try again.';
+      setError(errorMessage);
     } finally {
       setIsLoading(false);
     }
@@ -312,10 +306,10 @@ export default function YouTubeVideoDownloader() {
                 {isLoading ? 'Processing...' : 'Download Video'}
               </button>
               
-              {/* Demo Notice */}
-              <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                <p className="text-sm text-blue-800">
-                  <strong>Demo Mode:</strong> This tool demonstrates the UI/UX. The download will create a sample file with video information. For production use, backend integration with video processing services is required.
+              {/* Production Notice */}
+              <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <p className="text-sm text-green-800">
+                  <strong>Production Ready:</strong> This tool uses yt-dlp to extract real YouTube videos. Ensure yt-dlp is installed on your server with <code className="bg-white px-2 py-1 rounded">pip install yt-dlp</code>
                 </p>
               </div>
             </div>

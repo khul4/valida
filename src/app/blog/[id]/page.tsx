@@ -3,7 +3,6 @@
 import Container from '@/components/ui/container';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import React from 'react';
 
 // Sample blog post data (you would typically fetch this from an API or database)
@@ -32,7 +31,7 @@ const blogPost = {
   date: 'September 20, 2025',
   author: {
     name: 'John Doe',
-    avatar: '/testimonials/avatar1.png',
+    avatar: null,
     role: 'Marketing Analytics Expert'
   },
   category: 'Marketing',
@@ -45,11 +44,7 @@ export default function BlogPost() {
       {/* Hero Section */}
       <div className="bg-gray-50 py-20">
         <Container>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-4xl mx-auto text-center"
-          >
+          <div className="max-w-4xl mx-auto text-center">
             <Link 
               href="/blog"
               className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900 mb-6"
@@ -80,13 +75,9 @@ export default function BlogPost() {
             
             <div className="flex items-center justify-center gap-4 mb-8">
               <div className="flex items-center">
-                <Image
-                  src={blogPost.author.avatar}
-                  alt={blogPost.author.name}
-                  width={40}
-                  height={40}
-                  className="rounded-full"
-                />
+                <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
+                  JD
+                </div>
                 <div className="ml-3 text-left">
                   <p className="text-sm font-medium text-gray-900">
                     {blogPost.author.name}
@@ -101,7 +92,7 @@ export default function BlogPost() {
               <span className="text-gray-300">•</span>
               <span className="text-sm text-gray-600">{blogPost.readTime}</span>
             </div>
-          </motion.div>
+          </div>
         </Container>
       </div>
 
@@ -118,10 +109,7 @@ export default function BlogPost() {
       {/* Content */}
       <Container>
         <div className="max-w-3xl mx-auto py-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
+          <div
             className="prose prose-lg prose-blue max-w-none"
             dangerouslySetInnerHTML={{ __html: blogPost.content }}
           />

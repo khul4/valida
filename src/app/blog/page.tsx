@@ -30,7 +30,7 @@ const blogPosts: BlogPost[] = [
     date: 'September 20, 2025',
     author: {
       name: 'John Doe',
-      avatar: '/testimonials/avatar1.png'
+      avatar: null
     },
     category: 'Marketing'
   },
@@ -42,7 +42,7 @@ const blogPosts: BlogPost[] = [
     date: 'September 19, 2025',
     author: {
       name: 'Jane Smith',
-      avatar: '/testimonials/avatar2.png'
+      avatar: null
     },
     category: 'AI & Analytics'
   },
@@ -127,13 +127,9 @@ export default function BlogIndex() {
                     {post.excerpt}
                   </p>
                   <div className="flex items-center">
-                    <Image
-                      src={post.author.avatar}
-                      alt={post.author.name}
-                      width={32}
-                      height={32}
-                      className="rounded-full"
-                    />
+                    <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-medium">
+                      {post.author.name.split(' ').map(n => n[0]).join('')}
+                    </div>
                     <div className="ml-3">
                       <p className="text-sm font-medium text-gray-900">
                         {post.author.name}

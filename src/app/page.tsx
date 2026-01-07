@@ -5,7 +5,6 @@ import Steps from '@/components/steps/Steps';
 import Integrations from '@/components/integrations/Integrations';
 import Benefits from '@/components/benefits/Benefits';
 import CTASection from '@/components/cta/CTASection';
-import Footer from '@/components/layout/Footer';
 
 // Loading component for better UX
 const LoadingComponent = () => (
@@ -34,10 +33,6 @@ export default function Home() {
       
       <Suspense fallback={<LoadingComponent />}>
         <CTASection />
-      </Suspense>
-      
-      <Suspense fallback={<LoadingComponent />}>
-        <Footer />
       </Suspense>
     </div>
   );
