@@ -149,6 +149,7 @@ export default function TikTokAdMockupGenerator() {
           <div className="relative">
             <div className="w-12 h-12 rounded-full border-2 border-white overflow-hidden">
               {adData.profileImage ? (
+                // eslint-disable-next-line @next/next/no-img-element
                 <img src={adData.profileImage} alt="Profile" className="w-full h-full object-cover" />
               ) : (
                 <div className="w-full h-full bg-gray-600 flex items-center justify-center">
@@ -346,6 +347,7 @@ export default function TikTokAdMockupGenerator() {
                   {adData.profileImage ? (
                     <div className="flex items-center space-x-3">
                       <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src={adData.profileImage} alt="Profile" className="w-full h-full object-cover" />
                       </div>
                       <div className="text-left">

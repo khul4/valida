@@ -371,7 +371,7 @@ export default function BlogPost() {
                 '--tw-prose-counters': '#6b7280',
                 '--tw-prose-bullets': '#d1d5db',
                 lineHeight: '1.75'
-              }}
+              } as React.CSSProperties}
               dangerouslySetInnerHTML={{ __html: blogPost.content }}
             />
             

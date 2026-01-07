@@ -112,7 +112,7 @@ export async function POST(request: NextRequest) {
       'Content-Length': fileBuffer.length.toString(),
     };
 
-    return new NextResponse(fileBuffer as any, {
+    return new NextResponse(new Uint8Array(fileBuffer), {
       status: 200,
       headers,
     });

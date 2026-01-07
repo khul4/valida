@@ -201,6 +201,7 @@ export default function InstagramAdMockupGenerator() {
     return (
       <div style={{ position: 'relative', width: dimensions.width, backgroundColor: '#f3f4f6', overflow: 'hidden' }}>
         <div style={{ paddingBottom: dimensions.paddingBottom }}></div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img 
           src={images[currentImageIndex]} 
           alt={`Ad ${currentImageIndex + 1}`} 
@@ -335,6 +336,7 @@ export default function InstagramAdMockupGenerator() {
                     onDrop={(e) => handleDrop(e, 'profile')}
                   >
                     {adData.profileImage ? (
+                      // eslint-disable-next-line @next/next/no-img-element
                       <img 
                         src={adData.profileImage} 
                         alt="Profile" 
@@ -407,6 +409,7 @@ export default function InstagramAdMockupGenerator() {
                     <div className="grid grid-cols-2 gap-3 mb-4">
                       {adData.adImages.map((image, index) => (
                         <div key={index} className="relative group">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img 
                             src={image} 
                             alt={`Carousel ${index + 1}`} 
@@ -463,6 +466,7 @@ export default function InstagramAdMockupGenerator() {
                   {adData.adImage ? (
                     <div className="relative">
                       <div className="w-full h-48 rounded-lg overflow-hidden border border-gray-200">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img 
                           src={adData.adImage} 
                           alt="Ad" 
@@ -591,6 +595,7 @@ export default function InstagramAdMockupGenerator() {
               <div style={{ display: 'flex', alignItems: 'center', padding: '14px 16px', backgroundColor: '#fff', borderBottom: '1px solid #efefef' }}>
                 <div style={{ width: '32px', height: '32px', borderRadius: '50%', overflow: 'hidden', marginRight: '12px', flexShrink: 0 }}>
                   {adData.profileImage ? (
+                    // eslint-disable-next-line @next/next/no-img-element
                     <img src={adData.profileImage} alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   ) : (
                     <div style={{ width: '100%', height: '100%', background: 'linear-gradient(135deg, #d1d5db 0%, #9ca3af 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

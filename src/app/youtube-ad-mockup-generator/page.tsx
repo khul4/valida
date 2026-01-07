@@ -1,7 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
 import YouTubeAdMockupGenerator from '@/components/calculators/YouTubeAdMockupGenerator';
-import Container from '@/components/ui/container';
 
 export const metadata: Metadata = {
   title: 'Free YouTube Ad Mockup Generator | Create Video Ad Previews | Valida',

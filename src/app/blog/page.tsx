@@ -15,7 +15,7 @@ interface BlogPost {
   date: string;
   author: {
     name: string;
-    avatar: string;
+    avatar: string | null;
   };
   category: string;
 }

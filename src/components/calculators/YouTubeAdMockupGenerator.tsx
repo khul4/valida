@@ -84,6 +84,7 @@ export default function YouTubeAdMockupGenerator() {
         <div className="relative bg-black group cursor-pointer" style={{ height: '480px' }} onClick={() => thumbnailInputRef.current?.click()}>
           {/* Thumbnail/Video */}
           {adData.thumbnail ? (
+            // eslint-disable-next-line @next/next/no-img-element
             <img src={adData.thumbnail} alt="Ad thumbnail" className="w-full h-full object-contain bg-black" />
           ) : (
             <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-900 to-black">
@@ -117,6 +118,7 @@ export default function YouTubeAdMockupGenerator() {
                 >
                   {adData.adIcon ? (
                     <>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={adData.adIcon} alt="Ad icon" className="w-full h-full object-contain" />
                       <div className="absolute inset-0 bg-black/0 group-hover/icon:bg-black/50 transition-colors flex items-center justify-center opacity-0 group-hover/icon:opacity-100">
                         <Upload className="w-5 h-5 text-white" />
@@ -391,6 +393,7 @@ export default function YouTubeAdMockupGenerator() {
           <div className="absolute inset-0 bg-black">
             {adData.thumbnail ? (
               <>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={adData.thumbnail} alt="Ad thumbnail" className="w-full h-full object-cover object-center" />
                 {/* Black blur gradient at bottom */}
                 <div className="absolute bottom-0 left-0 right-0 pointer-events-none" style={{ 
@@ -487,6 +490,7 @@ export default function YouTubeAdMockupGenerator() {
               >
                 {adData.adIcon ? (
                   <>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={adData.adIcon} alt="Ad icon" data-ad-icon="true" className="w-full h-full object-contain rounded-full" />
                     <div className="absolute inset-0 bg-black/0 group-hover/icon-mobile:bg-black/50 transition-colors flex items-center justify-center opacity-0 group-hover/icon-mobile:opacity-100 rounded-full">
                       <Upload className="w-4 h-4 text-white" />
