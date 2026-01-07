@@ -1,108 +1,52 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Container from '@/components/ui/container';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-
-// Type for our blog post
-interface BlogPost {
-  id: string;
-  title: string;
-  excerpt: string;
-  coverImage: string;
-  date: string;
-  author: {
-    name: string;
-    avatar: string | null;
-  };
-  category: string;
-}
-
-// Sample blog posts data (you can replace this with your actual data source)
-const blogPosts: BlogPost[] = [
-  {
-    id: '1',
-    title: 'Arek vs Traditional Reporting Tools: Which Marketing Solution Wins in 2026?',
-    excerpt: 'A comprehensive comparison of AI-powered reporting versus traditional analytics tools. Discover which approach delivers the best ROI for different agency sizes and needs.',
-    coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&crop=entropy&q=80',
-    date: 'January 5, 2026',
-    author: {
-      name: 'Sarah Johnson',
-      avatar: null
-    },
-    category: 'Tool Comparison'
-  },
-  {
-    id: '2',
-    title: 'The Future of AI in Digital Marketing Analytics: 2026 Predictions',
-    excerpt: 'Explore how artificial intelligence is reshaping marketing analytics, from predictive insights to automated optimization. Learn what changes to expect this year.',
-    coverImage: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop&crop=entropy&q=80',
-    date: 'January 3, 2026',
-    author: {
-      name: 'Michael Chen',
-      avatar: null
-    },
-    category: 'AI & Analytics'
-  },
-  {
-    id: '3',
-    title: 'How to Build Client-Ready Marketing Reports in Under 10 Minutes',
-    excerpt: 'Step-by-step guide to creating professional marketing reports that clients love. Includes templates, best practices, and automation tips.',
-    coverImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&crop=entropy&q=80',
-    date: 'December 28, 2025',
-    author: {
-      name: 'Emily Rodriguez',
-      avatar: null
-    },
-    category: 'Best Practices'
-  },
-  {
-    id: '4',
-    title: 'Agency Growth Secrets: Scaling from 10 to 100 Clients',
-    excerpt: 'Real strategies from successful agency owners on scaling operations, maintaining quality, and building systems that support rapid growth.',
-    coverImage: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop&crop=entropy&q=80',
-    date: 'December 25, 2025',
-    author: {
-      name: 'David Park',
-      avatar: null
-    },
-    category: 'Agency Growth'
-  },
-  {
-    id: '5',
-    title: 'ROI Tracking Made Simple: Metrics That Actually Matter',
-    excerpt: 'Cut through the noise of vanity metrics. Focus on the KPIs that demonstrate real value to clients and drive business decisions.',
-    coverImage: 'https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=600&h=400&fit=crop&crop=entropy&q=80',
-    date: 'December 22, 2025',
-    author: {
-      name: 'Lisa Thompson',
-      avatar: null
-    },
-    category: 'Analytics'
-  },
-  {
-    id: '6',
-    title: 'White-Label Reporting: Building Trust Through Professional Presentation',
-    excerpt: 'Why professional report presentation matters for client retention and how white-labeling can elevate your agency\'s credibility.',
-    coverImage: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=600&h=400&fit=crop&crop=entropy&q=80',
-    date: 'December 20, 2025',
-    author: {
-      name: 'Jennifer Wang',
-      avatar: null
-    },
-    category: 'Client Relations'
-  }
-];
+import { getAllBlogPosts, getAllCategories, type BlogPostMeta } from '@/lib/blog-helpers';
 
 export default function BlogIndex() {
+  const [blogPosts, setBlogPosts] = useState<BlogPostMeta[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const categories = ['all', ...new Set(blogPosts.map(post => post.category))];
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadBlogData() {
+      try {
+        const [posts, cats] = await Promise.all([
+          getAllBlogPosts(),
+          getAllCategories()
+        ]);
+        setBlogPosts(posts);
+        setCategories(['all', ...cats]);
+      } catch (error) {
+        console.error('Error loading blog data:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    
+    loadBlogData();
+  }, []);
 
   // Filter posts based on category
   const filteredPosts = blogPosts
     .filter((post) => selectedCategory === 'all' || post.category === selectedCategory);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 py-20">
+        <Container>
+          <div className="flex justify-center items-center h-64">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          </div>
+        </Container>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-20">
