@@ -40,6 +40,27 @@ export interface BlogPostMeta {
 
 const contentDirectory = path.join(process.cwd(), 'content/blog');
 
+// Helper function to add IDs to headings
+function addHeadingIds(htmlContent: string): string {
+  return htmlContent.replace(/<h([2-6])([^>]*)>([^<]+)<\/h\1>/g, (match, level, attributes, text) => {
+    // Generate ID from text
+    const id = text
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '');
+    
+    // Check if ID already exists in attributes
+    if (attributes.includes('id=')) {
+      return match; // Return unchanged if ID already exists
+    }
+    
+    return `<h${level}${attributes} id="${id}">${text}</h${level}>`;
+  });
+}
+
 // Get all blog post files
 function getBlogPostFiles(): string[] {
   try {
@@ -97,8 +118,13 @@ async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
     const { data, content } = matter(fileContents);
     
     // Process markdown to HTML
-    const processedContent = await remark().use(html).process(content);
-    const htmlContent = processedContent.toString();
+    const processedContent = await remark()
+      .use(html)
+      .process(content);
+    let htmlContent = processedContent.toString();
+    
+    // Add IDs to headings manually
+    htmlContent = addHeadingIds(htmlContent);
     
     // Generate ID from filename
     const id = fileName.replace(/\.(md|mdx)$/, '');
