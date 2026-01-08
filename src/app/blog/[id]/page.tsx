@@ -146,8 +146,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     <article className="min-h-screen bg-white">
       {/* Hero Section */}
       <div className="py-12 lg:py-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl">
             <Link 
               href="/blog"
               className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900 mb-6"
@@ -201,10 +201,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
       {/* Content with Sidebar */}
       <div className="w-full pb-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Featured Image - within content width */}
           {blogPost.coverImage && (
-            <div className="mb-12 max-w-3xl">
+            <div className="mb-12 max-w-7xl">
               <div className="relative h-[400px] w-full rounded-xl overflow-hidden">
                 <Image
                   src={blogPost.coverImage}
@@ -218,7 +218,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           
           <div className="lg:flex gap-8 lg:gap-12 items-start relative">
           {/* Main Content */}
-          <main className="flex-1 min-w-0 max-w-3xl">
+          <main className="flex-1 min-w-0 max-w-4xl">
             <div
               className="prose prose-lg prose-blue max-w-none"
               style={{
