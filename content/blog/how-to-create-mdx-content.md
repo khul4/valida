@@ -36,7 +36,7 @@ Every blog post starts with frontmatter (the section between `---` markers):
 ---
 title: "Your Post Title"
 excerpt: "A brief description of your post"
-coverImage: "https://images.unsplash.com/photo-example"
+coverImage: "https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?w=1200&h=600&fit=crop&crop=entropy&q=80"
 date: '2026-01-07'
 author:
   name: "Your Name"

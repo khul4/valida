@@ -5,7 +5,7 @@ import Container from '@/components/ui/container';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { getBlogPostBySlug, extractTableOfContents, type BlogPost } from '@/lib/blog-helpers';
+import { getBlogPostBySlug, extractTableOfContents, getAllBlogPosts, findRelatedPosts, type BlogPost, type BlogPostMeta } from '@/lib/blog-helpers';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -15,6 +15,7 @@ interface BlogPostPageProps {
 
 export default function BlogPostPage({ params }: BlogPostPageProps) {
   const [blogPost, setBlogPost] = useState<BlogPost | null>(null);
+  const [relatedPosts, setRelatedPosts] = useState<BlogPostMeta[]>([]);
   const [tableOfContents, setTableOfContents] = useState<{ id: string; text: string; level: number }[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -34,6 +35,11 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         setBlogPost(post);
         const toc = extractTableOfContents(post.content);
         setTableOfContents(toc);
+        
+        // Fetch related posts
+        const allPosts = await getAllBlogPosts();
+        const related = findRelatedPosts(post, allPosts, 3);
+        setRelatedPosts(related);
       } catch (err) {
         console.error('Error loading blog post:', err);
         setError('Failed to load blog post');
@@ -345,6 +351,52 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 </button>
               </div>
             </div>
+            
+            {/* Related Articles Section */}
+            {relatedPosts.length > 0 && (
+              <div className="mt-16 border-t border-gray-200 pt-12">
+                <h2 className="text-2xl font-bold text-gray-900 mb-8">Related Articles</h2>
+                <div className={`grid gap-6 ${
+                  relatedPosts.length === 1 
+                    ? 'grid-cols-1 max-w-md' 
+                    : relatedPosts.length === 2 
+                    ? 'grid-cols-1 md:grid-cols-2 max-w-2xl' 
+                    : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+                }`}>
+                  {relatedPosts.slice(0, 3).map((post) => (
+                    <Link 
+                      key={post.id} 
+                      href={`/blog/${post.slug}`}
+                      className="group"
+                    >
+                      <article className="h-full bg-white rounded-lg overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300">
+                        {post.coverImage && (
+                          <div className="relative h-48 w-full overflow-hidden">
+                            <Image
+                              src={post.coverImage}
+                              alt={post.title}
+                              fill
+                              className="object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                          </div>
+                        )}
+                        <div className="p-5">
+                          <div className="text-xs font-medium text-blue-600 mb-2">
+                            {post.category}
+                          </div>
+                          <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+                            {post.title}
+                          </h3>
+                          <p className="text-sm text-gray-600 line-clamp-3">
+                            {post.excerpt}
+                          </p>
+                        </div>
+                      </article>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
           </main>
           
           {/* Table of Contents Sidebar */}

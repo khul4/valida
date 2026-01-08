@@ -1,7 +1,7 @@
 ---
 title: How to Create Effective Marketing Reports That Clients Love
 excerpt: Learn the key elements of creating marketing reports that not only inform but also impress your clients and drive better decision-making.
-coverImage: /blog/post1.jpg
+coverImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop&crop=entropy&q=80"
 date: '2025-09-20'
 author:
   name: John Doe
