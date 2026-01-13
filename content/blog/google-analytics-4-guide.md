@@ -3,10 +3,6 @@ title: "Complete Guide to Google Analytics 4 for Beginners"
 excerpt: "Master Google Analytics 4 with this comprehensive beginner's guide. Learn how to set up, track, and analyze your website data effectively."
 coverImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop&crop=entropy&q=80"
 date: '2026-01-06'
-author:
-  name: "Michael Chen"
-  avatar: null
-  role: "Data Analyst"
 category: "Analytics"
 tags:
   - google analytics

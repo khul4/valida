@@ -16,6 +16,7 @@ export interface BlogPost {
   readTime: string;
   slug: string;
   tags: string[];
+  schema?: any; // Schema.org structured data
 }
 
 export interface BlogPostMeta {

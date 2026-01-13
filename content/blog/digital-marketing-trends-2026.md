@@ -3,10 +3,6 @@ title: "Digital Marketing Trends to Watch in 2026"
 excerpt: "Discover the latest digital marketing trends that are shaping the industry in 2026 and how to leverage them for your business growth."
 coverImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop&crop=entropy&q=80"
 date: '2026-01-05'
-author:
-  name: "Sarah Johnson"
-  avatar: null
-  role: "Marketing Director"
 category: "Marketing"
 tags:
   - digital marketing

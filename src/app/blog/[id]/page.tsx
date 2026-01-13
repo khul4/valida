@@ -6,6 +6,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { getBlogPostBySlug, extractTableOfContents, getAllBlogPosts, findRelatedPosts, type BlogPost, type BlogPostMeta } from '@/lib/blog-helpers';
+import { AuthorBio } from '@/components/blog/AuthorBio';
+import '../blog.css';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -144,6 +146,16 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <article className="min-h-screen bg-white">
+      {/* Structured Data (Schema.org JSON-LD) */}
+      {blogPost.schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(blogPost.schema)
+          }}
+        />
+      )}
+      
       {/* Hero Section */}
       <div className="py-12 lg:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -235,6 +247,57 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             
             {/* Typography styles */}
             <style jsx global>{`
+              /* Table Styles Override for Prose */
+              .prose table {
+                width: 100% !important;
+                margin: 2rem 0 !important;
+                border-collapse: collapse !important;
+                border: 1px solid #e5e7eb !important;
+                border-radius: 8px !important;
+                overflow: hidden !important;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+              }
+              
+              .prose thead th {
+                background-color: #f9fafb !important;
+                padding: 1rem !important;
+                font-size: 0.9rem !important;
+                font-weight: 600 !important;
+                color: #111827 !important;
+                border-bottom: 2px solid #e5e7eb !important;
+                border-right: 1px solid #e5e7eb !important;
+                text-align: left !important;
+              }
+              
+              .prose th:last-child {
+                border-right: none !important;
+              }
+              
+              .prose td {
+                padding: 1rem !important;
+                font-size: 0.9rem !important;
+                color: #4b5563 !important;
+                border-bottom: 1px solid #e5e7eb !important;
+                border-right: 1px solid #e5e7eb !important;
+                vertical-align: top !important;
+              }
+              
+              .prose td:last-child {
+                border-right: none !important;
+              }
+              
+              .prose tr:last-child td {
+                border-bottom: none !important;
+              }
+              
+              .prose tbody tr:nth-child(even) {
+                background-color: rgba(249, 250, 251, 0.5) !important;
+              }
+              
+              .prose tbody tr:hover {
+                background-color: rgba(59, 130, 246, 0.05) !important;
+              }
+              
               /* Heading sizes and spacing */
               .prose h1 {
                 font-size: 2.25rem;
@@ -351,6 +414,9 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 </button>
               </div>
             </div>
+            
+            {/* Author Bio Section */}
+            <AuthorBio />
             
             {/* Related Articles Section */}
             {relatedPosts.length > 0 && (

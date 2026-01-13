@@ -3,7 +3,9 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
+import remarkGfm from 'remark-gfm';
 import { NextRequest, NextResponse } from 'next/server';
+import { AUTHOR_BIO, generateAuthorSchema } from '@/lib/author-bio';
 
 // Types for our blog content
 export interface BlogPost {
@@ -22,6 +24,7 @@ export interface BlogPost {
   readTime: string;
   slug: string;
   tags: string[];
+  schema?: any; // Schema.org structured data
 }
 
 export interface BlogPostMeta {
@@ -119,6 +122,7 @@ async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
     
     // Process markdown to HTML
     const processedContent = await remark()
+      .use(remarkGfm)
       .use(html)
       .process(content);
     let htmlContent = processedContent.toString();
@@ -143,13 +147,14 @@ async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
       coverImage: data.coverImage || '',
       date: data.date || new Date().toISOString(),
       author: {
-        name: data.author?.name || 'Anonymous',
-        avatar: data.author?.avatar || null,
-        role: data.author?.role || 'Writer'
+        name: data.author?.name || AUTHOR_BIO.name,
+        avatar: data.author?.avatar || AUTHOR_BIO.avatar,
+        role: data.author?.role || AUTHOR_BIO.role
       },
       category: data.category || 'General',
       readTime: data.readTime || `${readTime} min read`,
-      tags: data.tags || []
+      tags: data.tags || [],
+      schema: data.schema || null
     };
   } catch (error) {
     console.error(`Error reading blog post ${slug}:`, error);

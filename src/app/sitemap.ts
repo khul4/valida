@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import fs from 'fs'
 import path from 'path'
+import matter from 'gray-matter'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://arek.pro'
@@ -57,5 +58,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
     console.error('Error reading app directory:', error)
   }
 
-  return [...staticPages, ...calculatorPages]
+  // Dynamically get all blog posts
+  const blogPages: MetadataRoute.Sitemap = []
+
+  try {
+    const blogDir = path.join(process.cwd(), 'content', 'blog')
+    if (fs.existsSync(blogDir)) {
+      const blogFiles = fs.readdirSync(blogDir).filter(file => file.endsWith('.md'))
+      
+      blogFiles.forEach((file) => {
+        const filePath = path.join(blogDir, file)
+        const fileContent = fs.readFileSync(filePath, 'utf-8')
+        const { data } = matter(fileContent)
+        
+        if (data.slug) {
+          blogPages.push({
+            url: `${baseUrl}/blog/${data.slug}`,
+            lastModified: data.date ? new Date(data.date) : new Date(),
+            changeFrequency: 'weekly',
+            priority: 0.7,
+          })
+        }
+      })
+    }
+  } catch (error) {
+    console.error('Error reading blog directory:', error)
+  }
+
+  return [...staticPages, ...calculatorPages, ...blogPages]
 }

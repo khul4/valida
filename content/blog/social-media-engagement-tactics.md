@@ -3,10 +3,6 @@ title: "10 Proven Tactics to Boost Social Media Engagement"
 excerpt: "Transform your social media presence with these proven engagement tactics. Learn what works in 2026 to build an active, engaged community."
 coverImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&h=600&fit=crop&crop=entropy&q=80"
 date: '2026-01-03'
-author:
-  name: "Emma Thompson"
-  avatar: null
-  role: "Social Media Manager"
 category: "Analytics"
 tags:
   - social media

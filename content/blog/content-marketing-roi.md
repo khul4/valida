@@ -3,10 +3,6 @@ title: "How to Measure and Improve Content Marketing ROI"
 excerpt: "Learn proven methods to measure your content marketing ROI and optimize your strategy for better results. Turn content into measurable business value."
 coverImage: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&h=600&fit=crop&crop=entropy&q=80"
 date: '2026-01-07'
-author:
-  name: "David Park"
-  avatar: null
-  role: "Content Strategist"
 category: "Marketing"
 tags:
   - content marketing
