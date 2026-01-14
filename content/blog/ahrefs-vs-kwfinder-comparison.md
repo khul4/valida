@@ -1,9 +1,9 @@
 ---
 title: "Ahrefs vs KWFinder 2026: Complete Comparison Guide for SEO Tools"
 excerpt: "Comprehensive comparison of Ahrefs vs KWFinder to help you choose the best SEO tool for your business. Features, pricing, pros & cons analyzed."
-coverImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop&crop=entropy&q=80"
+coverImage: "/blog/ahrefs-vs-kwfinder/thumbnail-kwfinder-ahrefs.webp"
 date: '2026-01-14'
-category: "SEO Tools"
+category: "SEO"
 tags:
   - ahrefs
   - kwfinder
@@ -17,7 +17,7 @@ schema: {
   "@type": "Article",
   "headline": "Ahrefs vs KWFinder 2026: Complete Comparison Guide for SEO Tools",
   "description": "Comprehensive comparison of Ahrefs vs KWFinder to help you choose the best SEO tool for your business. Features, pricing, pros & cons analyzed.",
-  "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop&crop=entropy&q=80",
+  "image": "/blog/ahrefs-vs-kwfinder/thumbnail-kwfinder-ahrefs.webp",
   "author": {
     "@type": "Person",
     "name": "Khul Anwar",

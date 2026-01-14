@@ -3,7 +3,7 @@ title: "SEO Strategy Blueprint for 2026: What Actually Works"
 excerpt: "Build a winning SEO strategy with proven tactics that deliver results in 2026. From technical optimization to content strategy, we cover it all."
 coverImage: "https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?w=1200&h=600&fit=crop&crop=entropy&q=80"
 date: '2026-01-04'
-category: "Marketing"
+category: "SEO"
 tags:
   - seo
   - search optimization
