@@ -23,7 +23,7 @@ export interface BlogPost {
   readTime: string;
   slug: string;
   tags: string[];
-  schema?: any; // Schema.org structured data
+  schema?: Record<string, unknown> | null; // Schema.org structured data
 }
 
 export interface BlogPostMeta {
@@ -108,6 +108,8 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
     const wordCount = content.split(/\s+/).length;
     const readTime = Math.ceil(wordCount / wordsPerMinute);
     
+    const schema = (data.schema ?? null) as Record<string, unknown> | null;
+
     return {
       id,
       slug,
@@ -124,7 +126,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       category: data.category || 'General',
       readTime: data.readTime || `${readTime} min read`,
       tags: data.tags || [],
-      schema: data.schema || null
+      schema
     };
   } catch (error) {
     console.error(`Error reading blog post ${slug}:`, error);

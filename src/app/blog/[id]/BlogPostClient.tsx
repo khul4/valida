@@ -1,11 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Container from '@/components/ui/container';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { extractTableOfContents, findRelatedPosts, type BlogPost, type BlogPostMeta } from '@/lib/blog-helpers';
+import { extractTableOfContents, type BlogPost, type BlogPostMeta } from '@/lib/blog-helpers';
 import { AuthorBio } from '@/components/blog/AuthorBio';
 import '../blog.css';
 

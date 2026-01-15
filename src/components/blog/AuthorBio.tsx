@@ -1,5 +1,6 @@
 import React from 'react';
 import { AUTHOR_BIO } from '@/lib/author-bio';
+import Image from 'next/image';
 
 interface AuthorBioProps {
   className?: string;
@@ -9,9 +10,11 @@ export const AuthorBio: React.FC<AuthorBioProps> = ({ className = "" }) => {
   return (
     <section className={`border-t pt-8 mt-12 ${className}`}>
       <div className="flex items-start space-x-4">
-        <img 
+        <Image 
           src={AUTHOR_BIO.avatar} 
           alt={`${AUTHOR_BIO.name}, ${AUTHOR_BIO.role}`}
+          width={64}
+          height={64}
           className="w-16 h-16 rounded-full object-cover flex-shrink-0"
         />
         <div className="flex-1">
