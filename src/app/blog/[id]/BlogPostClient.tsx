@@ -369,27 +369,35 @@ export default function BlogPostClient({ blogPost, relatedPosts }: BlogPostClien
                       href={`/blog/${post.slug}`}
                       className="group"
                     >
-                      <article className="h-full bg-white rounded-lg overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300">
+                      <article className="h-full bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300 flex flex-col">
                         {post.coverImage && (
-                          <div className="relative h-48 w-full overflow-hidden">
+                          <div className="relative w-full bg-gradient-to-br from-blue-50 to-indigo-50 rounded-t-xl" style={{ aspectRatio: '16/9' }}>
                             <Image
                               src={post.coverImage}
                               alt={post.title}
                               fill
-                              className="object-cover group-hover:scale-105 transition-transform duration-300"
+                              className="object-contain p-4 group-hover:scale-105 transition-transform duration-300 rounded-t-xl"
                             />
                           </div>
                         )}
-                        <div className="p-5">
-                          <div className="text-xs font-medium text-blue-600 mb-2">
-                            {post.category}
+                        <div className="p-6 flex-1 flex flex-col">
+                          <div className="inline-flex items-center gap-2 mb-3">
+                            <span className="text-xs font-semibold text-blue-600 uppercase tracking-wide">
+                              {post.category}
+                            </span>
                           </div>
-                          <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+                          <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2 flex-1">
                             {post.title}
                           </h3>
-                          <p className="text-sm text-gray-600 line-clamp-3">
+                          <p className="text-sm text-gray-600 line-clamp-2 mb-4">
                             {post.excerpt}
                           </p>
+                          <div className="flex items-center text-sm font-medium text-blue-600 group-hover:text-blue-700">
+                            Read more
+                            <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </div>
                         </div>
                       </article>
                     </Link>
