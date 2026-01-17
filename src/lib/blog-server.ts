@@ -93,7 +93,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
     // Process markdown to HTML
     const processedContent = await remark()
       .use(remarkGfm)
-      .use(html)
+      .use(html, { sanitize: false })
       .process(content);
     let htmlContent = processedContent.toString();
     
