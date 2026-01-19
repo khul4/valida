@@ -64,7 +64,7 @@ schema:
             text: "eRank Free is the best starting point for beginners with its simple interface, comprehensive tutorials, and robust free features. Pair it with EverBee Free (Chrome extension) for quick product insights while browsing Etsy."
 ---
 
-With over [8 million active sellers](https://thunderbit.com/blog/etsy-stats){:target="_blank"} competing on Etsy and 91.2 million potential buyers searching daily, standing out isn't optional; it's survival. This comprehensive guide analyzes 17 Etsy SEO tools through real case studies, pricing transparency, and actual seller results to help you choose the right tool for your shop's growth.
+With over [8 million active sellers](https://thunderbit.com/blog/etsy-stats) competing on Etsy and 91.2 million potential buyers searching daily, standing out isn't optional; it's survival. This comprehensive guide analyzes 17 Etsy SEO tools through real case studies, pricing transparency, and actual seller results to help you choose the right tool for your shop's growth.
 
 ---
 
