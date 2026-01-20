@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Container from '@/components/ui/container';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getAllAuthors } from '@/lib/authors';
 
 export const metadata: Metadata = {
   title: 'Our Authors | Arek',
@@ -9,52 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function AuthorPage() {
-  const authors = [
-    {
-      name: 'Sarah Johnson',
-      role: 'Head of Content & SEO Strategy',
-      image: '/testimonials/user-1.jpg',
-      bio: 'Sarah has over 10 years of experience in SEO and content marketing. She has helped hundreds of businesses improve their online visibility and organic traffic. Her expertise spans technical SEO, content strategy, and data analytics.',
-      expertise: ['SEO Strategy', 'Content Marketing', 'Analytics', 'Link Building'],
-      social: {
-        twitter: '#',
-        linkedin: '#',
-      }
-    },
-    {
-      name: 'Michael Chen',
-      role: 'Senior Marketing Analyst',
-      image: '/testimonials/user-2.jpg',
-      bio: 'Michael specializes in marketing analytics and performance optimization. With a background in data science and digital marketing, he helps businesses make data-driven decisions to maximize their ROI.',
-      expertise: ['Marketing Analytics', 'PPC Campaigns', 'Conversion Optimization', 'A/B Testing'],
-      social: {
-        twitter: '#',
-        linkedin: '#',
-      }
-    },
-    {
-      name: 'Emily Rodriguez',
-      role: 'Social Media & Ad Strategy Expert',
-      image: '/testimonials/user-3.jpg',
-      bio: 'Emily is a certified social media strategist with extensive experience in paid advertising across Facebook, Instagram, TikTok, and YouTube. She helps brands create engaging content and optimize their ad spend.',
-      expertise: ['Social Media Marketing', 'Paid Advertising', 'Creative Strategy', 'Influencer Marketing'],
-      social: {
-        twitter: '#',
-        linkedin: '#',
-      }
-    },
-    {
-      name: 'David Thompson',
-      role: 'Technical SEO Specialist',
-      image: '/testimonials/user-1.jpg',
-      bio: 'David is a technical SEO expert who focuses on website performance, crawlability, and indexation. He has worked with enterprise clients to solve complex technical SEO challenges and improve site architecture.',
-      expertise: ['Technical SEO', 'Site Speed Optimization', 'Schema Markup', 'Core Web Vitals'],
-      social: {
-        twitter: '#',
-        linkedin: '#',
-      }
-    },
-  ];
+  const authors = getAllAuthors();
 
   return (
     <div className="min-h-screen bg-gray-50 py-20">
@@ -99,14 +55,10 @@ export default function AuthorPage() {
                     <div className="flex-shrink-0">
                       <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden bg-gray-200">
                         <Image
-                          src={author.image}
+                          src={author.avatar}
                           alt={author.name}
                           fill
                           className="object-cover"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.src = '/testimonials/user-1.jpg';
-                          }}
                         />
                       </div>
                     </div>
@@ -142,6 +94,8 @@ export default function AuthorPage() {
                       <div className="flex gap-4">
                         <a
                           href={author.social.twitter}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="text-gray-600 hover:text-blue-600 transition-colors"
                           aria-label={`${author.name} on Twitter`}
                         >
@@ -151,6 +105,8 @@ export default function AuthorPage() {
                         </a>
                         <a
                           href={author.social.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="text-gray-600 hover:text-blue-600 transition-colors"
                           aria-label={`${author.name} on LinkedIn`}
                         >

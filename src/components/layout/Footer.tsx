@@ -21,7 +21,7 @@ const navigation: {
       links: [
         { name: 'About', href: '/about' },
         { name: 'Blog', href: '/blog' },
-        { name: 'Authors', href: '/author' },
+        { name: 'Authors', href: '/authors' },
       ],
     },
     {

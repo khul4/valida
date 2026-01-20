@@ -132,19 +132,23 @@ export default function BlogPostClient({ blogPost, relatedPosts }: BlogPostClien
             
             <div className="flex items-center gap-4 text-sm text-gray-600">
               <div className="flex items-center">
-                <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
-                  <Image
-                    src="https://media.licdn.com/dms/image/v2/D5603AQHif-7tB-iyvg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1721016736149?e=1769644800&v=beta&t=OmhelGKv3eUOvr3COMioESeI61iIBSqfflOAk68wqUg"
-                    alt={blogPost.author.name}
-                    width={40}
-                    height={40}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+                <Link href={`/author/${blogPost.author.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                  <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity">
+                    <Image
+                      src="https://media.licdn.com/dms/image/v2/D5603AQHif-7tB-iyvg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1721016736149?e=1769644800&v=beta&t=OmhelGKv3eUOvr3COMioESeI61iIBSqfflOAk68wqUg"
+                      alt={blogPost.author.name}
+                      width={40}
+                      height={40}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </Link>
                 <div className="ml-3">
-                  <p className="font-medium text-gray-900">
-                    {blogPost.author.name}
-                  </p>
+                  <Link href={`/author/${blogPost.author.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                    <p className="font-medium text-gray-900 hover:text-blue-600 transition-colors cursor-pointer">
+                      {blogPost.author.name}
+                    </p>
+                  </Link>
                   <p className="text-gray-500">
                     {blogPost.author.role}
                   </p>
