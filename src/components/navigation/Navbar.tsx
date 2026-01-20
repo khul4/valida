@@ -10,7 +10,8 @@ export default function Navbar() {
     { name: "Features", href: "#features" },
     { name: "Integrations", href: "#integrations" },
     { name: "Tools", href: "/tools" },
-    { name: "Blog", href: "/blog" }
+    { name: "Blog", href: "/blog" },
+    { name: "About", href: "/about" }
   ];
   const [open, setOpen] = React.useState(false);
 

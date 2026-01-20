@@ -19,17 +19,17 @@ const navigation: {
     {
       title: 'Company',
       links: [
-        { name: 'About', href: '#' },
+        { name: 'About', href: '/about' },
         { name: 'Blog', href: '/blog' },
-        { name: 'Contact', href: '#' },
+        { name: 'Authors', href: '/author' },
       ],
     },
     {
       title: 'Resources',
       links: [
         { name: 'Glossary', href: '/glossary' },
-        { name: 'Guides', href: '#' },
-        { name: 'Support', href: '#' },
+        { name: 'Privacy Policy', href: '/privacy' },
+        { name: 'Terms & Conditions', href: '/terms' },
       ],
     },
   ],
