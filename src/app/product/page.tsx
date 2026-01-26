@@ -1,5 +1,6 @@
 import ProductHero from '@/components/product/ProductHero';
 import ProductFeatures from '@/components/product/ProductFeatures';
+import ProductIntegrations from '@/components/product/ProductIntegrations';
 import ProductVisuals from '@/components/product/ProductVisuals';
 import ProductMetrics from '@/components/product/ProductMetrics';
 import ProductCTA from '@/components/product/ProductCTA';
@@ -14,6 +15,7 @@ export default function ProductPage() {
     <div className="min-h-screen bg-white">
       <ProductHero />
       <ProductFeatures />
+      <ProductIntegrations />
       <ProductVisuals />
       <ProductMetrics />
       <ProductCTA />
