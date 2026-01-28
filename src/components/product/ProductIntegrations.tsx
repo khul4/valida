@@ -1,18 +1,20 @@
 'use client';
 
 import Container from '@/components/ui/container';
+import Image from 'next/image';
 
 const integrations = [
   {
     name: 'Google Search Console',
     description: 'Track rankings, impressions, and clicks automatically',
     icon: (
-      <svg className="w-12 h-12" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M24 4L4 14L24 24L44 14L24 4Z" fill="#4285F4"/>
-        <path d="M4 14V34L24 44V24L4 14Z" fill="#34A853"/>
-        <path d="M24 24V44L44 34V14L24 24Z" fill="#FBBC04"/>
-        <path d="M24 24L44 14L34 9L24 14L14 9L4 14L24 24Z" fill="#EA4335"/>
-      </svg>
+      <Image
+        src="/integrations/gsc.svg"
+        alt="Google Search Console"
+        width={48}
+        height={48}
+        className="w-12 h-12 object-contain"
+      />
     ),
     color: 'from-blue-500 to-blue-600',
   },
@@ -20,21 +22,35 @@ const integrations = [
     name: 'Google Analytics',
     description: 'Pull traffic, conversions, and user metrics seamlessly',
     icon: (
-      <svg className="w-12 h-12" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="4" y="28" width="8" height="16" rx="2" fill="#F9AB00"/>
-        <rect x="16" y="18" width="8" height="26" rx="2" fill="#E37400"/>
-        <circle cx="36" cy="12" r="8" fill="#E37400"/>
-      </svg>
+      <Image
+        src="/integrations/google-analytics.svg"
+        alt="Google Analytics"
+        width={48}
+        height={48}
+        className="w-12 h-12 object-contain"
+      />
     ),
     color: 'from-orange-500 to-orange-600',
   },
 ];
 
 const comingSoon = [
-  { name: 'Ahrefs', logo: 'A' },
-  { name: 'SEMrush', logo: 'S' },
-  { name: 'Google My Business', logo: 'G' },
-  { name: 'Moz', logo: 'M' },
+  { 
+    name: 'Ahrefs', 
+    logo: '/integrations/ahrefs.svg'
+  },
+  { 
+    name: 'SEMrush', 
+    logo: '/integrations/semrush.svg'
+  },
+  { 
+    name: 'Google My Business', 
+    logo: '/integrations/google_my_business_icon_website.svg'
+  },
+  { 
+    name: 'Moz', 
+    logo: '/integrations/moz.svg'
+  },
 ];
 
 export default function ProductIntegrations() {
@@ -99,8 +115,14 @@ export default function ProductIntegrations() {
                 key={index}
                 className="flex flex-col items-center justify-center p-6 rounded-xl border border-neutral-200 bg-neutral-50 hover:bg-white transition-all"
               >
-                <div className="w-12 h-12 rounded-lg bg-neutral-200 flex items-center justify-center mb-3">
-                  <span className="text-xl font-bold text-neutral-500">{tool.logo}</span>
+                <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-3">
+                  <Image
+                    src={tool.logo}
+                    alt={tool.name}
+                    width={48}
+                    height={48}
+                    className="w-12 h-12 object-contain"
+                  />
                 </div>
                 <span className="text-sm font-medium text-neutral-600">{tool.name}</span>
               </div>

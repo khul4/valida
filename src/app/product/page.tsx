@@ -8,6 +8,7 @@ import ProductCTA from '@/components/product/ProductCTA';
 export const metadata = {
   title: 'SEO Reporting Tool - Arek AI | Automated Client-Ready Reports',
   description: 'Transform your SEO data into beautiful, client-ready reports in minutes. Automate your reporting workflow with AI-powered insights.',
+  robots: 'noindex',
 };
 
 export default function ProductPage() {

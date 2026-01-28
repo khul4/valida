@@ -34,6 +34,7 @@ const features = [
   {
     title: 'Real-time collaboration',
     description: 'Work together with your team on reports. Comments, approvals, and version control built right in.',
+    comingSoon: true,
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -43,6 +44,7 @@ const features = [
   {
     title: 'Flexible delivery',
     description: 'Schedule automatic report delivery via email, export to PDF, or share interactive dashboards with a secure link.',
+    comingSoon: true,
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -62,7 +64,7 @@ const features = [
 
 export default function ProductFeatures() {
   return (
-    <section className="py-24 border-b border-neutral-100">
+    <section id="features" className="py-24 border-b border-neutral-100">
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-semibold tracking-[-0.02em] mb-6 text-black">
@@ -86,9 +88,16 @@ export default function ProductFeatures() {
                   {feature.icon}
                 </div>
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-black">
-                {feature.title}
-              </h3>
+              <div className="flex items-center gap-2 mb-3">
+                <h3 className="text-xl font-semibold text-black">
+                  {feature.title}
+                </h3>
+                {feature.comingSoon && (
+                  <span className="px-2 py-1 text-xs font-medium bg-neutral-800 text-white rounded-full">
+                    Soon
+                  </span>
+                )}
+              </div>
               <p className="text-neutral-600 leading-relaxed">
                 {feature.description}
               </p>

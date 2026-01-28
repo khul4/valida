@@ -9,25 +9,24 @@ export default function ProductHero() {
       <Container>
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-neutral-200 bg-neutral-50 mb-8">
+          {/* <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-neutral-200 bg-neutral-50 mb-8">
             <div className="w-2 h-2 rounded-full bg-black animate-pulse" />
             <span className="text-sm font-medium text-neutral-900">AI-Powered SEO Reporting</span>
-          </div>
+          </div> */}
 
           {/* Main Headline */}
           <h1 className="font-semibold text-5xl sm:text-7xl leading-[1.05] tracking-[-0.03em] mb-6 text-black">
-            SEO reporting that
+            The SEO reporting tool, 
             <br />
             <span className="relative inline-block mt-2">
-              <span className="relative z-10">works for you.</span>
+              <span className="relative z-10">without the Bloat.</span>
               <span className="absolute bottom-2 left-0 w-full h-3 bg-neutral-200 -rotate-1" />
             </span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-xl sm:text-2xl text-neutral-600 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Build customizable, client-ready SEO reports in minutes. 
-            Automate data collection, analysis, and presentation—so you can focus on strategy.
+            Create clean, white-labeled dashboards that prove your SEO value in minutes. Join the waitlist for early access to the reporting engine built specifically for search agencies.
           </p>
 
           {/* CTA Buttons */}
@@ -35,21 +34,20 @@ export default function ProductHero() {
             <Button
               size="lg"
               className="rounded-full px-8 h-12 text-base bg-black hover:bg-neutral-800 text-white shadow-lg hover:shadow-xl transition-all"
-              onClick={() => window.open('https://tally.so/r/3x5eLo', '_blank')}
+              onClick={() => {
+                document.getElementById('waitlist')?.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start'
+                });
+              }}
             >
-              Start Free Trial
+              Join the waiting list
             </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="rounded-full px-8 h-12 text-base border-2 border-neutral-200 hover:border-black hover:bg-neutral-50 transition-all"
-            >
-              See Live Demo
-            </Button>
+           
           </div>
 
           {/* Trust Indicators */}
-          <div className="flex items-center justify-center gap-6 text-sm text-neutral-500">
+          {/* <div className="flex items-center justify-center gap-6 text-sm text-neutral-500">
             <div className="flex items-center gap-2">
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -63,7 +61,7 @@ export default function ProductHero() {
               </svg>
               <span>14-day free trial</span>
             </div>
-          </div>
+          </div> */}
         </div>
       </Container>
 

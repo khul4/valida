@@ -1,39 +1,25 @@
 import { Suspense } from 'react';
-import Hero from '@/components/hero/Hero';
-import UniqueFeatures from '@/components/features/UniqueFeatures';
-import Steps from '@/components/steps/Steps';
-import Integrations from '@/components/integrations/Integrations';
-import Benefits from '@/components/benefits/Benefits';
-import CTASection from '@/components/cta/CTASection';
+import ProductHero from '@/components/product/ProductHero';
+import ProductFeatures from '@/components/product/ProductFeatures';
+import ProductIntegrations from '@/components/product/ProductIntegrations';
+import ProductVisuals from '@/components/product/ProductVisuals';
+import ProductMetrics from '@/components/product/ProductMetrics';
+import ProductCTA from '@/components/product/ProductCTA';
 
-// Loading component for better UX
-const LoadingComponent = () => (
-  <div className="flex items-center justify-center py-20">
-    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-  </div>
-);
+export const metadata = {
+  title: 'SEO Reporting Tool - Arek AI | Automated Client-Ready Reports',
+  description: 'Transform your SEO data into beautiful, client-ready reports in minutes. Automate your reporting workflow with AI-powered insights.',
+};
 
 export default function Home() {
   return (
-    <div className="font-sans text-foreground">
-      <Hero />
-      <UniqueFeatures />
-      
-      <Suspense fallback={<LoadingComponent />}>
-        <Benefits />
-      </Suspense>
-      
-      <Suspense fallback={<LoadingComponent />}>
-        <Steps />
-      </Suspense>
-      
-      <Suspense fallback={<LoadingComponent />}>      
-        <Integrations />
-      </Suspense>
-      
-      <Suspense fallback={<LoadingComponent />}>
-        <CTASection />
-      </Suspense>
-    </div>
-  );
+      <div className="min-h-screen bg-white">
+        <ProductHero />
+        <ProductFeatures />
+        <ProductIntegrations />
+        <ProductVisuals />
+        <ProductMetrics />
+        <ProductCTA />
+      </div>
+    );
 }

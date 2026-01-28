@@ -19,7 +19,7 @@ export const AUTHORS_DATA: Record<string, Author> = {
   'khul-anwar': {
     name: 'Khul Anwar',
     slug: 'khul-anwar',
-    avatar: 'https://media.licdn.com/dms/image/v2/D5603AQHif-7tB-iyvg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1721016736149?e=1769644800&v=beta&t=OmhelGKv3eUOvr3COMioESeI61iIBSqfflOAk68wqUg',
+    avatar: '/profile-khulanwar.jpg',
     role: 'SaaS Founder & Digital Marketing Strategist',
     bio: 'Khul is a SaaS entrepreneur and digital marketing strategist focused on building and scaling online businesses. As the founder of Arek, he specializes in SEO strategy, marketing automation, and product growth.',
     fullBio: 'Khul Anwar is a SaaS entrepreneur and digital marketing strategist with a passion for building and scaling online businesses. As the founder of Arek and multiple other digital ventures, Khul has hands-on experience in selecting and implementing the right SEO tools for different business stages. With a focus on practical, results-driven marketing strategies, Khul specializes in helping SaaS founders and entrepreneurs navigate the complex landscape of SEO tools and digital marketing platforms.',

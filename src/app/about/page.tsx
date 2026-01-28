@@ -93,7 +93,7 @@ export default function AboutPage() {
                 or suggestions for new features, don&apos;t hesitate to reach out.
               </p>
               <p className="text-gray-700">
-                Email us at: <a href="mailto:khulanwar@arek.pro" className="text-blue-600 hover:text-blue-700 underline">khulanwar@arek.pro</a>
+                Email us at: <a href="mailto:khulanwar@arek.pro" className="text-black hover:text-gray-800 underline">khulanwar@arek.pro</a>
               </p>
             </section>
           </div>

@@ -41,7 +41,7 @@ export default function BlogIndex() {
       <div className="min-h-screen bg-gray-50 py-20">
         <Container>
           <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-black"></div>
           </div>
         </Container>
       </div>
@@ -60,7 +60,7 @@ export default function BlogIndex() {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                   selectedCategory === category
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-black text-white'
                     : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                 }`}
               >
@@ -108,7 +108,7 @@ export default function BlogIndex() {
                   />
                 </div>
                 <div className="p-6">
-                  <span className="text-sm font-medium text-blue-600 mb-2 block">
+                  <span className="text-sm font-medium text-black mb-2 block">
                     {post.category}
                   </span>
                   <h2 className="text-xl font-semibold mb-3 text-gray-900">
@@ -118,9 +118,21 @@ export default function BlogIndex() {
                     {post.excerpt}
                   </p>
                   <div className="flex items-center">
-                    <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-medium">
-                      {post.author.name.split(' ').map(n => n[0]).join('')}
-                    </div>
+                    {post.author.avatar ? (
+                      <div className="w-8 h-8 rounded-full overflow-hidden">
+                        <Image
+                          src={post.author.avatar}
+                          alt={post.author.name}
+                          width={32}
+                          height={32}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center text-xs font-medium">
+                        {post.author.name.split(' ').map(n => n[0]).join('')}
+                      </div>
+                    )}
                     <div className="ml-3">
                       <p className="text-sm font-medium text-gray-900">
                         {post.author.name}

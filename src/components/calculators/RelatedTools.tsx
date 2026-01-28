@@ -71,9 +71,9 @@ export default function RelatedTools({ currentTool }: RelatedToolsProps) {
           <Link 
             key={tool.name}
             href={tool.href} 
-            className="block p-4 border rounded-lg hover:bg-gray-50 transition-colors hover:border-blue-200 hover:shadow-sm"
+            className="block p-4 border rounded-lg hover:bg-gray-50 transition-colors hover:border-black hover:shadow-sm"
           >
-            <h3 className="font-semibold text-lg mb-2 text-blue-700 hover:text-blue-800">
+            <h3 className="font-semibold text-lg mb-2 text-black hover:text-gray-800">
               {tool.name}
             </h3>
             <p className="text-gray-600 text-sm">

@@ -31,7 +31,7 @@ export default function Hero() {
 
           {/* CTA */}
           <div className="flex flex-col items-center gap-3 relative z-20 px-4 sm:px-0">
-            <Button variant="default" size="lg" className="rounded-full px-8 text-lg bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 transition-all hover:translate-y-[-2px]"
+            <Button variant="default" size="lg" className="rounded-full px-8 text-lg bg-black hover:bg-gray-800 shadow-lg shadow-black/20 hover:shadow-black/30 transition-all hover:translate-y-[-2px]"
             onClick={() => window.open('https://tally.so/r/3x5eLo', '_blank')}
             >
               Get Access

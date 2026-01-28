@@ -24,15 +24,15 @@ export default function ProductVisuals() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Step 1 */}
             <div className="relative">
-              <div className="bg-white border border-neutral-200 rounded-2xl p-8 hover:border-black transition-all">
+              <div className="bg-white border border-neutral-200 rounded-2xl p-8 hover:border-black transition-all h-full flex flex-col">
                 <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center font-semibold mb-4">
                   1
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-black">Connect</h3>
-                <p className="text-neutral-600 mb-6">
+                <p className="text-neutral-600 mb-6 flex-1">
                   Link your SEO tools with one click. Google Analytics, Search Console, Ahrefs, SEMrush—all supported.
                 </p>
-                <div className="space-y-2">
+                <div className="mt-auto space-y-2">
                   <div className="h-8 bg-neutral-100 rounded-lg flex items-center px-3 text-sm text-neutral-500">
                     <div className="w-4 h-4 rounded-full bg-neutral-300 mr-2" />
                     Google Analytics
@@ -57,25 +57,27 @@ export default function ProductVisuals() {
 
             {/* Step 2 */}
             <div className="relative">
-              <div className="bg-white border border-neutral-200 rounded-2xl p-8 hover:border-black transition-all">
+              <div className="bg-white border border-neutral-200 rounded-2xl p-8 hover:border-black transition-all h-full flex flex-col">
                 <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center font-semibold mb-4">
                   2
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-black">Customize</h3>
-                <p className="text-neutral-600 mb-6">
+                <p className="text-neutral-600 mb-6 flex-1">
                   Choose from pre-built templates or create your own. Add your branding, select metrics, arrange sections.
                 </p>
-                <div className="border border-neutral-200 rounded-lg p-4 bg-neutral-50">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-8 h-8 rounded bg-black" />
-                    <div className="flex-1">
-                      <div className="h-3 bg-neutral-200 rounded w-3/4 mb-1" />
-                      <div className="h-2 bg-neutral-200 rounded w-1/2" />
+                <div className="mt-auto">
+                  <div className="border border-neutral-200 rounded-lg p-4 bg-neutral-50">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-8 h-8 rounded bg-black" />
+                      <div className="flex-1">
+                        <div className="h-3 bg-neutral-200 rounded w-3/4 mb-1" />
+                        <div className="h-2 bg-neutral-200 rounded w-1/2" />
+                      </div>
                     </div>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="h-6 bg-white border border-neutral-200 rounded" />
-                    <div className="h-6 bg-white border border-neutral-200 rounded" />
+                    <div className="space-y-2">
+                      <div className="h-6 bg-white border border-neutral-200 rounded" />
+                      <div className="h-6 bg-white border border-neutral-200 rounded" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -88,15 +90,15 @@ export default function ProductVisuals() {
             </div>
 
             {/* Step 3 */}
-            <div className="bg-white border border-neutral-200 rounded-2xl p-8 hover:border-black transition-all">
+            <div className="bg-white border border-neutral-200 rounded-2xl p-8 hover:border-black transition-all h-full flex flex-col">
               <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center font-semibold mb-4">
                 3
               </div>
               <h3 className="text-xl font-semibold mb-3 text-black">Deliver</h3>
-              <p className="text-neutral-600 mb-6">
+              <p className="text-neutral-600 mb-6 flex-1">
                 Schedule automatic delivery or share instantly. PDF, interactive dashboard, or email—your choice.
               </p>
-              <div className="space-y-2">
+              <div className="mt-auto space-y-2">
                 <div className="flex items-center gap-2 p-2 bg-neutral-100 rounded-lg">
                   <div className="w-8 h-8 rounded bg-neutral-200 flex items-center justify-center">
                     <svg className="w-4 h-4 text-neutral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">

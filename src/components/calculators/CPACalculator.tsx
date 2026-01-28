@@ -108,7 +108,7 @@ export default function CPACalculator() {
                   setFocusedField(null);
                   calculateCPA(cost, conversions);
                 }}
-                className="w-full pl-8 pr-4 py-3 border border-gray-200 rounded-lg text-lg font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                className="w-full pl-8 pr-4 py-3 border border-gray-200 rounded-lg text-lg font-medium focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all"
                 placeholder="0.00"
               />
             </div>
@@ -130,19 +130,19 @@ export default function CPACalculator() {
                 setFocusedField(null);
                 calculateCPA(cost, conversions);
               }}
-              className="w-full px-4 py-3 border border-gray-200 rounded-lg text-lg font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-200 rounded-lg text-lg font-medium focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all"
               placeholder="0"
             />
           </div>
 
           {cpa !== null && (
             <div className="col-span-1 sm:col-span-2">
-              <div className="bg-white shadow-lg rounded-xl border border-blue-100 overflow-hidden">
-                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6">
+              <div className="bg-white shadow-lg rounded-xl border border-gray-200 overflow-hidden">
+                <div className="bg-gradient-to-r from-gray-50 to-gray-100 p-6">
                   <div className="flex justify-between items-center">
                     <div>
                       <h3 className="text-xl font-semibold text-gray-900 mb-2">Your CPA Result</h3>
-                      <p className="text-4xl font-bold text-blue-600">
+                      <p className="text-4xl font-bold text-black">
                         {getCurrencySymbol(currency)}{cpa.toFixed(2)}
                       </p>
                       <p className="text-sm text-gray-600 mt-2">

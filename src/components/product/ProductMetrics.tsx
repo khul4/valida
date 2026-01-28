@@ -18,11 +18,11 @@ const metrics = [
     label: 'Average build time',
     description: 'From data to delivery',
   },
-  {
-    value: '500+',
-    label: 'Agencies trust us',
-    description: 'Growing every day',
-  },
+  // {
+  //   value: '500+',
+  //   label: 'Agencies trust us',
+  //   description: 'Growing every day',
+  // },
 ];
 
 const testimonials = [
@@ -51,7 +51,7 @@ export default function ProductMetrics() {
     <section className="py-24 border-b border-neutral-100 bg-white">
       <Container>
         {/* Metrics Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
+        <div className="justify-center grid grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {metrics.map((metric, index) => (
             <div key={index} className="text-center">
               <div className="text-5xl sm:text-6xl font-bold mb-2 text-black">
@@ -68,7 +68,7 @@ export default function ProductMetrics() {
         </div>
 
         {/* Testimonials */}
-        <div className="max-w-3xl mx-auto text-center mb-12">
+        {/* <div className="max-w-3xl mx-auto text-center mb-12">
           <h2 className="text-4xl font-semibold tracking-[-0.02em] mb-4 text-black">
             Loved by SEO professionals.
           </h2>
@@ -101,7 +101,7 @@ export default function ProductMetrics() {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
       </Container>
     </section>
   );

@@ -7,13 +7,21 @@ import { cn } from "@/lib/utils";
 
 export default function Navbar() {
   const links = [
-    { name: "Features", href: "#features" },
-    { name: "Integrations", href: "#integrations" },
-    { name: "Tools", href: "/tools" },
-    { name: "Blog", href: "/blog" },
-    { name: "About", href: "/about" }
+    { name: "Features", href: "#features", isInternal: true },
+    { name: "Tools", href: "/tools", isInternal: false },
+    { name: "Blog", href: "/blog", isInternal: false },
+    { name: "About", href: "/about", isInternal: false }
   ];
   const [open, setOpen] = React.useState(false);
+
+  const handleLinkClick = (link: typeof links[0]) => {
+    if (link.isInternal) {
+      document.getElementById(link.href.substring(1))?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
 
   return (
         <header 
@@ -42,7 +50,7 @@ export default function Navbar() {
                   width="278.849"
                   height="278.849"
                   rx="50"
-                  fill="#126DFB"
+                  fill="#000000"
                 />
                 <path
                   d="M106.579 76.8025C114.629 60.8647 134.076 54.4705 150.013 62.5207C165.951 70.5709 172.345 90.0171 164.295 105.955L115.399 202.76C107.349 218.697 87.9029 225.092 71.9651 217.041C56.0272 208.991 49.633 189.545 57.6832 173.607L106.579 76.8025Z"
@@ -50,28 +58,46 @@ export default function Navbar() {
                 />
                 <circle cx="192.058" cy="185.693" r="39.0658" fill="white" />
               </svg>
-              <span className="font-semibold text-2xl text-gray-900">arek</span>
+              <span className="font-semibold text-2xl text-gray-900 tracking-tight ">arek</span>
             </Link>
           </div>
 
           <div className="hidden md:flex items-center gap-8">
             {links.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-sm text-gray-600 hover:text-gray-900"
-              >
-                {link.name}
-              </Link>
+              link.isInternal ? (
+                <button
+                  key={link.name}
+                  onClick={() => handleLinkClick(link)}
+                  className="text-sm text-gray-600 hover:text-gray-900 cursor-pointer"
+                >
+                  {link.name}
+                </button>
+              ) : (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-sm text-gray-600 hover:text-gray-900"
+                >
+                  {link.name}
+                </Link>
+              )
             ))}
           </div>
 
           <div className="flex items-center gap-3">
             <div className="hidden md:flex items-center gap-3">
-              <Button variant="default" size="sm" className="bg-blue-600 hover:bg-blue-700 text-white"
-              onClick={() => window.open('https://tally.so/r/3x5eLo', '_blank')}
-                >
-                Get Access Now
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="border-gray-300 text-gray-700 hover:bg-gray-50"
+                onClick={() => {
+                  document.getElementById('waitlist')?.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }}
+              >
+                Join Waitlist
               </Button>
             </div>
 
@@ -195,20 +221,47 @@ export default function Navbar() {
 
           <div className="mt-8 flex flex-col gap-6">
             {links.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="text-base font-medium text-gray-900 hover:text-blue-600"
-              >
-                {link.name}
-              </Link>
+              link.isInternal ? (
+                <button
+                  key={link.name}
+                  onClick={() => {
+                    setOpen(false);
+                    setTimeout(() => handleLinkClick(link), 100);
+                  }}
+                  className="text-base font-medium text-gray-900 hover:text-black text-left"
+                >
+                  {link.name}
+                </button>
+              ) : (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="text-base font-medium text-gray-900 hover:text-black"
+                >
+                  {link.name}
+                </Link>
+              )
             ))}
           </div>
 
           <div className="mt-8 flex flex-col gap-3">
             <Button variant="ghost" className="text-gray-900 hover:bg-gray-100">Book a demo</Button>
-            <Button variant="default" className="bg-blue-600 hover:bg-blue-700 text-white">Get started</Button>
+            <Button 
+              variant="outline" 
+              className="border-gray-300 text-gray-700 hover:bg-gray-50"
+              onClick={() => {
+                setOpen(false);
+                setTimeout(() => {
+                  document.getElementById('waitlist')?.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }, 100);
+              }}
+            >
+              Join Waitlist
+            </Button>
           </div>
         </aside>
       </div>

@@ -1,6 +1,6 @@
 export const AUTHOR_BIO = {
   name: "Khul Anwar",
-  avatar: "https://media.licdn.com/dms/image/v2/D5603AQHif-7tB-iyvg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1721016736149?e=1769644800&v=beta&t=OmhelGKv3eUOvr3COMioESeI61iIBSqfflOAk68wqUg",
+  avatar: "/profile-khulanwar.jpg",
   role: "SaaS Founder & Digital Marketing Strategist",
   bio: "Khul is a SaaS entrepreneur and digital marketing strategist focused on building and scaling online businesses. As the founder of Arek, he specializes in SEO strategy, marketing automation, and product growth. With extensive experience in the SaaS space, Khul helps businesses choose the right tools and implement effective marketing strategies to drive sustainable growth.",
   fullBio: `**Khul Anwar** is a SaaS entrepreneur and digital marketing strategist with a passion for building and scaling online businesses. As the founder of Arek and multiple other digital ventures, Khul has hands-on experience in selecting and implementing the right SEO tools for different business stages.

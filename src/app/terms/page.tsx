@@ -135,7 +135,7 @@ export default function TermsPage() {
                 If you have any questions about these Terms, please contact us at:
               </p>
               <p className="text-gray-700 mt-2">
-                Email: <a href="mailto:khulanwar@arek.pro" className="text-blue-600 hover:text-blue-700 underline">khulanwar@arek.pro</a>
+                Email: <a href="mailto:khulanwar@arek.pro" className="text-black hover:text-gray-800 underline">khulanwar@arek.pro</a>
               </p>
             </section>
           </div>

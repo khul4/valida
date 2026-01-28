@@ -2,8 +2,9 @@
 
 import Container from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { inView } from 'motion';
+import WaitlistForm from '@/components/waitlist/WaitlistForm';
 
 export default function CTASection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -81,8 +82,8 @@ export default function CTASection() {
               className="mb-3 transition-all duration-500 ease-out"
               style={{ opacity: 0, transform: 'translateY(20px)' }}
             >
-              <span className="px-4 py-1.5 rounded-full bg-blue-50 text-blue-700 text-sm font-medium">
-                Limited Time Offer
+              <span className="px-4 py-1.5 rounded-full bg-black text-white text-sm font-medium">
+                Join Our Waitlist
               </span>
             </div>
             
@@ -91,8 +92,8 @@ export default function CTASection() {
               className="text-4xl md:text-5xl lg:text-5xl font-medium tracking-tight text-center mb-6 transition-all duration-500 ease-out"
               style={{ opacity: 0, transform: 'translateY(20px)' }}
             >
-              Stop losing hours 
-              <span className="text-blue-600"> to reporting</ span>
+              Get Early Access to 
+              <span className="text-black"> Arek AI</ span>
             </h2>
             
             <p
@@ -100,26 +101,17 @@ export default function CTASection() {
               className="text-lg md:text-xl text-gray-600 text-center max-w-2xl mx-auto mb-10 transition-all duration-500 ease-out"
               style={{ opacity: 0, transform: 'translateY(20px)' }}
             >
-              Get early access and spend more time driving results and winning clients
+              Be the first to experience automated client-ready reports and save hours on reporting
             </p>
           </div>
           
           <div 
             ref={buttonContainerRef} 
-            className="flex flex-col items-center transition-all duration-500 ease-out"
+            className="flex flex-col items-center transition-all duration-500 ease-out w-full max-w-md"
             style={{ opacity: 0, transform: 'translateY(20px)' }}
           >
-            <div className="flex flex-col sm:flex-row gap-4 mb-4">
-              <Button 
-                size="lg" 
-                className="bg-blue-600 hover:bg-blue-700 text-base px-8 py-6 rounded-xl shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 transition-all hover:translate-y-[-2px]"
-                onClick={() => window.open('https://tally.so/r/3x5eLo', '_blank')}
-              >
-                Get Access
-              </Button>
-              
-            </div>
-            <p className="text-xs text-gray-500 mt-4">🔒 Secure checkout • No credit card required • Cancel anytime</p>
+            <WaitlistForm />
+            <p className="text-xs text-gray-500 mt-4">We'll never spam you. Unsubscribe anytime.</p>
           </div>
         </div>
       </Container>

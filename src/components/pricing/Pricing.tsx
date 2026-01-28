@@ -103,7 +103,7 @@ export default function Pricing() {
             <button
               onClick={() => setIsAnnual(false)}
               className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
-                !isAnnual ? 'bg-blue-600 text-white' : 'text-gray-600'
+                !isAnnual ? 'bg-black text-white' : 'text-gray-600'
               }`}
             >
               Monthly
@@ -111,7 +111,7 @@ export default function Pricing() {
             <button
               onClick={() => setIsAnnual(true)}
               className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
-                isAnnual ? 'bg-blue-600 text-white' : 'text-gray-600'
+                isAnnual ? 'bg-black text-white' : 'text-gray-600'
               }`}
             >
               Annually
@@ -127,12 +127,12 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className={`relative bg-white p-8 rounded-2xl ${
-                plan.isPopular ? 'shadow-xl ring-2 ring-blue-600' : 'border border-gray-200'
+                plan.isPopular ? 'shadow-xl ring-2 ring-black' : 'border border-gray-200'
               }`}
             >
               {plan.isPopular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="bg-black text-white px-3 py-1 rounded-full text-sm font-medium">
                     Most Popular
                   </span>
                 </div>
@@ -156,7 +156,7 @@ export default function Pricing() {
               <div className="space-y-4 mb-8">
                 {plan.features.map((feature, i) => (
                   <div key={i} className="flex items-center gap-3">
-                    <CheckIcon className="h-5 w-5 text-blue-600" />
+                    <CheckIcon className="h-5 w-5 text-black" />
                     <span className="text-gray-600">{feature.text}</span>
                   </div>
                 ))}
@@ -164,7 +164,7 @@ export default function Pricing() {
 
               <Button
                 className={`w-full justify-center ${
-                  plan.isPopular ? 'bg-blue-600 hover:bg-blue-700' : ''
+                  plan.isPopular ? 'bg-black hover:bg-gray-800' : ''
                 }`}
                 variant={plan.isPopular ? 'default' : 'outline'}
               >
