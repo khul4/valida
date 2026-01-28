@@ -106,7 +106,7 @@ export default function ProductIntegrations() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
             <h3 className="text-xl font-semibold text-black mb-2">Coming Soon</h3>
-            <p className="text-neutral-600">We're constantly adding new integrations</p>
+            <p className="text-neutral-600">We&apos;re constantly adding new integrations</p>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -133,7 +133,7 @@ export default function ProductIntegrations() {
         {/* Bottom CTA */}
         <div className="mt-16 text-center">
           <p className="text-neutral-600 mb-4">
-            Don't see your tool? <a href="mailto:support@arek.pro" className="text-black font-medium underline">Request an integration</a>
+            Don&apos;t see your tool? <a href="mailto:support@arek.pro" className="text-black font-medium underline">Request an integration</a>
           </p>
         </div>
       </Container>

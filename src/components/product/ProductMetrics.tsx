@@ -25,26 +25,26 @@ const metrics = [
   // },
 ];
 
-const testimonials = [
-  {
-    quote: "This tool cut our reporting time from 8 hours to 30 minutes. Game changer for our agency.",
-    author: "Sarah Chen",
-    role: "SEO Director",
-    company: "Growth Digital",
-  },
-  {
-    quote: "Our clients actually look forward to reports now. The insights are clear and actionable.",
-    author: "Michael Torres",
-    role: "Founder",
-    company: "SEO Collective",
-  },
-  {
-    quote: "Finally, a reporting tool that doesn't require a PhD to use. Setup took 10 minutes.",
-    author: "Emily Roberts",
-    role: "Marketing Lead",
-    company: "Startup Labs",
-  },
-];
+// const testimonials = [
+//   {
+//     quote: "This tool cut our reporting time from 8 hours to 30 minutes. Game changer for our agency.",
+//     author: "Sarah Chen",
+//     role: "SEO Director",
+//     company: "Growth Digital",
+//   },
+//   {
+//     quote: "Our clients actually look forward to reports now. The insights are clear and actionable.",
+//     author: "Michael Torres",
+//     role: "Founder",
+//     company: "SEO Collective",
+//   },
+//   {
+//     quote: "Finally, a reporting tool that doesn't require a PhD to use. Setup took 10 minutes.",
+//     author: "Emily Roberts",
+//     role: "Marketing Lead",
+//     company: "Startup Labs",
+//   },
+// ];
 
 export default function ProductMetrics() {
   return (

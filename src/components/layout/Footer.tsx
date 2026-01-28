@@ -17,8 +17,8 @@ const navigation: NavigationSection[] = [
   {
     title: 'Product',
     links: [
-      { name: 'SEO Reporting', href: '/product' },
-      { name: 'Tools', href: '/tools' },
+      { name: 'Features', href: '/#features' },
+      
     ],
   },
   {

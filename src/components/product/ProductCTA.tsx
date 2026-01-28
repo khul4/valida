@@ -1,6 +1,5 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
 import Container from '@/components/ui/container';
 import WaitlistForm from '@/components/waitlist/WaitlistForm';
 

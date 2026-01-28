@@ -39,7 +39,7 @@ export default function WaitlistForm({ theme = 'light' }: WaitlistFormProps) {
           text: data.message || 'Something went wrong. Please try again.',
         });
       }
-    } catch (error) {
+    } catch {
       setMessage({
         type: 'error',
         text: 'Failed to submit. Please try again later.',

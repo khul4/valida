@@ -22,7 +22,7 @@ export default function WaitlistSection() {
           </div>
           
           <p className="text-sm text-gray-500">
-            We'll never spam you. Unsubscribe anytime.
+            We&apos;ll never spam you. Unsubscribe anytime.
           </p>
         </div>
       </Container>

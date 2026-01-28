@@ -1,8 +1,7 @@
 'use client';
 
 import Container from '@/components/ui/container';
-import { Button } from '@/components/ui/button';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { inView } from 'motion';
 import WaitlistForm from '@/components/waitlist/WaitlistForm';
 
@@ -111,7 +110,7 @@ export default function CTASection() {
             style={{ opacity: 0, transform: 'translateY(20px)' }}
           >
             <WaitlistForm />
-            <p className="text-xs text-gray-500 mt-4">We'll never spam you. Unsubscribe anytime.</p>
+            <p className="text-xs text-gray-500 mt-4">We&apos;ll never spam you. Unsubscribe anytime.</p>
           </div>
         </div>
       </Container>

@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import ProductHero from '@/components/product/ProductHero';
 import ProductFeatures from '@/components/product/ProductFeatures';
 import ProductIntegrations from '@/components/product/ProductIntegrations';
