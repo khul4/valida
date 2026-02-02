@@ -51,6 +51,22 @@ const comingSoon = [
     name: 'Moz', 
     logo: '/integrations/moz.svg'
   },
+  { 
+    name: 'ChatGPT', 
+    logo: '/integrations/chatgpt.svg'
+  },
+  { 
+    name: 'Perplexity', 
+    logo: '/integrations/perplexity.svg'
+  },
+  { 
+    name: 'Gemini', 
+    logo: '/integrations/gemini.svg'
+  },
+  { 
+    name: 'Claude', 
+    logo: '/integrations/claude.svg'
+  },
 ];
 
 export default function ProductIntegrations() {
@@ -115,13 +131,13 @@ export default function ProductIntegrations() {
                 key={index}
                 className="flex flex-col items-center justify-center p-6 rounded-xl border border-neutral-200 bg-neutral-50 hover:bg-white transition-all"
               >
-                <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-3">
+                <div className="w-16 h-16 rounded-lg flex items-center justify-center mb-3">
                   <Image
                     src={tool.logo}
                     alt={tool.name}
-                    width={48}
-                    height={48}
-                    className="w-12 h-12 object-contain"
+                    width={64}
+                    height={64}
+                    className="w-80 h-80 object-contain"
                   />
                 </div>
                 <span className="text-sm font-medium text-neutral-600">{tool.name}</span>
