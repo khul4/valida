@@ -6,8 +6,8 @@ import ProductMetrics from '@/components/product/ProductMetrics';
 import ProductCTA from '@/components/product/ProductCTA';
 
 export const metadata = {
-  title: 'SEO Reporting Tool - Arek AI | Automated Client-Ready Reports',
-  description: 'Transform your SEO data into beautiful, client-ready reports in minutes. Automate your reporting workflow with AI-powered insights.',
+  title: 'AREK - SEO Reports That Show the Value of Your Work',
+  description: 'Create SEO reports that explain what changed, why it matters, and how your work creates value',
 };
 
 export default function Home() {
