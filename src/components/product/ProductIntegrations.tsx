@@ -59,12 +59,12 @@ export default function ProductIntegrations() {
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-semibold tracking-[-0.02em] mb-6 text-black">
-            Connect once.
+            Works with the SEO tools 
             <br />
-            Report forever.
+            you already use
           </h2>
           <p className="text-lg text-neutral-600">
-            Seamlessly integrate with your favorite SEO tools. We automatically pull and sync your data.
+            Connect AREK to your existing SEO stack and turn familiar data into reports that actually show the value of your work.
           </p>
         </div>
 

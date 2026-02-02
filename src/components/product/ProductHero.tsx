@@ -7,7 +7,7 @@ export default function ProductHero() {
   return (
     <section className="relative pt-32 pb-20 overflow-hidden border-b border-neutral-100">
       <Container>
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-3xl mx-auto text-center sm:max-w-2xl">
           {/* Badge */}
           {/* <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-neutral-200 bg-neutral-50 mb-8">
             <div className="w-2 h-2 rounded-full bg-black animate-pulse" />
@@ -15,18 +15,16 @@ export default function ProductHero() {
           </div> */}
 
           {/* Main Headline */}
-          <h1 className="font-semibold text-5xl sm:text-7xl leading-[1.05] tracking-[-0.03em] mb-6 text-black">
-            The SEO reporting tool, 
-            <br />
-            <span className="relative inline-block mt-2">
-              <span className="relative z-10">without the Bloat.</span>
-              <span className="absolute bottom-2 left-0 w-full h-3 bg-neutral-200 -rotate-1" />
+          <h1 className="font-semibold text-4xl sm:text-7xl leading-[1.05] tracking-[-0.03em] mb-6 text-black">
+            SEO reports that show 
+            <span className="relative mt-2">
+              <span className="relative z-10"> the value of your work.</span>
             </span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl sm:text-2xl text-neutral-600 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Create clean, white-labeled dashboards that prove your SEO value in minutes. Join the waitlist for early access to the reporting engine built specifically for search agencies.
+          <p className="text-lg sm:text-xl text-neutral-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+            AREK helps SEO professionals turn complex SEO data into reports clients actually understand, so your work feels clear, important, and worth paying for
           </p>
 
           {/* CTA Buttons */}
@@ -66,8 +64,8 @@ export default function ProductHero() {
       </Container>
 
       {/* Decorative Elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-neutral-100 rounded-full blur-3xl opacity-50" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-neutral-100 rounded-full blur-3xl opacity-50" />
+      {/* <div className="absolute top-20 left-10 w-72 h-72 bg-neutral-100 rounded-full blur-3xl opacity-50" /> */}
+      {/* <div className="absolute bottom-20 right-10 w-96 h-96 bg-neutral-100 rounded-full blur-3xl opacity-50" /> */}
     </section>
   );
 }

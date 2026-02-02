@@ -9,14 +9,13 @@ export default function ProductCTA() {
       <Container>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl sm:text-6xl font-semibold tracking-[-0.02em] mb-6">
-            Start building better
+            Make your SEO work 
             <br />
-            reports today.
+            visible to clients
           </h2>
           
           <p className="text-xl text-neutral-400 max-w-2xl mx-auto mb-10">
-            Join hundreds of agencies saving 10+ hours per week on reporting. 
-            Be the first to get early access.
+            Join SEO professionals who want reports that show the value of their work. Get early access to AREK.
           </p>
 
           <div className="max-w-md mx-auto mb-8">

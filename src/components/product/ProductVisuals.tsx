@@ -10,13 +10,12 @@ export default function ProductVisuals() {
         <div className="mb-32">
           <div className="max-w-2xl mb-12">
             <h2 className="text-4xl font-semibold tracking-[-0.02em] mb-4 text-black">
-              Build reports in minutes,
+              Turn SEO data into 
               <br />
-              not hours.
+              visible value
             </h2>
             <p className="text-lg text-neutral-600">
-              Our streamlined workflow gets you from data to delivery faster than ever. 
-              No technical skills required.
+              AREK follows a simple flow: connect your data, add context, and deliver a report your client actually understands.
             </p>
           </div>
 
@@ -30,7 +29,7 @@ export default function ProductVisuals() {
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-black">Connect</h3>
                 <p className="text-neutral-600 mb-6 flex-1">
-                  Link your SEO tools with one click. Google Analytics, Search Console, Ahrefs, SEMrush—all supported.
+                  Connect your existing SEO tools and bring the right data into one place
                 </p>
                 <div className="mt-auto space-y-2">
                   <div className="h-8 bg-neutral-100 rounded-lg flex items-center px-3 text-sm text-neutral-500">
@@ -63,7 +62,7 @@ export default function ProductVisuals() {
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-black">Customize</h3>
                 <p className="text-neutral-600 mb-6 flex-1">
-                  Choose from pre-built templates or create your own. Add your branding, select metrics, arrange sections.
+                  Highlight what matters, add context, and explain what changed, in plain language
                 </p>
                 <div className="mt-auto">
                   <div className="border border-neutral-200 rounded-lg p-4 bg-neutral-50">
@@ -96,7 +95,7 @@ export default function ProductVisuals() {
               </div>
               <h3 className="text-xl font-semibold mb-3 text-black">Deliver</h3>
               <p className="text-neutral-600 mb-6 flex-1">
-                Schedule automatic delivery or share instantly. PDF, interactive dashboard, or email—your choice.
+                Send a client-ready SEO report that clearly shows the value of your work.
               </p>
               <div className="mt-auto space-y-2">
                 <div className="flex items-center gap-2 p-2 bg-neutral-100 rounded-lg">
@@ -123,13 +122,12 @@ export default function ProductVisuals() {
         {/* Dashboard Preview */}
         <div className="max-w-2xl mb-12">
           <h2 className="text-4xl font-semibold tracking-[-0.02em] mb-4 text-black">
-            Beautiful reports.
+            Clear reports. 
             <br />
-            Powerful insights.
+            Real SEO insight.
           </h2>
           <p className="text-lg text-neutral-600">
-            Every report is designed to be clear, actionable, and impressive. 
-            Your clients will love them.
+            Every report is designed to explain what happened, why it matters, and how your SEO work creates impact.
           </p>
         </div>
 

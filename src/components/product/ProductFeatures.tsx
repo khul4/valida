@@ -4,8 +4,8 @@ import Container from '@/components/ui/container';
 
 const features = [
   {
-    title: 'Automated data collection',
-    description: 'Connect your SEO tools once. We automatically pull rankings, traffic, backlinks, and more—keeping everything up to date without manual exports.',
+    title: 'Automatic SEO data, always up to date',
+    description: 'Connect your SEO tools once and let AREK keep rankings, traffic, and backlinks in sync. Without manual exports',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7C5 4 4 5 4 7z" />
@@ -14,8 +14,8 @@ const features = [
     ),
   },
   {
-    title: 'AI-powered insights',
-    description: 'Our AI analyzes your data to surface meaningful trends, anomalies, and recommendations—no more manual number crunching.',
+    title: 'Insights your clients can understand',
+    description: 'AREK AI analyzes your SEO data and explains trends, changes, and anomalies, so you don’t have to translate numbers into meaning',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -23,8 +23,8 @@ const features = [
     ),
   },
   {
-    title: 'White-label reports',
-    description: 'Fully customizable templates with your branding, colors, and logo. Create professional reports that clients love in minutes.',
+    title: 'Reports that represent your work',
+    description: 'Fully customizable reports with your branding, built to clearly show the impact and value of your SEO efforts',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
@@ -32,8 +32,8 @@ const features = [
     ),
   },
   {
-    title: 'Real-time collaboration',
-    description: 'Work together with your team on reports. Comments, approvals, and version control built right in.',
+    title: 'Collaborate without confusion',
+    description: 'Comment, review, and approve SEO reports together; with context and version history built i.',
     comingSoon: true,
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -42,8 +42,8 @@ const features = [
     ),
   },
   {
-    title: 'Flexible delivery',
-    description: 'Schedule automatic report delivery via email, export to PDF, or share interactive dashboards with a secure link.',
+    title: 'Deliver reports your way',
+    description: 'Send scheduled reports, export PDFs, or share secure links; without changing how you work.',
     comingSoon: true,
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -52,8 +52,8 @@ const features = [
     ),
   },
   {
-    title: 'Advanced analytics',
-    description: 'Track YoY growth, competitive benchmarks, forecasting, and custom KPIs across all your clients in one unified dashboard.',
+    title: 'SEO performance, in context',
+    description: 'Track growth, benchmarks, and key SEO signals. All framed around progress, not vanity metrics.',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -68,12 +68,12 @@ export default function ProductFeatures() {
       <Container>
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-semibold tracking-[-0.02em] mb-6 text-black">
-            Everything you need.
+            SEO is complex. 
             <br />
-            Nothing you don&apos;t.
+            Your clients aren’t wrong for not understanding it.
           </h2>
           <p className="text-lg text-neutral-600">
-            Powerful features designed to save you time and impress your clients.
+            SEO work happens behind the scenes. AREK helps you explain what changed, why it matters, and how it delivers value. Clearly, without jargon
           </p>
         </div>
 
