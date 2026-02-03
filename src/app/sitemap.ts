@@ -4,7 +4,7 @@ import path from 'path'
 import matter from 'gray-matter'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://arek.pro'
+  const baseUrl = 'https://usearek.com'
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [
