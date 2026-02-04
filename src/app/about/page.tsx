@@ -4,6 +4,29 @@ import Container from '@/components/ui/container';
 export const metadata: Metadata = {
   title: 'About Us | Arek',
   description: 'Learn more about Arek and our mission to provide powerful marketing analytics and SEO tools for businesses.',
+  openGraph: {
+    title: 'About Us | Arek',
+    description: 'Learn more about Arek and our mission to provide powerful marketing analytics and SEO tools for businesses.',
+    url: 'https://www.usearek.com/about',
+    siteName: 'Arek',
+    type: 'website',
+    images: [
+      {
+        url: '/arek-og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'About Arek - Marketing Analytics & SEO Tools',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@arek',
+    creator: '@arek',
+    title: 'About Us | Arek',
+    description: 'Learn more about Arek and our mission to provide powerful marketing analytics and SEO tools for businesses.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function AboutPage() {

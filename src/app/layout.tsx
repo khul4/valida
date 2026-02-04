@@ -24,9 +24,29 @@ export const metadata: Metadata = {
   title: "Arek - AI-Powered Marketing Reports",
   description: "Stop wasting hours creating reports. Let Arek AI build customizable, client-ready reports in minutes.",
   keywords: "AI reports, marketing automation, client reports, analytics",
+  metadataBase: new URL('https://www.usearek.com'),
   openGraph: {
     title: "Arek - AI-Powered Marketing Reports",
     description: "Stop wasting hours creating reports. Let Arek AI build customizable, client-ready reports in minutes.",
+    url: 'https://www.usearek.com',
+    siteName: 'Arek',
+    type: 'website',
+    images: [
+      {
+        url: '/arek-og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Arek - AI-Powered Marketing Reports',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@arek',
+    creator: '@arek',
+    title: "Arek - AI-Powered Marketing Reports",
+    description: "Stop wasting hours creating reports. Let Arek AI build customizable, client-ready reports in minutes.",
+    images: ['/arek-og-image.png'],
   },
 };
 

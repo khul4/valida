@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     };
   }
   
-  const baseUrl = 'https://arek.pro'; // You might want to move this to an env var
+  const baseUrl = 'https://www.usearek.com'; // You might want to move this to an env var
   const canonicalUrl = `${baseUrl}/blog/${post.slug}`;
   
   return {
