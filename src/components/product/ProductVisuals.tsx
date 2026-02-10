@@ -1,6 +1,7 @@
 'use client';
 
 import Container from '@/components/ui/container';
+import Image from 'next/image';
 
 export default function ProductVisuals() {
   return (
@@ -131,46 +132,16 @@ export default function ProductVisuals() {
           </p>
         </div>
 
-        {/* Mock Dashboard */}
-        <div className="bg-white rounded-3xl border border-neutral-200 p-8 shadow-2xl">
-          <div className="space-y-6">
-            {/* Header */}
-            <div className="flex items-center justify-between pb-6 border-b border-neutral-100">
-              <div>
-                <div className="h-8 w-32 bg-neutral-900 rounded mb-2" />
-                <div className="h-4 w-48 bg-neutral-200 rounded" />
-              </div>
-              <div className="h-10 w-10 rounded-full bg-neutral-200" />
-            </div>
-
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              {[
-                { label: 'Organic Traffic', value: '45.2K', change: '+12.3%' },
-                { label: 'Keywords', value: '1,247', change: '+8.7%' },
-                { label: 'Backlinks', value: '8.9K', change: '+5.2%' },
-                { label: 'DA Score', value: '68', change: '+3' },
-              ].map((stat, i) => (
-                <div key={i} className="p-4 rounded-xl border border-neutral-200 bg-neutral-50">
-                  <div className="text-xs text-neutral-500 mb-1">{stat.label}</div>
-                  <div className="text-2xl font-semibold text-black mb-1">{stat.value}</div>
-                  <div className="text-xs text-green-600 font-medium">{stat.change}</div>
-                </div>
-              ))}
-            </div>
-
-            {/* Chart Placeholder */}
-            <div className="h-64 bg-neutral-50 rounded-xl border border-neutral-200 flex items-end justify-around p-6">
-              {[40, 65, 55, 80, 70, 90, 85].map((height, i) => (
-                <div key={i} className="flex-1 mx-1">
-                  <div
-                    className="bg-black rounded-t transition-all hover:bg-neutral-700"
-                    style={{ height: `${height}%` }}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
+        {/* Real Dashboard Screenshot */}
+        <div className="relative rounded-3xl overflow-hidden border border-neutral-200 shadow-2xl">
+          <Image
+            src="/app-screenshot.webp"
+            alt="AREK Dashboard - SEO Report Preview"
+            width={1200}
+            height={800}
+            className="w-full h-auto"
+            priority
+          />
         </div>
       </Container>
     </section>
