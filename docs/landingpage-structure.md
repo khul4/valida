@@ -55,7 +55,7 @@ Grid of 4 cards:
 
 **⚡ Save Time Instantly**
 
-Build reports in minutes, not hours—so you can focus on strategy instead of spreadsheets.
+Build reports in minutes, not hours, so you can focus on strategy instead of spreadsheets.
 
 **🧠 Always Know What to Do Next**
 
@@ -63,7 +63,7 @@ AI turns your data into clear recommendations, helping you spot opportunities an
 
 **📅 Never Miss a Client Update**
 
-Automate weekly or monthly reports—set it once and deliver on time, every time.
+Automate weekly or monthly reports: set it once and deliver on time, every time.
 
 **🎨 Give Clients Exactly What They Want**
 
@@ -75,7 +75,7 @@ CTA beneath grid: **Start creating reports faster →**
 
 ### **Everything You Need to Impress Clients Effortlessly**
 
-Stop wasting time on manual reports—Arek gives you smart, simple tools that make reporting faster, sharper, and truly client-ready.
+Stop wasting time on manual reports. Arek gives you smart, simple tools that make reporting faster, sharper, and truly client-ready.
 
 **Drag & Drop Reporting**
 
@@ -83,7 +83,7 @@ Create polished reports in minutes with a simple drag-and-drop canvas.
 
 **Automated Scheduling**
 
-Deliver weekly or monthly updates on autopilot—set it once and never worry again.
+Deliver weekly or monthly updates on autopilot: set it once and never worry again.
 
 **AI Insights That Guide You**
 
@@ -91,7 +91,7 @@ Turn data into action with AI-powered recommendations tailored to each campaign.
 
 **Integrates With Your Stack**
 
-Works seamlessly with the tools you already use—Google Ads, Meta, TikTok, LinkedIn, and more.
+Works seamlessly with the tools you already use: Google Ads, Meta, TikTok, LinkedIn, and more.
 
 **Custom to Every Client**
 
@@ -146,7 +146,7 @@ Connect with your favorite data sources to keep everything running smoothly.
 
 **Copy**
 
-Flexible pricing built for every stage—whether you’re a small agency or scaling fast. No hidden fees.
+Flexible pricing built for every stage, whether you're a small agency or scaling fast. No hidden fees.
 
 Pricing table with tiers (Starter, Pro, Agency).
 

@@ -18,7 +18,7 @@ const benefits = [
   },
   {
     title: 'Automated Scheduling',
-    description: 'Deliver weekly or monthly updates on autopilot—set it once and never worry again.',
+    description: 'Deliver weekly or monthly updates on autopilot: set it once and never worry again.',
     icon: (
       <svg className="w-6 h-6 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />

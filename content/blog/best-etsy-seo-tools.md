@@ -366,7 +366,7 @@ EtsyHunt boasts the world's largest database of Etsy products and offers excepti
 
 **Overall Rating: ⭐⭐⭐⭐☆ (4.5/5)**
 
-Alura positions itself as more than an SEO tool—it's a complete Etsy shop management platform with marketing automation.
+Alura positions itself as more than an SEO tool. It's a complete Etsy shop management platform with marketing automation.
 
 #### Comprehensive Feature Set
 

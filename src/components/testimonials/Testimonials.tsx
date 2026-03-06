@@ -12,7 +12,7 @@ const dummyAvatars = [
 
 const baseTestimonials = [
   {
-    content: "It's like product analytics finally caught up with design. We use Reporto not just for numbers—but to tell the story behind them. It's become our go-to tool for every launch.",
+    content: "It's like product analytics finally caught up with design. We use Reporto not just for numbers, but to tell the story behind them. It's become our go-to tool for every launch.",
     author: "James Nair",
     role: "Product Manager at TechCorp",
     rating: 5,

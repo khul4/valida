@@ -138,7 +138,7 @@ export default function PrivacyPage() {
             <section>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">9. International Data Transfers</h2>
               <p className="text-gray-700 leading-relaxed">
-                Your information, including personal data, may be transferred to — and maintained on — computers located outside of 
+                Your information, including personal data, may be transferred to and maintained on computers located outside of 
                 your state, province, country or other governmental jurisdiction where the data protection laws may differ from those 
                 of your jurisdiction. We will take all steps reasonably necessary to ensure that your data is treated securely and in 
                 accordance with this Privacy Policy.

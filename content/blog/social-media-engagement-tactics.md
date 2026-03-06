@@ -43,7 +43,7 @@ schema:
           name: "How often should I post on social media?"
           acceptedAnswer:
             "@type": "Answer"
-            text: "Optimal posting frequency varies by platform: Instagram 3-7 times per week, Facebook 3-5 times per week, Twitter 1-5 times daily, LinkedIn 2-5 times per week, TikTok 1-4 times daily. Quality always beats quantity—consistent, valuable content outperforms frequent low-quality posts."
+            text: "Optimal posting frequency varies by platform: Instagram 3-7 times per week, Facebook 3-5 times per week, Twitter 1-5 times daily, LinkedIn 2-5 times per week, TikTok 1-4 times daily. Quality always beats quantity. Consistent, valuable content outperforms frequent low-quality posts."
         - "@type": "Question"
           name: "What type of content gets the most engagement?"
           acceptedAnswer:
