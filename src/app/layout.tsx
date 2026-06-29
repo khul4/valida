@@ -62,11 +62,9 @@ export default function RootLayout({
       >
         <GoogleAnalytics />
         <PostHogProvider>
-          <Navbar />
-          <main style={{ paddingTop: '64px' }}>
+          <main>
             {children}
           </main>
-          <Footer />
         </PostHogProvider>
       </body>
     </html>
