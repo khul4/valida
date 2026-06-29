@@ -21,32 +21,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Arek - AI-Powered Marketing Reports",
-  description: "Stop wasting hours creating reports. Let Arek AI build customizable, client-ready reports in minutes.",
-  keywords: "AI reports, marketing automation, client reports, analytics",
+  title: "Arek Studio — Creative Studio",
+  description: "A boutique creative studio doing brand identity, art direction, and digital design.",
   metadataBase: new URL('https://www.usearek.com'),
   openGraph: {
-    title: "Arek - AI-Powered Marketing Reports",
-    description: "Stop wasting hours creating reports. Let Arek AI build customizable, client-ready reports in minutes.",
+    title: "Arek Studio — Creative Studio",
+    description: "A boutique creative studio doing brand identity, art direction, and digital design.",
     url: 'https://www.usearek.com',
-    siteName: 'Arek',
+    siteName: 'Arek Studio',
     type: 'website',
-    images: [
-      {
-        url: '/arek-og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Arek - AI-Powered Marketing Reports',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@arek',
-    creator: '@arek',
-    title: "Arek - AI-Powered Marketing Reports",
-    description: "Stop wasting hours creating reports. Let Arek AI build customizable, client-ready reports in minutes.",
-    images: ['/arek-og-image.png'],
+    title: "Arek Studio — Creative Studio",
+    description: "A boutique creative studio doing brand identity, art direction, and digital design.",
   },
 };
 
